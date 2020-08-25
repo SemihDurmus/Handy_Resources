@@ -15,6 +15,9 @@ At BootstrapMade, we create beautiful website templates and bootstrap themes usi
 https://css-tricks.com/ <br />
 A website on websites.
 
+http://devnot.com/2020/javascript-nasil-calisir/ <br/>
+How to practice Javascript
+
 ## YouTube Videos
 
 https://www.youtube.com/watch?v=MijmeoH9LT4&t=414s <br />
