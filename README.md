@@ -18,6 +18,9 @@ A website on websites.
 http://devnot.com/2020/javascript-nasil-calisir/ <br/>
 How to practice Javascript
 
+https://www.typingclub.com/ <br/>
+Typing
+
 ## YouTube Videos
 
 https://www.youtube.com/watch?v=MijmeoH9LT4&t=414s <br />
