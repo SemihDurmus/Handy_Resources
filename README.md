@@ -21,6 +21,9 @@ How to practice Javascript
 https://www.typingclub.com/ <br/>
 Typing
 
+https://caniuse.com/
+For checking compatibility of tools with different browsers
+
 ## YouTube Videos
 
 https://www.youtube.com/watch?v=MijmeoH9LT4&t=414s <br />
