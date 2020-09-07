@@ -21,10 +21,10 @@ How to practice Javascript
 https://www.typingclub.com/ <br/>
 Typing
 
-https://caniuse.com/
+https://caniuse.com/<br/>
 For checking compatibility of tools with different browsers
 
-https://codepen.io/E2192/pen/MWyrZME
+https://codepen.io/E2192/pen/MWyrZME<br/>
 An application for practising display flex
 
 ## YouTube Videos
