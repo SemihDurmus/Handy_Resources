@@ -24,6 +24,9 @@ Typing
 https://caniuse.com/
 For checking compatibility of tools with different browsers
 
+https://codepen.io/E2192/pen/MWyrZME
+An application for practising display flex
+
 ## YouTube Videos
 
 https://www.youtube.com/watch?v=MijmeoH9LT4&t=414s <br />
