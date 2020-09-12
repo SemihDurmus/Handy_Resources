@@ -27,6 +27,10 @@ For checking compatibility of tools with different browsers
 https://codepen.io/E2192/pen/MWyrZME<br/>
 An application for practising display flex
 
+https://www.conventionalcommits.org/en/v1.0.0-beta.2/<br/>
+For writing better commits
+
+
 ## YouTube Videos
 
 https://www.youtube.com/watch?v=MijmeoH9LT4&t=414s <br />
