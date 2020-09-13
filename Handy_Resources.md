@@ -1,7 +1,12 @@
-# Handy_Resources
+# Handy_Web_Resources
 List of Useful Resources:
 
 ## Websites 
+https://www.w3.org/standards/webdesign/htmlcss#whatcss<br />
+Every detail on HTML & CSS
+
+https://developer.mozilla.org/en-US/ <br />
+The MDN Web Docs site provides information about Open Web technologies including HTML, CSS, and APIs for both Web sites and progressive web apps. It also has some developer-oriented documentation for Mozilla products, such as Firefox Developer Tools.
 
 https://developer.mozilla.org/en-US/ <br />
 The MDN Web Docs site provides information about Open Web technologies including HTML, CSS, and APIs for both Web sites and progressive web apps. It also has some developer-oriented documentation for Mozilla products, such as Firefox Developer Tools.
