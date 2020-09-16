@@ -28,7 +28,7 @@
 
 
 
-## For creating css files from scss files in VS Code's Terminal 
+## For creating .css files from .scss files in VS Code's Terminal 
 
 - Download node.js <br/>
 - <code>node --version</code> <br/>
