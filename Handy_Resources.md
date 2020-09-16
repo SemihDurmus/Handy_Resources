@@ -35,6 +35,9 @@ An application for practising display flex
 https://www.conventionalcommits.org/en/v1.0.0-beta.2/<br/>
 For writing better commits
 
+https://search.google.com/test/mobile-friendly
+For checking whether the website is mobile-friendly
+
 
 ## YouTube Videos
 
