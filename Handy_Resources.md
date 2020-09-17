@@ -38,6 +38,9 @@ For writing better commits
 https://search.google.com/test/mobile-friendly
 For checking whether the website is mobile-friendly
 
+https://javascript.info/
+The Modern JavaScript Tutorial
+
 
 ## YouTube Videos
 
