@@ -29,19 +29,19 @@ Typing
 https://caniuse.com/<br/>
 For checking compatibility of tools with different browsers
 
-https://codepen.io/E2192/pen/MWyrZME<br/>
+https://codepen.io/E2192/pen/MWyrZME <br/>
 An application for practising display flex
 
 https://www.conventionalcommits.org/en/v1.0.0-beta.2/<br/>
 For writing better commits
 
-https://search.google.com/test/mobile-friendly
+https://search.google.com/test/mobile-friendly <br/>
 For checking whether the website is mobile-friendly
 
-https://javascript.info/
+https://javascript.info/ <br/>
 The Modern JavaScript Tutorial
 
-https://hackerthemes.com/bootstrap-cheatsheet/
+https://hackerthemes.com/bootstrap-cheatsheet/ <br/>
 Bootstrap Cheatsheet
 
 
