@@ -21,6 +21,9 @@
 - <code>git config --global user.email xxx@example.com</code><br/>
 - For changing HEAD <code>git checkout -b "branchName"</code><br/>
 - For merging<code>git merge branchName</code><br/>
+- After changing repository name<code>git remote set-url origin new_url</code><br/>
+
+
 
 
 
