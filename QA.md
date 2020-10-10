@@ -22,7 +22,7 @@ When you compare undefined with Null using strict equality (===), you get false,
 - WHAT IS OBJECT DATA TYPE IN JS?
 - JS is an object oriented programming language. It means the programming mindset in JS is centered around objects rather than functions. If we disregard the primitive data types like string, number, boolean etc, all remining data types are objects in JS. In object data types we can store as many data as we want by using key-value pairs. Key part is alwaysa string, but value is an area we can assign any data type, and a function as well.<br/>While primitive data types are immutable, object type is completely flexible. You can assign, append, modify or delete any data by calling the key, and by using methods and properties to do manipulation. It makes really handy especially when working with numerous variables at a time. <br/> Because of these features object data type is very widely used in programming languages, and in JS as well.
   <hr/>
-- How is DOM utilized in JavaScript?
+- HOW IS DOM UTILIZED IN JS?
 - DOM stands for Document Object Type, and is one of the standards of the World Wide Web Consortium(W3C). It is an interface free from platform and language allowing the programs or scripts to dynamically access and manipulate the content,  structure and the style of a document.<br/> DOM itself os not a programming language but without it JS would not be able to used to access HTML documents. When we consider an HTML document, all the objects are organized in an hierarchy following the sequence:
   * Window object
   * Document object
@@ -30,8 +30,9 @@ When you compare undefined with Null using strict equality (===), you get false,
   * Form control elements<br/>
 JS has numerous DOM methods which allow the program to access and manipulate every single element in an HTML document.
   <hr/>
-- Native Apps & Cross Platform Apps
+- NATIVE & CROSS-PLATFORM APPS
 - Native apps are developed exclusively for a specific platform. Apple for instance prefers Objective-C and Swift, while Google favors Java for Android. Using those compatible languages developers can better utilize features of the devices. A native developed app for IOS would not work on Android and vica versa. On the other hand cross platform apps are compatible with multiple platforms. Owing to the dominance of twomajor platforms in the market, most cross platform apps focus on IOS and Android. Positive things with cross platform apps is that they provide a universial solution. However, you run the risk of losing quality and tailored solutions for individual devices.
   <hr/>
-- What is JSX?
+- WHAT IS JSX?
 - JSX stands for JS in XML. It allows the developer to create HTMl elements and place them in DOM without using the methods ```create element``` or ```appendChild```. It converts HTML tags into React elements, or very shortly JSX is a React extension that allows us to write JS codes that look like HTML elements.
+  <hr/>
