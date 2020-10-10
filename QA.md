@@ -30,3 +30,6 @@ When you compare undefined with Null using strict equality (===), you get false,
   * Form control elements<br/>
 JS has numerous DOM methods which allow the program to access and manipulate every single element in an HTML document.
 
+- Native Apps & Cross Platform Apps
+- Native apps are developed exclusively for a specific platform. Apple for instance prefers Objective-C and Swift, while Google favors Java for Android. Using those compatible languages developers can better utilize features of the devices. A native developed app for IOS would not work on Android and vica versa. On the other hand cross platform apps are compatible with multiple platforms. Owing to the dominance of twomajor platforms in the market, most cross platform apps focus on IOS and Android. Positive things with cross platform apps is that they provide a universial solution. However, you run the risk of losing quality and tailored solutions for individual devices.
+
