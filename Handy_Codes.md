@@ -37,3 +37,9 @@
 - <code>node --version</code> <br/>
 - <code>npm install -g sass</code> <br/>
 - <code>sass --watch ./sass/style.scss:style.css </code><br/>
+
+
+
+## React-Native
+
+- <code>cd android && gradlew clean && cd ..</code><br/>
