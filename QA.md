@@ -45,9 +45,9 @@ JS has numerous DOM methods which allow the program to access and manipulate eve
   <hr/>
 - WHAT ARE THE ADVANTAGES OF REACT-NATIVE?
 - ANSWER
- * React Native is based on “Learn Once Write Everywhere” approach to equip developers with a tool that only needs to be learned once, just in a single language and then can be reused on both iOS and Android mobile platform.
- * React Native offers cross-platform development and a real experience to developers allowing them to build only one app with effectively 70% code sharing between different platforms.
- * React Native helps in faster development. Building one app instead of two using a common language gives speedier app deployment, delivery, and quicker time-to-market.
-* React Native exists with essential components for ending of native apps as the app development ends with native look and feel.
-* React Native has a large community of developers for its security. The developers are always ready to fix bugs and issues that occur at any instant. They improve the performance of React Native from time to time with the best practices possible.
-* React Native supports Live and Hot Reloading. Both are different features. Live Reloading is a tool that helps in compiling and reading the modified files. Hot Reloading is based on HMR (Hot Module Replacement) and helps to display the updated UI content.
+  * React Native is based on “Learn Once Write Everywhere” approach to equip developers with a tool that only needs to be learned once, just in a single language and then can be reused on both iOS and Android mobile platform.
+  * React Native offers cross-platform development and a real experience to developers allowing them to build only one app with effectively 70% code sharing between different platforms.
+  * React Native helps in faster development. Building one app instead of two using a common language gives speedier app deployment, delivery, and quicker time-to-market.
+  * React Native exists with essential components for ending of native apps as the app development ends with native look and feel.
+  * React Native has a large community of developers for its security. The developers are always ready to fix bugs and issues that occur at any instant. They improve the performance of React Native from time to time with the best practices possible.
+  * React Native supports Live and Hot Reloading. Both are different features. Live Reloading is a tool that helps in compiling and reading the modified files. Hot Reloading is based on HMR (Hot Module Replacement) and helps to display the updated UI content.
