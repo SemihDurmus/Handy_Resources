@@ -26,11 +26,6 @@
 
 
 
-
-
-
-
-
 ## For creating .css files from .scss files in VS Code's Terminal 
 
 - Download node.js <br/>
@@ -39,7 +34,7 @@
 - <code>sass --watch ./sass/style.scss:style.css </code><br/>
 
 
-
 ## React-Native
 
+- <code>npm install -g yarn</code><br/>
 - <code>cd android && gradlew clean && cd ..</code><br/>
