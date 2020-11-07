@@ -62,11 +62,11 @@ JS has numerous DOM methods which allow the program to access and manipulate eve
  <hr/>
  
 - WHAT ARE THE ADVANTAGES OF NATIVE APPS OVER HYBRID APPS?
-		* They work efficiently as they are built for that specific platforms
-		* Native apps are responsive on all the platform-specific devices
-		* They are very fast and the best in the app performance
-		* Native apps better integrate with mobile hardware
-		* They have interactive and intuitive User Interface (UI) and User Experience (UX) as per the user expectations based on specific platforms
-		* Some of the Native mobile apps work even without the Internet connection
-		* Native apps are secured and reliable
-		* They can easily access or utilize the other device-specific capabilities like GPS, Camera, Contacts, etc.
+  * They work efficiently as they are built for that specific platforms
+  * Native apps are responsive on all the platform-specific devices
+  * They are very fast and the best in the app performance
+  * Native apps better integrate with mobile hardware
+  * They have interactive and intuitive User Interface (UI) and User Experience (UX) as per the user expectations based on specific platforms
+  * Some of the Native mobile apps work even without the Internet connection
+  * Native apps are secured and reliable
+  * They can easily access or utilize the other device-specific capabilities like GPS, Camera, Contacts, etc.
