@@ -22,34 +22,40 @@
 - `Index.js` dosyasinda default olarak calistirilacak olan component'in adresi dogru degilse "undefined Unable to resolve module `./App` from `index.js` hatasi verir. <br/>
 - Mobil uygulama gelistirirken arayuz islemleri icin react-native kullanilir, react'in kendi ic yapilari icin -state tanimlama, degisken guncelleme, ekrana bir sey gonderme- react modulu kullanilir.<br/>
 - React-native'de her component'in attribute'lari vardir. react-native'de herhangi bir attribute'a deger vermek icin {} parantezler kullanilir.<br/>
-=> css'tec lower kebab case kullanilirken react-native'de css stil verirken camel case kullanilir.<br/>
-=> react-native'de stil verirken enum degerler string olarak verilir. <br/>
-=> react-native'de px yapisi yoktur. Sadece sayisal olarak deger verilir. <br/>
-=> Inline style tercih edilen bir durum degildir. Kod okunabilirligini azaltir.   <br/>
-=> Component ve API basligi altindaki hersey react-native kutuphanesinden cagrilir. <br/>
-=> react-native'de stil vermek icin StyleSheet API'si kullanilir. <br/>
-=> Kullanici arayuz islemleri icin component'lar kullanilirken native thread islemlerini ise API'ler ile yapilir. <br/>
-=> Stillendime yapilirken en distaki component genel olarak container olarak isimlendirilir.<br/>
-=> StyleSheet API ile style nesnesi olusturulduktan sonra style attribute'una bu object verilirken artik tek {} icerisinde verilir. <br/>
-=> developer menude Disable Fast Refresh ozelligi sayesinde yapilan degisiklikler belge kaydedildigi anda otomatik olarak yansir. Bu ozelliler kapatilirsa yani Disable yapilirsa artik degisiklikler anlik yansimaz. <br/>
-=> AccessibilityInfo API'si kullanici durumlarina gore tasarim yapilmasini saglar. Ornegin renk koru olan biri icin nasil bir durumun olacagi bu API sayesinde belirlenir. Bu nedenle oldukca onemlidir. <br/>
-=> Her component fonksiyonu sadece bir tane component doner. Dolayisiyla en dista sadece bir tane component olmasi gerekir. Aksi takdirde "Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? hatasi verir." <br/>
-=> StyleSheet kullanilmadan da style verilebilir. Ancak StyleSheet kullanilmasi durumunda native taraf ile iletisim kurar ve daha saglikli bir yapi ortaya konur. Ayrica inttelisense destegi de verir. <br/>
-=> Thread'lar arasinda denge olmalidir. Birbirlerini ignore etmemelidirler.<br/>
-=> Custom olarak olusturulan Component export edilmez ise "Component Exception" hatasi verir. <br/>
-=> "Can't find variable" hatalari genelde import hatalaridir. Import'larin kontrol edilmesi cozumu getirecektir.<br/>
-=> Hatalar uygulamanin gelistirici ile konusmasi demektir. <br/>
-=> JSX, js ile xml karisimi bir yapidir.   <br/>
-=> Herhangi bir js kodunu JSX icerisinde kullanmak icin {} parantezler kullanilir.  <br/>
-=> Ekranda yazdirilmak istenen text'ler mutlaka bir Text component'i icerisinde olmalidir. Aksi taktirde "Component Exception Text strings must be rendered within a<Text> component" hatasi verir. <br/>
-=> Component'larda return ifadesi jsx yapisi dondurur. Bu jsx yapisi icerisinde JS yazmak icin {} parantezler kullanilir. return() parantezleri disinda istenilen sekilde js kodu yazilabilir. <br/>
-=> `return()` metodu disinda olusturulan herhangi bir fonksiyon icerisinde de `<Text>Merhaba Clarusway</Text>` seklinde bir ifade return edilebilir. <br/>
-=> Bir fonksiyondan component return edilecek ise bu tek bir component olmak zorundadir. Cunku sadece tek bir component yapisi return edilebilir. Bir js dosyasi icerisinde istedigimiz kadar component return eden fonksiyon olusturup kullanabiliriz.<br/>
-=> Component donduren bir fonskiyonda return ifadesi ile birlikte okunabilirligi saglamak icin jsx kodlari () icerisinde yazilabilir. Yazmak sart degildir. Tek bir component dondurmesine dikkat edilmelidir. <br/>
-=> Fonksiyonlari component donduren fonksiyon icerisinde yazmak daha saglikli olur. <br/>
-=> `{isAdmin ? <Text>Admin Kullanicisi</Text> : null}` veya `{isAdmin && <Text>Admin Kullanicisi</Text>}` seklinde bir kullanim da mevcuttur. Dogrudan JSX icerisinde bu sekilde kullanilabilir.<br/>
-=> Ne olursa olsun component'lar arasinda js kodlari {} parantezler arasinda yazilir. <br/>
-=> If-else bloklari icerisinde her iki durumda da return yapilacak ise else blogunun yazilmasina gerek yoktur. Sadece if blogu yazildiktan sonra else blogundan return edilecek cikti if ile ayni hizada yazilir. =><br/>
+- CSS'te lower kebab case kullanilirken react-native'de css stil verirken camel case kullanilir.<br/>
+   ```
+	Camel Case: noticeFirstLetters
+	Pascal Case: InculdingFirstWord
+	Snake Case: notice_btwn_words
+	Kebab Case: emojies-are-useful
+   ```
+- React-native'de stil verirken enum degerler string olarak verilir. <br/>
+- react-native'de px yapisi yoktur. Sadece sayisal olarak deger verilir. <br/>
+- Inline style tercih edilen bir durum degildir. Kod okunabilirligini azaltir.   <br/>
+- Component ve API basligi altindaki hersey react-native kutuphanesinden cagrilir. <br/>
+- react-native'de stil vermek icin StyleSheet API'si kullanilir. <br/>
+- Kullanici arayuz islemleri icin component'lar kullanilirken native thread islemlerini ise API'ler ile yapilir. <br/>
+- Stillendime yapilirken en distaki component genel olarak container olarak isimlendirilir.<br/>
+- StyleSheet API ile style nesnesi olusturulduktan sonra style attribute'una bu object verilirken artik tek {} icerisinde verilir. <br/>
+- developer menude Disable Fast Refresh ozelligi sayesinde yapilan degisiklikler belge kaydedildigi anda otomatik olarak yansir. Bu ozelliler kapatilirsa yani Disable yapilirsa artik degisiklikler anlik yansimaz. <br/>
+- AccessibilityInfo API'si kullanici durumlarina gore tasarim yapilmasini saglar. Ornegin renk koru olan biri icin nasil bir durumun olacagi bu API sayesinde belirlenir. Bu nedenle oldukca onemlidir. <br/>
+- Her component fonksiyonu sadece bir tane component doner. Dolayisiyla en dista sadece bir tane component olmasi gerekir. Aksi takdirde "Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? hatasi verir." <br/>
+- StyleSheet kullanilmadan da style verilebilir. Ancak StyleSheet kullanilmasi durumunda native taraf ile iletisim kurar ve daha saglikli bir yapi ortaya konur. Ayrica inttelisense destegi de verir. <br/>
+- Thread'lar arasinda denge olmalidir. Birbirlerini ignore etmemelidirler.<br/>
+- Custom olarak olusturulan Component export edilmez ise "Component Exception" hatasi verir. <br/>
+- "Can't find variable" hatalari genelde import hatalaridir. Import'larin kontrol edilmesi cozumu getirecektir.<br/>
+- Hatalar uygulamanin gelistirici ile konusmasi demektir. <br/>
+- JSX, js ile xml karisimi bir yapidir.   <br/>
+- Herhangi bir js kodunu JSX icerisinde kullanmak icin {} parantezler kullanilir.  <br/>
+- Ekranda yazdirilmak istenen text'ler mutlaka bir Text component'i icerisinde olmalidir. Aksi taktirde `"Component Exception Text strings must be rendered within a <Text> component"` hatasi verir. <br/>
+- Component'larda return ifadesi jsx yapisi dondurur. Bu jsx yapisi icerisinde JS yazmak icin {} parantezler kullanilir. return() parantezleri disinda istenilen sekilde js kodu yazilabilir. <br/>
+- `return()` metodu disinda olusturulan herhangi bir fonksiyon icerisinde de `<Text>Merhaba Clarusway</Text>` seklinde bir ifade return edilebilir. <br/>
+- Bir fonksiyondan component return edilecek ise bu tek bir component olmak zorundadir. Cunku sadece tek bir component yapisi return edilebilir. Bir js dosyasi icerisinde istedigimiz kadar component return eden fonksiyon olusturup kullanabiliriz.<br/>
+- Component donduren bir fonskiyonda return ifadesi ile birlikte okunabilirligi saglamak icin jsx kodlari () icerisinde yazilabilir. Yazmak sart degildir. Tek bir component dondurmesine dikkat edilmelidir. <br/>
+- Fonksiyonlari component donduren fonksiyon icerisinde yazmak daha saglikli olur. <br/>
+- `{isAdmin ? <Text>Admin Kullanicisi</Text> : null}` veya `{isAdmin && <Text>Admin Kullanicisi</Text>}` seklinde bir kullanim da mevcuttur. Dogrudan JSX icerisinde bu sekilde kullanilabilir.<br/>
+- Ne olursa olsun component'lar arasinda js kodlari {} parantezler arasinda yazilir. <br/>
+- If-else bloklari icerisinde her iki durumda da return yapilacak ise else blogunun yazilmasina gerek yoktur. Sadece if blogu yazildiktan sonra else blogundan return edilecek cikti if ile ayni hizada yazilir. =><br/>
 ```
   function MyFunction2() {
   const isAdmin = true;
@@ -58,14 +64,14 @@
 }
  ``` 
 <br/>
-=> Array seklindeki bir listeyi ekrana basmak icin react-native'de kullanisli olan yapi map() fonksiyonudur. JS'de foreach kullanilirken burada map daha kullanislidir. <br/>
+- Array seklindeki bir listeyi ekrana basmak icin react-native'de kullanisli olan yapi map() fonksiyonudur. JS'de foreach kullanilirken burada map daha kullanislidir. <br/>
    ! `forEach` return etmez, `map` return eder.<br/>
-=> `map()` fonksiyonundan geriye donen component dizisi dogrudan jsx iceirisinde render edilebilir. Yani tekrardan array elemanlarinin teker teker js'de oldugu gibi conponent icerisine aktarilmasina gerek yoktur. {} icerisinde belirtilmesi yeterli olacaktir.<br/>
-=> `map()` fonksiyonu kullanirken arguman olarak verilen callback fonksiyonun geriye deger dordurmesi unutulmamalidir. genelde arrow function kullanildigi ve tek satirlik ifadelerde return kullanilmadigi icin birden fazla {} parantez kullanildigi durumlarda unutulabiliyor. Bu nedenle dikkat edilmelidir. 
+- `map()` fonksiyonundan geriye donen component dizisi dogrudan jsx iceirisinde render edilebilir. Yani tekrardan array elemanlarinin teker teker js'de oldugu gibi conponent icerisine aktarilmasina gerek yoktur. {} icerisinde belirtilmesi yeterli olacaktir.<br/>
+- `map()` fonksiyonu kullanirken arguman olarak verilen callback fonksiyonun geriye deger dordurmesi unutulmamalidir. genelde arrow function kullanildigi ve tek satirlik ifadelerde return kullanilmadigi icin birden fazla {} parantez kullanildigi durumlarda unutulabiliyor. Bu nedenle dikkat edilmelidir. 
 - JSX yapisi array tipindeki degiskenleri kendisi parcalar ve ekrana basar.<br/>
 - Debug mode'da Debug sekmesine basildiginda google chrome acilacaktir. Bu sayfanin debug console'u mobil gelistirme sirasinda kullanilabilir.<br/>
-   veya -> node command'dan console log'lar görülebilir.<br/>
-   veya -> tlf bağlı iken ada shell input key event 82<br/>
+  * veya -> node command'dan console log'lar görülebilir.
+  * veya -> tlf bağlı iken ada shell input key event 82
   <br/>
 
 //////////////////////////////////////// <br/>
