@@ -51,3 +51,22 @@ JS has numerous DOM methods which allow the program to access and manipulate eve
   * React Native exists with essential components for ending of native apps as the app development ends with native look and feel.
   * React Native has a large community of developers for its security. The developers are always ready to fix bugs and issues that occur at any instant. They improve the performance of React Native from time to time with the best practices possible.
   * React Native supports Live and Hot Reloading. Both are different features. Live Reloading is a tool that helps in compiling and reading the modified files. Hot Reloading is based on HMR (Hot Module Replacement) and helps to display the updated UI content.
+  <hr/>
+  
+- WHAT ARE HYBRID APPS?
+-	Hybrid apps are deployed in a native container that uses a mobile WebView object. When the app is used, this object displays web content thanks to the use of web technologies (CSS, JavaScript, HTML).
+ <hr/>
+ 
+- WHAT ARE NATIVE APPS?
+-	They are built for specific platforms and are written in languages that the platform accepts. For example, Swift and Objective-C for native iOS apps and Java or Kotlin for native Android apps. Native apps are also built using the specific Integrated Development Environment (IDE) for the selected operating systems.
+ <hr/>
+ 
+- WHAT ARE THE ADVANTAGES OF NATIVE APPS OVER HYBRID APPS?
+		* They work efficiently as they are built for that specific platforms
+		* Native apps are responsive on all the platform-specific devices
+		* They are very fast and the best in the app performance
+		* Native apps better integrate with mobile hardware
+		* They have interactive and intuitive User Interface (UI) and User Experience (UX) as per the user expectations based on specific platforms
+		* Some of the Native mobile apps work even without the Internet connection
+		* Native apps are secured and reliable
+		* They can easily access or utilize the other device-specific capabilities like GPS, Camera, Contacts, etc.
