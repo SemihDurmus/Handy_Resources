@@ -70,8 +70,8 @@
 - `map()` fonksiyonu kullanirken arguman olarak verilen callback fonksiyonun geriye deger dordurmesi unutulmamalidir. genelde arrow function kullanildigi ve tek satirlik ifadelerde return kullanilmadigi icin birden fazla {} parantez kullanildigi durumlarda unutulabiliyor. Bu nedenle dikkat edilmelidir. 
 - JSX yapisi array tipindeki degiskenleri kendisi parcalar ve ekrana basar.<br/>
 - Debug mode'da Debug sekmesine basildiginda google chrome acilacaktir. Bu sayfanin debug console'u mobil gelistirme sirasinda kullanilabilir.<br/>
-  * veya -> node command'dan console log'lar görülebilir.
-  * veya -> tlf bağlı iken ada shell input key event 82
+  veya -> node command'dan console log'lar görülebilir.<br/>
+  * veya -> tlf bağlı iken ada shell input key event 82<br/>
   <br/>
 
 //////////////////////////////////////// <br/>
