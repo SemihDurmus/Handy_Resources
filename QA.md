@@ -49,16 +49,14 @@ JS has numerous DOM methods which allow the program to access and manipulate eve
 - React js is a JS library that supports both front end and server. Moreover, it can be used to create UI for websites and mobile apps. It came into life in 2011 with facebook, and a year after it began to be used with Instagram. On the other side, react-native is a cross platform mobile framwork that uses React js. for building mobile apps. Main similarity between React and React-Native is that they are both ideal for building dynamic and high performing interfaces. React native differs from React in a way that it tarf´ge <hr/>
 - React js is a JS library that supports both front end and server. Moreover, it can be used to create UI for websites and mobile apps. It came into life in 2011 with facebook, and a year after it began to be used with Instagram. hooks were introduced in 2018, which is simply after 7 years of the first debut of react. Hooks are functions that let you use state and other react lifecycle features without having to write a class. This helps us manipulate the state in a much easier way. Basic built-in react hooks are useState, useEffect and useContext.  useState returns a stateful value and a function to update it. useEffect lets you perform side effects in function components such as componentDidMount, componentDidUpdate and componentWillUnmount. Two basic rules of hooks are that they are not called inside loops, conditions, or nested functions. (Only called at the top level.), and they are also not called from regular JavaScript functions, instead from React function components.ts mobile apps. Since it is a cross platform framework, it covers both IOS and Android. Reuseable components and modules allow hybrid apps to function natively.
   <hr/>
-- WHAT IS JSX?
-- JSX stands for JS in XML. It allows the developer to create HTMl elements and place them in DOM without using the methods ```create element``` or ```appendChild```. It converts HTML tags into React elements, or very shortly JSX is a React extension that allows us to write JS codes that look like HTML elements.
+- REACT ADVANTAGES & DISADVANTAGES
+  * Uses virtual DOM which is a JavaScript object. This will improve apps performance since JavaScript virtual DOM is faster than the regular DOM.
+  * Can be used on client and server-side as well as with other frameworks.
+  * Component and data patterns improve readability, which helps to maintain larger apps.
+  * -
+  * Covers only the view layer of the app, hence you still need to choose other technologies to get a complete tooling set for development.
+  * Uses inline templating and JSX, which might seem awkward to some developers.
   <hr/>
-- NATIVE & CROSS-PLATFORM APPS
-- Native apps are developed exclusively for a specific platform. Apple for instance prefers Objective-C and Swift, while Google favors Java for Android. Using those compatible languages developers can better utilize features of the devices. A native developed app for IOS would not work on Android and vica versa. On the other hand cross platform apps are compatible with multiple platforms. Owing to the dominance of twomajor platforms in the market, most cross platform apps focus on IOS and Android. Positive things with cross platform apps is that they provide a universial solution. However, you run the risk of losing quality and tailored solutions for individual devices.
-  <hr/>
-- REACT HOOKS?
-- React hooks were introduced in 2018, which is simply after 7 years of the first debut of react. Hooks are functions that let you use state and other react lifecycle features without having to write a class. This helps us manipulate the state in a much easier way. Basic built-in react hooks are useState, useEffect and useContext.  useState returns a stateful value and a function to update it. useEffect lets you perform side effects in function components such as componentDidMount, componentDidUpdate and componentWillUnmount. Two basic rules of hooks are that they are not called inside loops, conditions, or nested functions. (Only called at the top level.), and they are also not called from regular JavaScript functions, instead from React function components.
-  <hr/>
-
 - WHAT ARE THE ADVANTAGES OF REACT-NATIVE?
 - ANSWER
   * React Native is based on “Learn Once Write Everywhere” approach to equip developers with a tool that only needs to be learned once, just in a single language and then can be reused on both iOS and Android mobile platform.
@@ -67,6 +65,16 @@ JS has numerous DOM methods which allow the program to access and manipulate eve
   * React Native exists with essential components for ending of native apps as the app development ends with native look and feel.
   * React Native has a large community of developers for its security. The developers are always ready to fix bugs and issues that occur at any instant. They improve the performance of React Native from time to time with the best practices possible.
   * React Native supports Live and Hot Reloading. Both are different features. Live Reloading is a tool that helps in compiling and reading the modified files. Hot Reloading is based on HMR (Hot Module Replacement) and helps to display the updated UI content.
+  <hr/>
+- WHAT IS JSX?
+- JSX stands for JS in XML. It allows the developer to create HTMl elements and place them in DOM without using the methods ```create element``` or ```appendChild```. It converts HTML tags into React elements, or very shortly JSX is a React extension that allows us to write JS codes that look like HTML elements.
+  <hr/>
+- NATIVE & CROSS-PLATFORM APPS
+- Native apps are developed exclusively for a specific platform. Apple for instance prefers Objective-C and Swift, while Google favors Java for Android. Using those compatible languages developers can better utilize features of the devices. A native developed app for IOS would not work on Android and vica versa. On the other hand cross platform apps are compatible with multiple platforms. Owing to the dominance of twomajor platforms in the market, most cross platform apps focus on IOS and Android. Positive things with cross platform apps is that they provide a universial solution. However, you run the risk of losing quality and tailored solutions for individual devices.
+  <hr/>
+  
+- REACT HOOKS?
+- React hooks were introduced in 2018, which is simply after 7 years of the first debut of react. Hooks are functions that let you use state and other react lifecycle features without having to write a class. This helps us manipulate the state in a much easier way. Basic built-in react hooks are useState, useEffect and useContext.  useState returns a stateful value and a function to update it. useEffect lets you perform side effects in function components such as componentDidMount, componentDidUpdate and componentWillUnmount. Two basic rules of hooks are that they are not called inside loops, conditions, or nested functions. (Only called at the top level.), and they are also not called from regular JavaScript functions, instead from React function components.
   <hr/>
   
 - WHAT ARE HYBRID APPS?
@@ -87,16 +95,10 @@ JS has numerous DOM methods which allow the program to access and manipulate eve
   * Native apps are secured and reliable
   * They can easily access or utilize the other device-specific capabilities like GPS, Camera, Contacts, etc.
    <hr/>
+   
 - REAL DOM - VIRTUAL DOM?<br/>
   Perhaps the most important part of React is the concept of the virtual DOM.
   * Real DOM: DOM stands for “Document Object Model”. The DOM in simple words represents the UI of your application. Every time there is a change in the state of your application UI, the DOM gets updated to represent that change. Now the catch is frequently manipulating the DOM affects performance, making it slow.
   * Virtual DOM: That’s where the concept of virtual DOM comes in and performs significantly better than the real DOM. The virtual DOM is only a virtual representation of the DOM. Every time the state of our application changes, the virtual DOM gets updated instead of the real DOM.
   <hr/>
-- REACT ADVANTAGES & DISADVANTAGES
-  * Uses virtual DOM which is a JavaScript object. This will improve apps performance since JavaScript virtual DOM is faster than the regular DOM.
-  * Can be used on client and server-side as well as with other frameworks.
-  * Component and data patterns improve readability, which helps to maintain larger apps.
-  * -
-  * Covers only the view layer of the app, hence you still need to choose other technologies to get a complete tooling set for development.
-  * Uses inline templating and JSX, which might seem awkward to some developers.
-  <hr/>
+
