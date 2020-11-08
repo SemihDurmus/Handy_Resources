@@ -75,4 +75,12 @@ JS has numerous DOM methods which allow the program to access and manipulate eve
   Perhaps the most important part of React is the concept of the virtual DOM.
   * Real DOM: DOM stands for “Document Object Model”. The DOM in simple words represents the UI of your application. Every time there is a change in the state of your application UI, the DOM gets updated to represent that change. Now the catch is frequently manipulating the DOM affects performance, making it slow.
   * Virtual DOM: That’s where the concept of virtual DOM comes in and performs significantly better than the real DOM. The virtual DOM is only a virtual representation of the DOM. Every time the state of our application changes, the virtual DOM gets updated instead of the real DOM.
-
+  <hr/>
+- REACT ADVANTAGES & DISADVANTAGES
+  * Uses virtual DOM which is a JavaScript object. This will improve apps performance since JavaScript virtual DOM is faster than the regular DOM.
+  * Can be used on client and server-side as well as with other frameworks.
+  * Component and data patterns improve readability, which helps to maintain larger apps.
+  * -
+  * Covers only the view layer of the app, hence you still need to choose other technologies to get a complete tooling set for development.
+  * Uses inline templating and JSX, which might seem awkward to some developers.
+  <hr/>
