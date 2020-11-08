@@ -70,3 +70,9 @@ JS has numerous DOM methods which allow the program to access and manipulate eve
   * Some of the Native mobile apps work even without the Internet connection
   * Native apps are secured and reliable
   * They can easily access or utilize the other device-specific capabilities like GPS, Camera, Contacts, etc.
+   <hr/>
+- REAL DOM - VIRTUAL DOM?<br/>
+  Perhaps the most important part of React is the concept of the virtual DOM.
+  * Real DOM: DOM stands for “Document Object Model”. The DOM in simple words represents the UI of your application. Every time there is a change in the state of your application UI, the DOM gets updated to represent that change. Now the catch is frequently manipulating the DOM affects performance, making it slow.
+  * Virtual DOM: That’s where the concept of virtual DOM comes in and performs significantly better than the real DOM. The virtual DOM is only a virtual representation of the DOM. Every time the state of our application changes, the virtual DOM gets updated instead of the real DOM.
+
