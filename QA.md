@@ -1,4 +1,4 @@
-<h1 align="center">Question&Answers</h1>
+<h1 align="center">Question & Answers</h1>
 
 ## Table of Contents
 
@@ -6,8 +6,7 @@
 - [HTML & CSS & SASS](#HTML_CSS_SASS)
 - [JavaScript](#JavaScript)
 - [React & React-Native](#React_React-Native)
-- [Acknowledgements](#acknowledgements)
-- [Contact](#contact)
+
 
 ## General
 - WHAT IS CLEAN CODE? 
