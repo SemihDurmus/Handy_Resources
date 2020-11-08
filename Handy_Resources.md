@@ -1,5 +1,11 @@
-# Handy_Web_Resources
-List of Useful Resources:
+<h1 align="center">Handy Web Resources</h1>
+
+
+## Table of Contents
+- [WebSites](#Websites)
+- [YouTube_Videos](#YouTube_Videos)
+- [Podcasts](#Podcasts)
+
 
 ## Websites 
 https://www.w3.org/standards/webdesign/htmlcss#whatcss<br />
@@ -48,7 +54,7 @@ https://www.freecodecamp.org/news/npm-vs-npx-whats-the-difference/ <br/>
 Difference between npm and npx
 
 
-## YouTube Videos
+## YouTube_Videos
 
 https://www.youtube.com/watch?v=MijmeoH9LT4&t=414s <br />
 A good explanation of Characters and symbols
