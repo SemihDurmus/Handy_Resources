@@ -1,6 +1,12 @@
-# Handy_Codes
+<h1 align="center">Handy Code Snippets</h1>
 
-## For pushing files to an existing repo
+## Table of Contents
+- [Git_Hub](#Git_Hub)
+- [SASS](#SASS)
+- [React-Native](#React-Native)
+- [React](#React)
+
+## Git_Hub
 
 - <code>git clone URL . </code> <br />
 	(. at the end of the code over is for cloning the content in the same folder, so that a new folder (with the repository's name) is not formed under the selected folder)<br />
@@ -24,9 +30,9 @@
 - After changing repository name<code>git remote set-url origin new_url</code><br/>
 
 
+## SASS
 
-
-## For creating .css files from .scss files in VS Code's Terminal 
+For creating .css files from .scss files in VS Code's Terminal 
 
 - Download node.js <br/>
 - <code>node --version</code> <br/>
@@ -38,3 +44,28 @@
 
 - <code>npm install -g yarn</code><br/>
 - <code>cd android && gradlew clean && cd ..</code><br/>
+
+## React
+#### Installation and Setup
+
+- To use React in your JavaScript project, you can install it via npm and use in your application.
+
+- <code>npm install --save react react-dom</code><br/>
+  To create a react app, you can aslo use Create React App (CRA) boilerplate.
+
+1. You can install create-react-app globally with the node package manager (npm).
+   <code>npm install -g create-react-app</code><br/>
+   
+   If you don't want to install it globally, you can use npx.
+
+   <code>npx create-react-app my-app</code><br/>
+
+2. Then run the generator in your chosen directory
+
+   <code>create-react-app my-app</code><br/>
+
+3. Navigate to the newly created directory and run the start script.
+   
+   <code>cd my-app/</code><br/>
+   <code>npm start</code><br/>
+
