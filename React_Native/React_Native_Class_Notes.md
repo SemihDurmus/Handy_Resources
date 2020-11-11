@@ -87,8 +87,8 @@
 - React-native'de butona genislik verdiginde yuksekligi otomatik kendisi verir.
 - Ekranda buton ve textbox'lari olusturduktan sonra kullanici girmesi gerekenleri girdikten sonra butona basabilmesi icin ekranin kaymasi gerekir cunku klasyve acildiginda buton asagida kaldi. Bu nedenle bu durumun da duzeltilmesi gerekir. Scroll bu cozumlerden bir tanesidir. 
 
-
-////////////////////////////////////// <br/>
+## FlatList 
+///////////// 10.10.2020
 - Elimizdeki liste halindeki bir veriyi ekrana yazdirmak istedigimizde `map()` fonksiyonunu kullanabiliriz. Ancak verinin fazla olmasi durumunda `map()` fonksiyonu kullanisli olmayacaktir. Cunku `map()` fonksiyonu kullanildiginda elindeki veri ile geriye yine bir liste donrdurmeye caliscak ve bu da zaman alacaktir. Dolayisiyla veri ekrana gec yansiyazaktir. Bu sorunu cozmek icin kullanilan yapi ise `FlatList` component'idir.
 - FlatList yapisi veriyi once alir ve cache' atar. Daha sonra ekranda sirasi gelen veriyi ekrana gonderir. Boylece daha hizli bir sekilde ekrana yansimis olur. 
 - Map(), kendisine gelen verinin tamamini ekrana basarken FlatList component'i ise gerektigi kadarini basar. 
@@ -185,8 +185,9 @@ Class component'larda ES6 ile gelen class yapisindadirlar. Functional component'
 - Container view component'i icerisindeki inputlara boyut verilmeyip perfect centering yapilip flex 1 yapildiginda inputlari merkeze alir ve icerisindeki text ile boyutlandirir.
 - useEffect fonksiyonu takip ettigi state yeni degerini aldiginda tetiklenir. Bu nedenle algoritma kurarken buna dikkat etmek gerekir. 
 - React native kutuphanesi icerisinde bulunan Alert component'i icerisinde bulunan alert fonksiyonu kullanilarak kullaniciya mesaj verilebilir, prompt ile de girdi alinabilir.
-- TextInput component'i sifre almak icin kullanildiginda sifrenin gorunmemesi icin secureTextEntry property'si kullanilir. true ya da false deger alir. 
+- TextInput component'i sifre almak icin kullanildiginda sifrenin gorunmemesi icin `secureTextEntry` property'si kullanilir. true ya da false deger alir. 
 - TextInput tipini belirlemek icin kullanilan property `keyboardType` properti'sidir.
+- `adb uninstall <paket-adi>`
 
 ## TODO List
 ///////////// 18.10.2020
@@ -284,9 +285,22 @@ Class component'larda ES6 ile gelen class yapisindadirlar. Functional component'
 ## Tab Navigation
 ///////////// 22.10.2020
 - `initialRouteName` ile yazılma sırasına bağlı kalmaksızın acilista ekranda ilk görülecek component seciyoruz
-- Lens extension'ing ile yüklenen paketlerin surum kontrolunu yapabiliyoruz. Ancak sürümleri güncellemek icin npm install komutunu kullanmak gerek.
-- TouchableWithoutFeedback component içerisine sadece 1 component alıyor. Bu komponent fragment <></> haricinde birsey olmali.
-- Text'in `numberOfLines={2}` prop'u ile istenen sayıda satiri goruntuleyebilriz. 
+- Version Lens isimli extension surum kontrolu yapar. Package.json dosyasinda bu extension araciligiyla versiyonlari yukseltmeniz halinde `npm install` diyerek paketlerin guncel hallerinin yuklenmesi gerekir. package.json dosyasinda sadece metinsel olarak yukseltme yapar. Paketleri otomatik olarak indirmez. package.json dosyasinda iken sag ust kosede bulunan V ikonuna tikladiginizda surum kontrolunu yapar ve modul adlarinin uzerinde varsa guncel hali bu halini latest seklinde belitir. Siz dilerseniz bunlara tiklayarak guncel hali ile degistirlmesini isteyebilirsiniz.
+- Tab navigation yapisini kullanabilmek icin `npm install @react-navigation/bottom-tabs` komutu ile tab paketinin oncelikle indirilmesi gerekir.
+- Paket indirildikten sonra Router.js dosyasi icerisinde `@react-navigation/bottom-tabs` modulunden `createBottomTabNavigator` yapisi  import edilir.
+- `createBottomTabNavigator()` fonksiyonu geriye object tipinde veri donduren bir fonksiyondur. Bu fonksiyon calistirilir ve kodlarin daha okunabilir olmasi icin bir standart olarak Tab isimli bir degiskene atanir.
+- createBottomTabNavigator() fonksiyonu object tipinde veri dondurur demistik. Bu object icierisnde iki property bulunur. Bunlar Navigator ve Screen property'leridir. Bunlarin veri tiplerine bakildiginda ise fonksiyon olduklari gorulur. Bu iki fonksiyon geriye component yapisi dondurur. Dolayisiyla Tab degiskeni uzerinden gidecek olursak elimizde Tab.Navigator ve Tab.Screen olmak uzere iki component olmus olur.
+- Tab.Navigator sayfalar arasinda gecis yapilmasini saglayacak component'tir. Tab.Screen ise gecislerin yapilacagi sayfalari sarmalayacak olan component yapisidir. Tab.Screen component'inin iki zorunlu attibute'u vardir. Birincisi component isimli attribute ikincisi ise name isimli attribute'tur. component attribute'u component adini alirken name ise sayfa cagrilacaginda kullanilan herhangi bir isim olabilir. 
+- Gecislerin yapilacagi sayfa sayisi kadar Tab.Screen component'i olusturulur ve component ve name atrribute'lari verilir. 
+- Tab.Screen component'larinin tumu Tab.Navigator component'i icerisine yazilir.
+- Tab.Navigator component'inin initialRouteName atrribute'u uygulama acildiginda ilk acilacak sayfayi belirler ve sayfa adini string olarak alir. Bu atrribute kullanilmadigi takdirde en ustte yazili olan `Tab.Screen` component'inda belitilen sayfa acilis sayfasi olacaktir.
+- Tab.Navigator component'inin bir diger atrribute'u ise `lazy` atrribute'udur. Bu ise sadece acilacak olan sayfanin render edilmesini diger sayfalarin acilmadikari surece render edilmemelerini saglar. Boylece performans saglanmis olur. Bir kere ziyaret edilen sayfalar sonraki ziyaretlerde tekrar render edilmezler. 
+- Tab.Navigator component'inin `tabBar` attribute'u tab menusunu ozellestirabilmenizi saglar. tabBar attribute'u bir component yapisi ister.
+- Tab.Navigator component'inin `tabBarOptions` attribute'u object tipinde veri alir. Bu object icerisinde farkli property'ler mevcuttur. `activeTintColor` property'si ile tabbar'daki atif olan menunun yazi rengi degistirilebilir. `inactiveTintColor` property'si ise aktif olmayan menunun yazi rengini degistirir.
+- Stack.Screen ya da Tab.Screen yapilari bizden component yapisi ister. Biz bu yapilara component olarak Stack.Navigator ya da Tab.Navigator component'i donduren custom component'lar vererek ic ice tab yapilari olusturabiliriz. 
+- FlatList yapisinda herbir item arasina ayirici eklemek icin `itemSperateComponent` attribute'u kullanilir. Bu attribute bir component yapisi kabul eder.
+- Text component'inin `numberOfLines={2}` attribute' gosterilecek olan satir sayisini belirtmek icin kullanilir. 
+- TouchableOpacity component'inda bulunan tiklama efektini istemiyor isek bunun yerine `TouchableWithoutFeedback` yapisi kullanilir. `TouchableWithoutFeedback` yapisi `TouchableOpacity` yapisindan farkli olarak icerisinde sadece tek bir component ister. Bu komponent fragment `<></>` haricinde birsey olmali.
 
 ## RESTful Web API
 ///////////// 24.10.2020
