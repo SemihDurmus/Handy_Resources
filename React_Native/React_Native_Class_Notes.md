@@ -237,7 +237,7 @@ Class component'larda ES6 ile gelen class yapisindadirlar. Functional component'
 - `onPress={() => props.navigation.navigate('name')`  ile button tıklandığında sayfa geçişi sağlanır. parametre olarak Router.js de (ana sayfada) Stack.Screen de name olarak tanımladığımız ismi yazıyoruz. Örneğin "SecondPage" olarak tanımladığımız sayfaya gitmek için ` onPress={() => props.navigation.navigate('SecondPage')` yazıyoruz.
 - `onPress={() => props.navigation.goBack()}`
 - props.navigation.navigate('name') ile sayfa geçişi yapıyorduk, name den sonra object tipinde ikinci bir parametre ile veri girersek bu verileri de diğer sayfaya gönderebiliriz. Yani, `props.navigation.navigate('SecondPage', { selectedValue: userName })` dersek ikinci sayfaya giderken selectedValue ismi ile `userName` olarak tanımladığım bir veriyi , diğer sayfaya gönderebiliriz.  Gidilen sayfada gönderdiğimiz bu veriyi `props.route.params.selectedValue` ile yakalayıp istediğimiz gibi kullanabiliriz. `props.route.params` ın devamına, gönderilen sayfada hangi isimle göndermişsek onu yazıyoruz. Bu örnekte selectedValue ile userName gönderdiğimiz için `props.route.params.selectedValue`  yazdık, selectedValue yakalamış olduk.
-<hr/>
+- 📕 (ikinci parca notlar)
 - React-native gelistiricileri react-native'in core kutuphanesini olabildigince az tutmayi amaclamaktadir. Bu nedenle kendi iceirisinde built-in bir navigation kutuphanesi yoktur. Buradaki acigi ise react-native toplulugu kutuphaneler olsutururarak kapatti. Navigation kutuphanesi de bunlardan bir tanesidir. 
 - React-native navigation icin bir cok kutuphane mevcuttur. Istedigimizi alip kullanabiliriz. En populer olani Navigation kutuphanesidir.
 - React Navigation, react-native-navigation ve react-native router flux en cok kullanilan kutuphanelerdir.
@@ -305,6 +305,33 @@ Class component'larda ES6 ile gelen class yapisindadirlar. Functional component'
 ## RESTful Web API
 ///////////// 24.10.2020
 
+- Web Api, json veya xml formatinda veri cekme islemidir. XML genelde konfigürasyon icindir.
+- Dort temel istek vardir. Get, Post, Put ve Delete. Get, veri getir demek, post ise sunucuya veri gotur demektir.
+- Sunucuya yapilen istelerin sonucunda geriye HTTP Response doner. 
+- Restful mimariyi en iyi ben kurarim diyen kurum Microsoft'tur.
+- Geri donen HTTP Response'un status code'lari vardir. Bunlar Response'un durumunu belirtir. Response basarili bir sekilde dondu ise 200 kodu gelir. Barasiz ise 404 kodu doner.
+- `npm install axios` komutu ile axios kutuphanesini ihtiyac duydugumuz her projeye yuklememiz gerekir. 
+- chrome developer tools penceresinde Network sekmesinde atilan isteklerin gorebiliriz
+- `Chorme JSON Viewer` eklentisi json tipindeki datalari daha duzgun sekilde goruntulemeye yarar.
+- Axios kutuphanesi projeye indirildikten sonra kullanilacagi yerde `import axios from 'axios'` seklinde import edilmesi gerekir.
+- Bir yerden veri cekmek icin `get`, bir yere veri gondermek icin `post` kullanilir.
+- ❗Get metodu ile de url uzerinden veri gonderilebilir. Ancak bu veriler daha ziyade basit ve guvenligi goz ardi edilebilir verilerdir. Buyuk ve guveligi on planda olan veriler get metodu ile gonderilmezler. Bunlar post medodu ile gonderilirler.
+- Herhangi bir api'den veri cekmek icin `axios.get()` metodu kullanilir. get() metodu ilk arguman olarak verinini cekilecegi adresi alir. get() metodu geriye promise yapisinda bir veri dondurur.
+- Bir Api'ye istek atildiginda response'un ne zaman gelecegi belli degildir. Hizli da olabilir, zaman da alabilir. Ancak kod akisi response'un gelmesini beklemeden akmaya devam eder. Ancak kod akisinda gelen response'a gore bir islem yapilacak ise kod akisinin devam ediyor olmasi hatali ciktilar alinmasina neden olacaktir. Bu durumu asmak icin kullanilan yapi ise `then()` - `catch()` metotlaridir.
+- get metodunun geriye dondurdugu promise yapisi icindeki veriye dogrudan ulasilamaz. Bunun icin then catch metotlarinin kullanilmasi gerekir.
+- Asenkron islemlerin senkron yapilabilmesini saglayan iki yapimiz mevcut. Bunlardan biri then ve catch metotlarinin kullanilmasi digeri ise async ve await keyword'lerinin kullanilmasidir.
+- get() metodu basarili bir response aldiginda then() metodu tetiklenir. then arguman olarak bir fonksiyon alir ve bu foknsiyona parametre olarak sunucudan basarili bir sekilde gelen response verilir. Fonksiyonun body kisminda ise bu response istenilen sekilde kullanilabillir.
+- then(), server'dan ne zaman cevap gelirse o zaman tetiklenir. Ana bloktan bagimsiz calisir. catch() ise error gelirse tetiklenir.
+- Eger get() metodu basarisiz bir response donmus ise bu sefer de catch metodu tetiklenir. catch metodu arguman olarak bir fonksiyon alir ve bu fonksiyona parametre olarak Api'den  gelen error verilir. Fonksiyonun body kisminda bu arguman istenilen sekilde kullanilabilir. 
+- Dolayisiyla get metodunun geriye dondurmus oldugu promise yapisindan verileri almak icin then ve catch metotlarini kullanmis olduk. then basarili response'u catch ise hatayi yakalamis oldu.
+- get metodundan sonra istenilen sayida then metodu kullanilabilirken sadece bir tane catch metodu kullanilabilir.
+- get() metodunun geriye dondurdugu promise yapisinin then fonksiyonuna gonderdigi reponse'u then icerisinde yakaldigimizde bunun bir object tipinde veri oldugu gorulur. Bu nesnin config, data, headers, request, status ve statusText isimli property'leri oldugu gorulur. Biz ihityacimiza gore bu verileri gerektiginde kullanabiliriz. Ancak bizim temelde almak istedigimiz veriler data prperty'sinde bulunur. Dolasyisiyla biz then fonksiyonu icerisinde response.data diyerek verilerimizi elde edebiliriz. 
+- async ve wait yapisi ise then fonksiyonu yerine kullanilmak uzere getirilmis olan bir sugar syntax kullanimidir. 
+- Bunun icin icerisinde asenkron islemlerin yapilacagi fonksiyon async olarak isaretlenir. Daha sonra icerisinde calistirilacak olan async islemin onune await keyword'u yazilir. await, sonrasinda yazilan async islemin sonlanana kadar kod akisini durdurmayi saglar. Bu async islem bittikten sonra kod akisi devam eder. await keyword'unun bir diger islevi ise bu asenkron islemden donen response alinmasini saglamaktir. Bu islemi bir degiskene atadagimizda response otomatik olarak bu degiskene atanmis olacaktir. await keyword'unun sagladigi bir diger avantaj ise then zinciri olusmasinin onune gecmesidir. Await kullanimi ile daha okunabilir bir kod yazilmis olur. 
+- async yazmaz isek await'i cagiramayiz.
+- async keyword'u ile isaretlenmis bir fonksiyon icerisinde return ile geriye deger dondurdugunuzde bu bir promise yapisi icerisinde dondurulur. Dolayisyla veriyi almak icin bu fonksiyon sonunda yine then ve catch kullanmamiz gerekir. Biz axois kutuphanesi fonksiyonlarini kullanirken async fonksiyon icerisinde kullanirken herhangi bir sey return etmeden kullancagiz. 
+- Sayfa yuklenirken spinner olusturmak icin `ActivityIndicator` component'i kullanilir. Renk ve boyut ozellikleri ayarlanabilir.
+- `ActivityIndicator` kullanmak icin kurulacak algoritma ise soyle olmalidir. Oncelikle baslangic degeri true olan bir isloading state'i olusturmak ve sonrasinda verinin yuklenmesini saglayan satirdan once bunun true olarak sonrasinda ise false olarak degistirilmesi ve son olarak ise veri yukleniyorsa yani isloading true ise `ActivityIndicator` component'i gosterilse false ise sayfanin gosterilecegi component yapisi gosterilsin seklinde ternary yapisi kurmaktir.  
 - GET is used to request data from a specified resource.
 - GET requests remain in the browser history
 - GET requests have length restrictions
@@ -312,7 +339,6 @@ Class component'larda ES6 ile gelen class yapisindadirlar. Functional component'
 - POST is used to send data to a server to create/update a resource.
 - POST requests do not remain in the browser history
 - POST requests have no restrictions on data length
-
 
 ## DEBUG/RELEASE - APK - TEST - PERFORMANS - APP ICON - FIREBASE
 ///////////// 01.11.2020 
