@@ -188,17 +188,30 @@ Class component'larda ES6 ile gelen class yapisindadirlar. Functional component'
 - TextInput component'i sifre almak icin kullanildiginda sifrenin gorunmemesi icin secureTextEntry property'si kullanilir. true ya da false deger alir. 
 - TextInput tipini belirlemek icin kullanilan property `keyboardType` properti'sidir.
 
-///////////// 18.10.2020 TODO
-- Flatlist ekrandaki tum boşluğu kaplar
-- Bir js kullanımı 
-   function Add(text) {	function Add(todo) {
-   const element : {		const element : {
-	id: 0				id:0
-	todo: text			todo
-	}				}
-   }				}
+## TODO List
+///////////// 18.10.2020
 
-- Mac vscode'da emoji icin control + cmd + spacebar
+- Projelerimizin daha moduler ve dolayisiyla da daha okunabilir kodlar yazabilmek icin still degiskenleri styles isimli ayri bir dosya icerisinde tutulabilir. Bunun icin src klasoru icerisinde styles.js isimli bir dosya olusturulur. Bunun icerisinde react-native kutuphanesinden StyleSheet API'si import edilir. Her bir custom component icin `StyleSheet.create()` fonksiyonu ile style nesneleri olsuturulur ve bir degiskene atanir. Sayfa sonunda degisken isimleri export edilir. Ilgili component dosyasinda bu styles dosyasindan sadece bu dosyanin style degiskeni import edilerek kullanilir. styles.js dosyasi icerisinde react kutuphanesi import edilmez cunku oradan kullanacagimiz herhangi bir yapi yoktur.
+- Stil olustururken StyleSheet API'sini kullanmak daha duzgun ve daha sagliklidir. 
+- `npx react-native start` komutu node terminali onceden baslatir. Bundan sonra `npx react-native run-android` diyerek proje baslatilabilir.
+- Windows'ta PowerShell terminali degil cmd terminali kullanmak daha saglikldir. PowerShell kullanilmasi durumunda hem iznlerde hem de derleme sirasinda sorun cikabilir.
+- height yerine padding verilmesi daha dinamik bir yapi olusturur. Bu nedenle widht ve height'ten olabildigince uzak durmak gerekir. Padding ve margin, respponsive dostu yapilardir. 
+- ES6 ile gelen bir ozellik olarak bir nesne icerisinde property olarak bir degiskenin isminin yazilmasi halinde property ismi olarak degisken adini, deger olarak degisken degerini otomatik olarak alacaktir. => const age = 20, const nesne ={name :'tarik', age};
+- `paddingHorizontal`, Android'te TextInput component'i icin daha saglikli bir padding saglar.
+- Child bir Component'tan parent component'a veri gonderirken parent component icerisinde bir fonksiyon tanimlanir ve bu fonksiyon parametre olarak alt component'tan gelecek olarak veriyi alir. Daha sonra alt component'in bir proprty'si ile bu fonksiyon alt component'in yasam alanina gonderilir. Burada ilgili yerde props uzerinden bu fonksiyon cagrilir ve arguman olarak parent'a gonderilecek olan veri verilir. Boylece veri parent component'a gitmis olur. 
+- realm. MongoDB'nin mobil cihazlar icin gelistirmis oldugu bir kutuphanedir. NoSQL yapisinda bir database kullanma imkani sunar. Expo kullanilmasi halinde bu kutuphane kullanilamaz.
+- Flatlist component'i melez bir component'tir. FlatList component'i ScrollView component'indan kalitilmistir. Bu nedenle de ScrollView'in ozelliklerini tasir.
+- FlatList oncesinde ListView yapisi vardi ancak bu performansi kotu oldugu icin kaldirildi ve FlatList getirildi.
+- FlatList ile calisiyor ve cok yogun bir sekilde ekrana veri basacak iseniz  mutlaka ve mutlaka performansi goz onunde bulundurmaniz gerekir. Verinin ekrana basilmasinda sorun varsa basvurulacak kaynak Optimizing FlatList Configuration olmalidir. Bu arada yer alan ayarlamalar yapilmaz ise performans dusuk olacaktir. 
+- FlatList'e `keyExtractor` verilmediginde ne olur? Veriyi ekranda goruntelemek icin scroll'u asagiya kaydirdiktan sonra tekrar yukari cikmak istediginizde key verilmedigi icin icindeki hangi elemanin hangi eleman oldugunu takip edemedigi icin tekrar hesaplamak zorunda kalacak ve bu da yavaslamasina yol acacaktir.ikincisi ise key verilmedigi icin verileri cache'lemedigi icin verileri tekrardan cekmek zorunda kalacak. Dolayisiyla da performans oldukca dusecektir.
+- FlatList, getItemLayout ozelligi her bir elemanin boyutlarinin sabit olmasi yani bir layout'un olmasi durumunda gelen verinin sabit oldugunu bilecegi icin performans saglar. 
+- FlatList icerisinde performansi arttireacak bir diger durum ise ic ice komplex compoent'lar yerine daha basit duzeyde kompleks olmayan yapilarin kullanilmasidir. 
+- Flatlist cagrildigi anda butun flex'i kaplar, yani ekrandaki tum boşluğu kaplar.
+- useState'in olusturdugu degisken read-only yapidadir. Dogrudan degisiklik yapilamaz. Ancak ve ancak setter fonksiyonu uzerinden degisiklik yapilabilir. Dogrudan manipule edilemezler.
+- React'te her daim state'lerin korunmasi gerekir. State'ler uzerinde direkt bir degisiklik yapilmamasi gerekir. Bir degisiklik yapilacaksa state'in kopyasi uzerinden yapilmalidir.
+- Ne kadar cok state kullanilirsa renderlama islemi o kadar zorlasir ve bu da performansa yansir. State kullanmadan yapilabilecek bir islem state kullanmadan yapilmalidir. 
+- Flatlist yapisi icerisinde hicbir veri yokken ekranda bilgi mesaji vermek icin `ListEmptyComponent` property'si kullanilir. Bu property bir function component yapisi ister. Bu component liste bos iken gorunur. Listede veri varsa gorunmez. 
+- Mac vscode'da emoji icin `control + cmd + spacebar`
 - React state ice sadece değişkenin olduğu component güncellenir.
 - Best Practice: Sabit değişkenler sayfanın en basına ve isimleri büyük harfle baslayacak sekilde yazılmalı.	
 - Ana yapidan custom component'e veri göndermek props ile olur.
