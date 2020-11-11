@@ -145,8 +145,8 @@
 - TextInput component'inin `onChangeText` eventi bir callback function alir ve buna TextInput icerisindeki degeri deger her degistiginde gonderir.
 - Ekrana basilacak veri icerisinde key property'si varsa Flatlist key propertysini her bir elemanin key'i olarak otomatik olarak cekecektir. key yerine id property'si varsa keyExtractor property'si kullanilir. Ama her durumda toString() metodunu eklemeliyiz.
 - Destruction -> 
-  ```
-      const myObj = {
+```
+const myObj = {
         url : "www.google.com",
         data : 500,
         config : "Empty"
@@ -156,40 +156,41 @@
 
       console.log(config);
       console.log(url)
- ```
-
+ ``` 
+ 
+## Hooks
 ///////////// 15.10.2020
-=> Hooks yapisi gelene kadar component'i sadece gorsel amacli kullancak isek functional component kullanirken eger icerisinde degiken tutacak isek de class component kullaniyorduk.
-=> Functional component'lar geriye deger donduren birer fonksiyondur.
-Class component'larda ES6 ile gelen class yapisindadirlar. Functional component'lardan farkli olarak iclerinde render() metodu bulunur ve bu render() metodu geriye component yapisi dondurur.
-=> Functional component'larda state kullanmak icin useState yapisi kullanilir. useState yapisi geriye bir array dondurur. Bu array'in ilk elemani bir degisken ikinci elemani ise bu degiskeni set etmek yani degerini degistirmek icin kullanilan fonksiyodur. useState yapisi bu degisken ve fonksiyonu arka planda kendisi olusturur. Kendisine verilen argumani ise olsuturdugu degiskene atar. Siz bu geriye donen bu array'dan degisken ve degisken degerini degistirecek olan fonksiyonu birer degiskene atauarak kullanabilirsiniz. Bunun icin de genel olarak destructing yontemi kullanilir. Kesin bir kural olmamakla birlikte genel olarak degisken ismi ne ise fonksiyona da degisken isminin basina set ifadesi getirilerek isim verilir. Degiskeni counter variable isimli bir degiskene atadi iseniz fonksiyon ise setVariable seklinde isimlendirilir.
-=> React Hooks, functional component'lara state ozelligi kazandirabildigimiz yapidir. useState yapisi da Hooks yapilarindan biridir. 
-=> Class component'larda ise useState yapisina karsilik olarak setState yapisi kullanilir. 
-=> React dokumanlari class component yerine functional compoent kullanilmasinin daha asglikli oldugunu soylemektedir. 
-=> Class component yapisinda state kullanabilmek icin oncelikle constructor icerisinde this.state seklinde bir yapi olusturulur. this.state yapisi deger olarak object tipinde veri alir. Class compoent icerisinde kullanilacak degiskenlerimiz bu object icerisinde key-value seklinde saklanir. Daha sonra degiskenimizi degistirmek istedigimizde setState() fonksiyonuna degistirmek istedigimiz degisken ve yeni degeri yine bir object veri formatinda arguman olarak verilir.
-=> Functional component'larda useState kullanabilmek icin react kutuphanesinden import edilmesi gerekir. 
-=> React-native'de kullanmis oldugumuz View, Text, Button gibi component'lar aslinda JSX yapisidir. Bunlar arka planda react elementlerine cevrilir. JSX aslinda bizim karmasik react kodlari yazmamizin onune gecmek icin olusturulmus syntactic sugar bir yapidir. JSX olmasi idi uzun uzun ve bir o kadar da karmasik react kodlari yazmamiz gerekecektir. JSX bizi bu yukten kurtamis oldu. Arka tarafta JSX yapilarini react elementlerine donusturen yapi ise babel yapisidir. Functional component yapisinin tercih edilmesinin nedeni ise babel yapisinin donusturme islemini  functional component'larda class compoent'lara nazaran daha kolay yapabiliyor olmasidir. Bu nedenle de hooks yapilarini kullanmak daha sagliklidir. 
-=> Class component yapisinda ilk once constructor calisir. Daha sonra ise render() fonksiyonu tetiklenir. render() fonksiyonu calistiktan sonra da componentDidMount() fonksiyonu calisir. Bundan sonra ise constructor ve componentDidMount bir daha tetiklenmez iken render() fonksiyonu state her degistiginde tetiklenir. 
-=> render() ve componentDidMount fonksiyonlari react'in kendi ic yapisinda bulunan fonksiyonlardir. Bunlarin herhangi bir sekilde tanimi olmaz. Bunlar built-in fonksiyonlardir. 
-=> External bir kaynaktan veri alinacak olmasi durumunda componentDidMount fonksiyonu kullanilir. constructor kullanilmamasinin nedeni verinin gec gelmesi durumunda kullanicinin bos bir sayfa gorecek olmasidir. 
-=> componentDidMount ~ component ekrana/DOM'a aktarildi
-=> Functional component icerisinde yazilan birden cok fonksiyon veya degisken component her render edildginde tekrar tekrar render edilmez. Hooks yapisi kendi icerisinde bu durumu analiz eder ve gerekli olan yapi render edilir.
-=> Class component yapisinda state degistiginde sadece render fonksiyonu tekrar render edilir, ancak functional compoent'larda zaten yapinin kendisi bir fonksiyondur ve fonksiyon render edilir. Burada fonskiyonun render edilmesi iersindeki her seyin render edilmesi anlamina gelir. Ancak yukarida da belirtildigi uzere Hooks sayesinde fonksiyon icindeki her sey render edilmez. Boylece performansta herhangi bir sorun olmaz.
-=> Functional component'larda herhangi bir state'in degisikligini takip etmek icin useEffect fonksiyonu kullanilir. useEffect fonksiyonu iki arguman alir ve  ilk arguman olarak callback bir fonksiyon alir. Ikinci arguman olarak ise degisikligi takip edilecek olan state'i alir. State arguman olarak verilirken array icerisinde verilir. Arguman olarak verilen state her degistiginde useEffect fonksiyonu tetiklenir ve callback fonksiyon calisir. Dolayisyla bir state degistiginde belli islemler yapilmasini istiyorsak useEffect fonksiyonu kullanmaliyiz.
-=> useEffect(() => {}, [stateName]) seklinde kullanilir. 
-=> Ozel bir durum olarak componentDidMount fonksiyonunun functional component'larda karsiligi ise useEffect fonksiyonunun bos bir array icin calistirilmasidir. 
-=> Bir component icerisinde birden fazla state tanimlanabilir.    
-=> Functional component'larda yasam alani icerisinde olabildigince az fonksiyon disi kod yazmak gerekir. Cunku fonksiyon her render edildiginde bu kodlarin gereksiz yere calimamasi gerekir.
-=> Component yuklenirken tum useEffect() fonskiyonlari tetiklenir. Cunku takip ettikleri state'ler ilk degerlerini almak icin tetiklenmis olur. 
-=> Container view component'i icerisindeki inputlara boyut verilmeyip perfect centering yapilip flex 1 yapildiginda inputlari merkeze alir ve icerisindeki text ile boyutlandirir.
-=> useEffect fonksiyonu takip ettigi state yeni degerini aldiginda tetiklenir. Bu nedenle algoritma kurarken buna dikkat etmek gerekir. 
-=> React native kutuphanesi icerisinde bulunan Alert component'i icerisinde bulunan alert fonksiyonu kullanilarak kullaniciya mesaj verilebilir, prompt ile de girdi alinabilir.
-=> TextInput component'i sifre almak icin kullanildiginda sifrenin gorunmemesi icin secureTextEntry property'si kullanilir. true ya da false deger alir. 
-=> TextInput tipini belirlemek icin kullanilan property keyboardType properti'sidir.
+- Hooks yapisi gelene kadar component'i sadece gorsel amacli kullancak isek functional component kullanirken eger icerisinde degiken tutacak isek de class component kullaniyorduk.
+- Functional component'lar geriye deger donduren birer fonksiyondur.
+Class component'larda ES6 ile gelen class yapisindadirlar. Functional component'lardan farkli olarak iclerinde `render()` metodu bulunur ve bu `render()` metodu geriye component yapisi dondurur.
+- Functional component'larda state kullanmak icin `useState` yapisi kullanilir. useState yapisi geriye bir array dondurur. Bu array'in ilk elemani bir degisken ikinci elemani ise bu degiskeni set etmek yani degerini degistirmek icin kullanilan fonksiyodur. useState yapisi bu degisken ve fonksiyonu arka planda kendisi olusturur. Kendisine verilen argumani ise olsuturdugu degiskene atar. Siz bu geriye donen bu array'dan degisken ve degisken degerini degistirecek olan fonksiyonu birer degiskene atauarak kullanabilirsiniz. Bunun icin de genel olarak destructing yontemi kullanilir. Kesin bir kural olmamakla birlikte genel olarak degisken ismi ne ise fonksiyona da degisken isminin basina set ifadesi getirilerek isim verilir. Degiskeni counter variable isimli bir degiskene atadi iseniz fonksiyon ise `setVariable` seklinde isimlendirilir.
+- React Hooks, functional component'lara state ozelligi kazandirabildigimiz yapidir. useState yapisi da Hooks yapilarindan biridir. 
+- Class component'larda ise useState yapisina karsilik olarak setState yapisi kullanilir. 
+- React dokumanlari class component yerine functional compoent kullanilmasinin daha asglikli oldugunu soylemektedir. 
+- Class component yapisinda state kullanabilmek icin oncelikle constructor icerisinde this.state seklinde bir yapi olusturulur. this.state yapisi deger olarak object tipinde veri alir. Class compoent icerisinde kullanilacak degiskenlerimiz bu object icerisinde key-value seklinde saklanir. Daha sonra degiskenimizi degistirmek istedigimizde setState() fonksiyonuna degistirmek istedigimiz degisken ve yeni degeri yine bir object veri formatinda arguman olarak verilir.
+- Functional component'larda useState kullanabilmek icin react kutuphanesinden import edilmesi gerekir. 
+- React-native'de kullanmis oldugumuz View, Text, Button gibi component'lar aslinda JSX yapisidir. Bunlar arka planda react elementlerine cevrilir. JSX aslinda bizim karmasik react kodlari yazmamizin onune gecmek icin olusturulmus syntactic sugar bir yapidir. JSX olmasi idi uzun uzun ve bir o kadar da karmasik react kodlari yazmamiz gerekecektir. JSX bizi bu yukten kurtamis oldu. Arka tarafta JSX yapilarini react elementlerine donusturen yapi ise babel yapisidir. Functional component yapisinin tercih edilmesinin nedeni ise babel yapisinin donusturme islemini  functional component'larda class compoent'lara nazaran daha kolay yapabiliyor olmasidir. Bu nedenle de hooks yapilarini kullanmak daha sagliklidir. 
+- Class component yapisinda ilk once constructor calisir. Daha sonra ise render() fonksiyonu tetiklenir. render() fonksiyonu calistiktan sonra da componentDidMount() fonksiyonu calisir. Bundan sonra ise constructor ve componentDidMount bir daha tetiklenmez iken render() fonksiyonu state her degistiginde tetiklenir. 
+- render() ve componentDidMount fonksiyonlari react'in kendi ic yapisinda bulunan fonksiyonlardir. Bunlarin herhangi bir sekilde tanimi olmaz. Bunlar built-in fonksiyonlardir. 
+- External bir kaynaktan veri alinacak olmasi durumunda componentDidMount fonksiyonu kullanilir. constructor kullanilmamasinin nedeni verinin gec gelmesi durumunda kullanicinin bos bir sayfa gorecek olmasidir. 
+- componentDidMount ~ component ekrana/DOM'a aktarildi
+- Functional component icerisinde yazilan birden cok fonksiyon veya degisken component her render edildginde tekrar tekrar render edilmez. Hooks yapisi kendi icerisinde bu durumu analiz eder ve gerekli olan yapi render edilir.
+- Class component yapisinda state degistiginde sadece render fonksiyonu tekrar render edilir, ancak functional compoent'larda zaten yapinin kendisi bir fonksiyondur ve fonksiyon render edilir. Burada fonskiyonun render edilmesi iersindeki her seyin render edilmesi anlamina gelir. Ancak yukarida da belirtildigi uzere Hooks sayesinde fonksiyon icindeki her sey render edilmez. Boylece performansta herhangi bir sorun olmaz.
+- Functional component'larda herhangi bir state'in degisikligini takip etmek icin useEffect fonksiyonu kullanilir. useEffect fonksiyonu iki arguman alir ve  ilk arguman olarak callback bir fonksiyon alir. Ikinci arguman olarak ise degisikligi takip edilecek olan state'i alir. State arguman olarak verilirken array icerisinde verilir. Arguman olarak verilen state her degistiginde useEffect fonksiyonu tetiklenir ve callback fonksiyon calisir. Dolayisyla bir state degistiginde belli islemler yapilmasini istiyorsak useEffect fonksiyonu kullanmaliyiz.
+- `useEffect(() => {}, [stateName])` seklinde kullanilir. 
+- Ozel bir durum olarak componentDidMount fonksiyonunun functional component'larda karsiligi ise useEffect fonksiyonunun bos bir array icin calistirilmasidir. 
+- Bir component icerisinde birden fazla state tanimlanabilir.    
+- Functional component'larda yasam alani icerisinde olabildigince az fonksiyon disi kod yazmak gerekir. Cunku fonksiyon her render edildiginde bu kodlarin gereksiz yere calimamasi gerekir.
+- Component yuklenirken tum useEffect() fonskiyonlari tetiklenir. Cunku takip ettikleri state'ler ilk degerlerini almak icin tetiklenmis olur. 
+- Container view component'i icerisindeki inputlara boyut verilmeyip perfect centering yapilip flex 1 yapildiginda inputlari merkeze alir ve icerisindeki text ile boyutlandirir.
+- useEffect fonksiyonu takip ettigi state yeni degerini aldiginda tetiklenir. Bu nedenle algoritma kurarken buna dikkat etmek gerekir. 
+- React native kutuphanesi icerisinde bulunan Alert component'i icerisinde bulunan alert fonksiyonu kullanilarak kullaniciya mesaj verilebilir, prompt ile de girdi alinabilir.
+- TextInput component'i sifre almak icin kullanildiginda sifrenin gorunmemesi icin secureTextEntry property'si kullanilir. true ya da false deger alir. 
+- TextInput tipini belirlemek icin kullanilan property `keyboardType` properti'sidir.
 
 ///////////// 18.10.2020 TODO
-=> Flatlist ekrandaki tum boşluğu kaplar
-=> Bir js kullanımı 
+- Flatlist ekrandaki tum boşluğu kaplar
+- Bir js kullanımı 
    function Add(text) {	function Add(todo) {
    const element : {		const element : {
 	id: 0				id:0
@@ -197,78 +198,86 @@ Class component'larda ES6 ile gelen class yapisindadirlar. Functional component'
 	}				}
    }				}
 
-=> Mac vscode'da emoji icin control + cmd + spacebar
-=> React state ice sadece değişkenin olduğu component güncellenir.
-=> Best Practice: Sabit değişkenler sayfanın en basına ve isimleri büyük harfle baslayacak sekilde yazılmalı.	
-=> Ana yapidan custom component'e veri göndermek props ile olur.
-=> Custom component' tan ana yapıya veri göndermek props() ile olur.
-=> props'a string deger -> "..." veya {"..."}
-=> Mac vs code -> bir kelimeyi seçip command + d yaptigimizda ayni sayfadaki ayni kelimeyi secer. Her bastigimizda ayni olan bir kelime daha secer. Bu sekilde bir değişken, fonksiyon,component vb ismi degistiriken sayfadaki tum elemanları gözden kaçırmadan değiştirebiliriz. 
+- Mac vscode'da emoji icin control + cmd + spacebar
+- React state ice sadece değişkenin olduğu component güncellenir.
+- Best Practice: Sabit değişkenler sayfanın en basına ve isimleri büyük harfle baslayacak sekilde yazılmalı.	
+- Ana yapidan custom component'e veri göndermek props ile olur.
+- Custom component' tan ana yapıya veri göndermek props() ile olur.
+- props'a string deger -> `"..."` veya `{"..."}`
+- Mac vs code -> bir kelimeyi seçip command + d yaptigimizda ayni sayfadaki ayni kelimeyi secer. Her bastigimizda ayni olan bir kelime daha secer. Bu sekilde bir değişken, fonksiyon,component vb ismi degistiriken sayfadaki tum elemanları gözden kaçırmadan değiştirebiliriz. 
 
-///////////// 20.10.2020 STACK_NAVIGATION
-=> reactnativeelements native olmayan UI cozumleri bulabileceğimiz bir site
-=> reactnativexpress react-native dokümanı gibi, belli noktalarda ondan daha gelişmiş bir kaynak
-=> Sayfada basta import etmediğimiz bir component yazarken vscode'da auto import calisabilir. Bu noktada dikkat etmek gerek! Auto import'u gesture-handler'dan import etmediğinden emin olmak gerek.
-=> npm install  yapılan paket iceriklerini bulabileceğimiz dosya: package.json 
-=> Stack sayfalar arası geçişi sağlayan navigation yapılarından bir tanesi.. (drawer gibi, tab gibi başka yapılar da var) . 
-=> Stack in iki parametresi var.. Stack.Navigator ile sarmallama yapacağız, Stack.Screen ile arayüzde göstereceğimiz herbir sayfayı parametre olarak component adı ile tanımlayacağız.
+## Stack Navigation
+///////////// 20.10.2020 
+- reactnativeelements native olmayan UI cozumleri bulabileceğimiz bir site
+- reactnativexpress react-native dokümanı gibi, belli noktalarda ondan daha gelişmiş bir kaynak
+- Sayfada basta import etmediğimiz bir component yazarken vscode'da auto import calisabilir. Bu noktada dikkat etmek gerek! Auto import'u gesture-handler'dan import etmediğinden emin olmak gerek.
+- npm install  yapılan paket iceriklerini bulabileceğimiz dosya: package.json 
+- Stack sayfalar arası geçişi sağlayan navigation yapılarından bir tanesi.. (drawer gibi, tab gibi başka yapılar da var) . 
+- Stack in iki parametresi var.. Stack.Navigator ile sarmallama yapacağız, Stack.Screen ile arayüzde göstereceğimiz herbir sayfayı parametre olarak component adı ile tanımlayacağız.
+```
   <Stack.Navigator>
         <Stack.Screen name="FirstPage" component={First}/> 
         <Stack.Screen name="SecondPage" component={Second} />
   </Stack.Navigator>
-=> Stack.Screen de verdiğim name header da görünür, ayrıca sayfalar arası geçişte name attribute nu kullanacağız.  component attribute önemli, hangi sayfaya gidileceğini yazmış oluyoruz- hazırladığımız component lerden biri olan First.js den dolayı component e First yazdık.
-=> onPress={() => props.navigation.navigate('name')  ile button tıklandığında sayfa geçişi sağlanır. parametre olarak Router.js de (ana sayfada) Stack.Screen de name olarak tanımladığımız ismi yazıyoruz. Örneğin "SecondPage" olarak tanımladığımız sayfaya gitmek için  onPress={() => props.navigation.navigate('SecondPage' yazıyoruz.
-=> onPress={() => props.navigation.goBack()}
-=> props.navigation.navigate('name') ile sayfa geçişi yapıyorduk, name den sonra object tipinde ikinci bir parametre ile veri girersek bu verileri de diğer sayfaya gönderebiliriz. Yani, props.navigation.navigate('SecondPage', { selectedValue: userName }) dersek ikinci sayfaya giderken selectedValue ismi ile userName olarak tanımladığım bir veriyi , diğer sayfaya gönderebiliriz.  Gidilen sayfada gönderdiğimiz bu veriyi props.route.params.selectedValue ile yakalayıp istediğimiz gibi kullanabiliriz. props.route.params ın devamına, gönderilen sayfada hangi isimle göndermişsek onu yazıyoruz. Bu örnekte selectedValue ile userName gönderdiğimiz için props.route.params.selectedValue  yazdık, selectedValue yakalamış olduk.
+```
+- Stack.Screen de verdiğim name header da görünür, ayrıca sayfalar arası geçişte name attribute nu kullanacağız.  component attribute önemli, hangi sayfaya gidileceğini yazmış oluyoruz- hazırladığımız component lerden biri olan First.js den dolayı component e First yazdık.
+- `onPress={() => props.navigation.navigate('name')`  ile button tıklandığında sayfa geçişi sağlanır. parametre olarak Router.js de (ana sayfada) Stack.Screen de name olarak tanımladığımız ismi yazıyoruz. Örneğin "SecondPage" olarak tanımladığımız sayfaya gitmek için ` onPress={() => props.navigation.navigate('SecondPage')` yazıyoruz.
+- `onPress={() => props.navigation.goBack()}`
+- props.navigation.navigate('name') ile sayfa geçişi yapıyorduk, name den sonra object tipinde ikinci bir parametre ile veri girersek bu verileri de diğer sayfaya gönderebiliriz. Yani, `props.navigation.navigate('SecondPage', { selectedValue: userName })` dersek ikinci sayfaya giderken selectedValue ismi ile `userName` olarak tanımladığım bir veriyi , diğer sayfaya gönderebiliriz.  Gidilen sayfada gönderdiğimiz bu veriyi `props.route.params.selectedValue` ile yakalayıp istediğimiz gibi kullanabiliriz. `props.route.params` ın devamına, gönderilen sayfada hangi isimle göndermişsek onu yazıyoruz. Bu örnekte selectedValue ile userName gönderdiğimiz için `props.route.params.selectedValue`  yazdık, selectedValue yakalamış olduk.
 
-///////////// 22.10.2020 TAB_NAVIGATION
-=> initialRouteNAme ile yazılma sırasına bağlı kalmaksızın acilista ekranda ilk görülecek component seciyoruz
-=> Lens extension'ing ile yüklenen paketlerin surum kontrolunu yapabiliyoruz. Ancak sürümleri güncellemek icin npm install komutunu kullanmak gerek.
-=> TouchableWithoutFeedback component içerisine sadece 1 component alıyor. Bu komponent fragment <></> haricinde birsey olmali.
-=> Text in numberOfLines={2} prop'u ile istenen sayıda satiri goruntuleyebilriz. 
 
-///////////// 24.10.2020 RESTful Web API
+## Tab Navigation
+///////////// 22.10.2020
+- `initialRouteName` ile yazılma sırasına bağlı kalmaksızın acilista ekranda ilk görülecek component seciyoruz
+- Lens extension'ing ile yüklenen paketlerin surum kontrolunu yapabiliyoruz. Ancak sürümleri güncellemek icin npm install komutunu kullanmak gerek.
+- TouchableWithoutFeedback component içerisine sadece 1 component alıyor. Bu komponent fragment <></> haricinde birsey olmali.
+- Text'in `numberOfLines={2}` prop'u ile istenen sayıda satiri goruntuleyebilriz. 
 
-GET is used to request data from a specified resource.
-GET requests remain in the browser history
-GET requests have length restrictions
-GET requests are only used to request data (not modify)
-POST is used to send data to a server to create/update a resource.
-POST requests do not remain in the browser history
-POST requests have no restrictions on data length
+## RESTful Web API
+///////////// 24.10.2020
 
-///////////// 01.11.2020 DEBUG/RELEASE - APK - TEST - PERFORMANS - APP ICON - FIREBASE
+- GET is used to request data from a specified resource.
+- GET requests remain in the browser history
+- GET requests have length restrictions
+- GET requests are only used to request data (not modify)
+- POST is used to send data to a server to create/update a resource.
+- POST requests do not remain in the browser history
+- POST requests have no restrictions on data length
 
-=> Debug Mode - Release mode--> npx react-native run-android --variant release 
-=> Release mode ile emulatode programi run ettigimizde canli bir telefonda calisir gibi tepki verir. Debug modda oldugu gibi degisiklik yapip save ettigimizde refresh olmaz, hata oldugunda kirmizi/sari renklerle uyari vermez. Hata oldugunda crash olur.
-=> Release ve debug modlar arasi gecis yaparken telefondaki programi silmek gerekir. Bunun icin 
-   adb uninstall com.packageName    (Bir android komutudur[adb - Android debug bridge]. Mevcut programi telefondan silmek icin kullanilir. )
+
+## DEBUG/RELEASE - APK - TEST - PERFORMANS - APP ICON - FIREBASE
+///////////// 01.11.2020 
+
+- Debug Mode - Release mode--> `npx react-native run-android --variant release `
+- Release mode ile emulatode programi run ettigimizde canli bir telefonda calisir gibi tepki verir. Debug modda oldugu gibi degisiklik yapip save ettigimizde refresh olmaz, hata oldugunda kirmizi/sari renklerle uyari vermez. Hata oldugunda crash olur.
+- Release ve debug modlar arasi gecis yaparken telefondaki programi silmek gerekir. Bunun icin 
+   `adb uninstall com.packageName`  (Bir android komutudur (adb = Android debug bridge). Mevcut programi telefondan silmek icin kullanilir. )
                                     (Android package name icin android/app/src/main/AndroidManifest.xml -> package="com.packageName")
    Kalan dosyalardaki degerlerin birbiri uzerine yazilmasini veya mudahalesini onlemek icin gradlew clean ile cache temizlense iyi olur.
-   cd android && ./gradlew clean && cd ..
-=> Uygulamanin apk dosyasini android telefona copy-paste edip acarak kullanabiliriz. Bu IOS icin gecerli degil!
-   apk dosyasi nerede? -> android/app/build/output/apk/release
-=> Telefona default olarak yuklenmis kullanim yeri olmayan sinir bozucu uygulamalar da adb uninstall ile silinebilir.
-=> Release modda programin hatalarini Android Studio programindaki logcat ciktilari ile gorebiliriz.
-   Flipper isimli programi indirerek ayni verilere daga derli toplu ulasabiliriz.
-=> adb logcat > C:\log.txt ile hatalar kayit altina alinabilir.
-=> Performans icin React-native dokumani incelenbilir
-=> Test icin tavsiye edilen 3 yontem:
-   - detox paketi - grey box
-   - enzym (web)
-   - jest
+   `cd android && ./gradlew clean && cd ..`
+- Uygulamanin apk dosyasini android telefona copy-paste edip acarak kullanabiliriz. Bu IOS icin gecerli degil!
+   apk dosyasi nerede bulunur? -> android/app/build/output/apk/release
+- Telefona default olarak yuklenmis kullanim yeri olmayan sinir bozucu uygulamalar da adb uninstall ile silinebilir.
+- Release modda programin hatalarini Android Studio programindaki logcat ciktilari ile gorebiliriz.
+   `Flipper` isimli programi indirerek ayni verilere daga derli toplu ulasabiliriz.
+- `adb logcat > C:\log.txt` ile hatalar kayit altina alinabilir.
+- Performans icin React-native dokumani incelenbilir
+- Test icin tavsiye edilen 3 yontem:
+  * detox paketi - grey box
+  * enzym (web)
+  * jest
    NOT: white box: fonksioyon ve birim elemanlarin fonlsiyon testi, black box: kullanici gozuyle test. Grey box: bu ikisinin birlesimi
-=> Publishing icin resmi dokuman en iyi kaynak.
-=> Android app iconun yeri: android/app/src/main/res icindeki tum klasorler
+- Publishing icin resmi dokuman en iyi kaynak.
+- Android app iconun yeri: android/app/src/main/res icindeki tum klasorler
    Android app ikonu tasarimi icin tavsiye site : Android Asset Studio (nurik.github.io/AndroidAssetStudio/index.html)
-=> IOS icon icin -> Appstore'daki icon set creator ugulamasi
+- IOS icon icin -> Appstore'daki icon set creator ugulamasi
    IOS icin yeri -> ios/projectname/Images.xcassets/AppIcon.appiconset
-=> IOS'ta da android'e benzer sekilde canli telefona X-code programi ile yazdigimiz app'i gonderebiliriz. Ama kullanim suresi 1 hafta ile sinirli kalir.
-   ~?  npx react-native run-ios --configuration release
-=> OneSignal -> Notification icin
-=> Firebase'in bircok backhand, server vb. islevleri var.
+- IOS'ta da android'e benzer sekilde canli telefona X-code programi ile yazdigimiz app'i gonderebiliriz. Ama kullanim suresi 1 hafta ile sinirli kalir.
+   ~❓  `npx react-native run-ios --configuration release`
+- OneSignal -> Notification icin
+- Firebase'in bircok backhand, server vb. islevleri var.
    React Native Firebase dokumani cok iyi: https://rnfirebase.io/
-=> ??Android Studio -> Create virtual device -> Google Play olan bir cihazi indir
+-  ❓Android Studio -> Create virtual device -> Google Play olan bir cihazi indir
 
 
 
