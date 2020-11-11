@@ -63,9 +63,9 @@
   return <Text>Uye Kullanicisi</Text><br/>
 }
  ``` 
-<br/>
+
 - Array seklindeki bir listeyi ekrana basmak icin react-native'de kullanisli olan yapi map() fonksiyonudur. JS'de foreach kullanilirken burada map daha kullanislidir. <br/>
-   ! `forEach` return etmez, `map` return eder.<br/>
+   ❗️ `forEach` return etmez, `map` return eder.<br/>
 - `map()` fonksiyonundan geriye donen component dizisi dogrudan jsx iceirisinde render edilebilir. Yani tekrardan array elemanlarinin teker teker js'de oldugu gibi conponent icerisine aktarilmasina gerek yoktur. {} icerisinde belirtilmesi yeterli olacaktir.<br/>
 - `map()` fonksiyonu kullanirken arguman olarak verilen callback fonksiyonun geriye deger dordurmesi unutulmamalidir. genelde arrow function kullanildigi ve tek satirlik ifadelerde return kullanilmadigi icin birden fazla {} parantez kullanildigi durumlarda unutulabiliyor. Bu nedenle dikkat edilmelidir. 
 - JSX yapisi array tipindeki degiskenleri kendisi parcalar ve ekrana basar.<br/>
