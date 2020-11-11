@@ -1,5 +1,7 @@
 <h1 align="center">React Native Class Notes</h1>  
 
+## Giris
+
 - Expo sektorde cok kullanilmiyor. <br/>
 - Expo'da her sey hazir paket olarak gelir. Ancak icerisinde cok fazla paket yuklu oldugu icin cikti alindiginda proje boyutu cok fazla cikar.<br/> 
 - Expo, bazi paketleri de desteklememektedir. <br/>
@@ -104,48 +106,57 @@
 - ScrollView component'inin horizontal attribute'u icindeki yapilarin yatay eksende olmasini saglar.
 - ScrollView component'inin `showsHorizontalScrollIndicator` attribute'u bool bir deger alir ve scroll cizgisinin gosterilip gosterilmeycegini belirler. false ise scroll cizgisi gosterilmez.
 
-/////////////////Mosh Lesson
-=> props, properties kelimesinin kisaltilmis halidir. 
-=> Text component'i numberOfLines ozelligine sahiptir. Bunun sayesinde satir sayisi kisitlanabilir.
-=> Image component'inin blurRadius attribute'u resmin blurlasmasini saglar. Sayisal bir deger alir. 
-=> Image component'ine path verirken lokal kaynak icin require() metodu kullanilirken external bir kaynak icin uri: property'si kullanilir. uri {{}} icerisinde yazilirken require() metodu {} icerisinde yazilir. 
-=> image component'in fadeDuration ozelligi resmin milisaniye cinsinden belli bir zaman sonra gelmesini saglar. Ancak bu sadece Android'te calisir. 
-=> width ve height olculerine % olarak da deger verilebilir. 
-=> Arkaplan eklemek icin BackgroundImage component'i kullanilir. 
+/////////////////
+- props, properties kelimesinin kisaltilmis halidir. 
+- Text component'i `numberOfLines` ozelligine sahiptir. Bunun sayesinde satir sayisi kisitlanabilir.
+- Image component'inin `blurRadius` attribute'u resmin blurlasmasini saglar. Sayisal bir deger alir. 
+- Image component'ine path verirken lokal kaynak icin `require()` metodu kullanilirken external bir kaynak icin `uri:` property'si kullanilir. `uri` {{}} icerisinde yazilirken `require()` metodu {} icerisinde yazilir. 
+- image component'in `fadeDuration` ozelligi resmin milisaniye cinsinden belli bir zaman sonra gelmesini saglar. Ancak bu sadece Android'te calisir. 
+- width ve height olculerine % olarak da deger verilebilir. 
+- Arkaplan eklemek icin BackgroundImage component'i kullanilir. 
 
-///////////////// State kullanimi;
-=> node.js projelerinde ilk bakilan dosya index.js dosyasidir.
-=> class component olustururken Component yapisi yukarida import da edilebilir ya da class App extends React.Component seklinde de kullanilabilir.
-=> class component'larda render() metodu component sinifindan miras yoluyla gelir.
-=> render() metodu ozel bir metottur. 
-=> index.js dosyasinda import edilecek dosya yolunun dogru olmasi yeterlidir. Import edilen register edilen isimlerin ikisi ayni olmak kosuluyla dosya adi ile ayni olmak zorunda degildir. 
-=> class component icerisinde props kullanmak icin contructor ve super metotlarina props arguman olarak verilir. 
-=> Function compoent'lar bilgisayarlar tarafindan daha rahat derlenebilir olduklari icin daha cok function component yapisi tercih edilir. 
-=> Function component'larda state tanimlamak icin once react kutuphanesinden useState yapisi import edilir.
-=> useState metodu kendisine verilen argumani arka planda bir degiskene atar ve bu degiskenin degerini degistirebilcek bir setter fonksiyon olusturur. useState fonsiyonu geriye olsuturdugu degisken ve setter fonksiyonunu liste icerisinde dondurur. Biz bu degisken ve fonksiyonu bir degiskene atayabiliriz. Bunun icin de genel olarak destructuring yontemi kullanilir. degisken ve fonksiyonu istenilen isim verilebilir. Ancak genel bir uygulama olarak degisken adi ne ise fonksiyona da basina set ifadesi eklenerek isimlendirme yapilir. 
-=> state yapisi global bir degisken degildir. state yapisi yeni bir yapidir. Yani state yapisi yerine global bir degisken tanimlayarak ayni seyi yapmak istediginizde farkli hatalara yol acacaktir.
-=> Component icerisinde kullanilan fonksiyonlar yapi her render edildiginde tekrar tekrar olsuturulur. Bu da performans kaybi demektir. Bunun onune gecmek icin ise fonksiyon return() metodu disinda bir degiskene atanir ve kullanilacak yerde bu degisken adi yazilir.
-=> Class component yapilarinda contructor iceirisinde this.state seklinde state yapisi tanimlanir ve istenilern degiskenler bunun icerisinde key-value olarak belirtilir. State yapisi aslinda bir object'tir. Biz kullanmak istedigimiz degiskenleri bu object icerisinde oject'in bir property'si olarak tutariz. Olusturdugumuz degiskeni yani state'in propert'sini guncellemek icin de setState() this.setState() fonksiyonunu kullaniriz. setState fonksiyonu arguman olarak object yapida degistirilmek istenen degisken ve yeni degerini alir.  
-=> this.setState yapisi function component'larda kullanilmaz. Function component'lardaki hooks yapisi da class component'larda kullanilmaz. 
-=> Bir component ya function ya da class yapidadir. 
-=> React'te hangi yapi guncellenecek ise sadece o yapi render edilir. 
-=> **** state yapisi her guncellediginde o component da tekrar render edilir. Dolayisiyla Renderlama islemi state guncellemelerinde gerceklesir. Component iceirisinde tanimlanan state sadece o component'i baglar. Diger component'lari etkilemez.  
-=> Bir component'in her render edildiginde gectigi asamalara life cycle denir. Componentin olusturuldugu an, component olusturulurken ve component olusturulduktan sonra olmak uzere temelde uc asama vardir.Bu asamlarin yaninda bu asamalari izlemeyi ve bazi islemler yapabilmeyi saglayan yapilar vardir. Bunlara life cycle metotlari denir. Bunlar function component'larda ayri class component'larda ayri isler.
-=> Function component yapisinda ayni silemi tekrar tekrar yaptiginizda bir zaman sonra bunu render etmeyecektir. Hafizaya atacaktir. Bu da performans olarak yansiyacaktir. Ancak class component yapisinda bu durum olmadigi icin function component kullanmak performans acisindan daha avantajlidir.
-=> Class component'larda render() metodu icerisinde olabildiginde az kod yazmak gerekir. Cunku state her yenilendiginde render() metodu calisir. Munkunse render() metodu disinda yazmak gerekir.
-=> class component'larda sayfa render edildikten sonra calisacak olan yapi componentDidMount(){} yapisidir. Sayfa yuklendiginde bir API'ye istek atilacak ise bu componentDidMount icerisinde gerceklestirilir. Veri cagirma islemi contructor icerisinde olsa idi sayfanin yuklenmesi uzun zaman alacakti. Render icerisinde olsa idi bu sefer de her render edildiginde API tetiklenecekti. Bu nedenle API istekleri componentDidMount icerisinde yapilir.
-=> Goruntuleme disindaki JS islemlerini return function component'larda return disinda, class component'larda ise render disinda yapabilirim. 
-=> State'ler component'larin kendi hafizalaridir. 
-=> useState() metodundan aldigimiz degerleri const bir degiskene atamak sorun olusturmaz. Cunku setter fonksiyonu calistiginda component tekrar render edilecegi icin degisken yeniden olusur. 
-=> View component'indan Text component'ina miras yoluyla css gecmez. Ancak Text icerisinde Text olursa bu durumda css ozellikleri inherit eder. 
-=> React-native'de Button component'i cok fazla ozellestirilebilecek ozellige sahip degildir. Bunu asmak icin kendi ozel buton componentlarinizi olusturmaniz gerekir. Bunun icin kullanilcak yapilar ise TouchableOpacity ya da TouchableWithoutFeedback component'laridir. Bir bask yontem ise Button component'ini View icerisinde kullanip View'i  stillendirmektir. Bir baska alternatif ise kominitinin gelistirdigi buton component'lari kullanmmaktir. 
-=> Core Button component'i color, title, accessibilityLabel, onPress, disabled ozelliklerine sahiptir. 
-=> TextInput component'inin onChangeTetx eventi bir callback function alir ve buna TextInput icerisindeki degeri deger her degistiginde gonderir.
-=> Ekrana basilacak veri icerisinde key property'si varsa Flatlist key propertysini her bir elemanin key'i olarak otomatik olarak cekecektir. key yerine id property'si varsa keyExtractor property'si kullanilir. Ama her durumda toString() metodunu eklemeliyiz.
-=> Destruction -> const myObj = {			const {data, id} = myObj
-			data: 500,
-			id: 12
-			}
+## State
+- node.js projelerinde ilk bakilan dosya index.js dosyasidir.
+- class component olustururken Component yapisi yukarida import da edilebilir ya da class App extends React.Component seklinde de kullanilabilir.
+- class component'larda render() metodu component sinifindan miras yoluyla gelir.
+- render() metodu ozel bir metottur. 
+- index.js dosyasinda import edilecek dosya yolunun dogru olmasi yeterlidir. Import edilen register edilen isimlerin ikisi ayni olmak kosuluyla dosya adi ile ayni olmak zorunda degildir. 
+- class component icerisinde props kullanmak icin contructor ve super metotlarina props arguman olarak verilir. 
+- Function compoent'lar bilgisayarlar tarafindan daha rahat derlenebilir olduklari icin daha cok function component yapisi tercih edilir. 
+- Function component'larda state tanimlamak icin once react kutuphanesinden useState yapisi import edilir.
+- useState metodu kendisine verilen argumani arka planda bir degiskene atar ve bu degiskenin degerini degistirebilcek bir setter fonksiyon olusturur. useState fonsiyonu geriye olsuturdugu degisken ve setter fonksiyonunu liste icerisinde dondurur. Biz bu degisken ve fonksiyonu bir degiskene atayabiliriz. Bunun icin de genel olarak destructuring yontemi kullanilir. degisken ve fonksiyonu istenilen isim verilebilir. Ancak genel bir uygulama olarak degisken adi ne ise fonksiyona da basina set ifadesi eklenerek isimlendirme yapilir. 
+- state yapisi global bir degisken degildir. state yapisi yeni bir yapidir. Yani state yapisi yerine global bir degisken tanimlayarak ayni seyi yapmak istediginizde farkli hatalara yol acacaktir.
+- Component icerisinde kullanilan fonksiyonlar yapi her render edildiginde tekrar tekrar olsuturulur. Bu da performans kaybi demektir. Bunun onune gecmek icin ise fonksiyon return() metodu disinda bir degiskene atanir ve kullanilacak yerde bu degisken adi yazilir.
+- Class component yapilarinda contructor iceirisinde this.state seklinde state yapisi tanimlanir ve istenilern degiskenler bunun icerisinde key-value olarak belirtilir. State yapisi aslinda bir object'tir. Biz kullanmak istedigimiz degiskenleri bu object icerisinde oject'in bir property'si olarak tutariz. Olusturdugumuz degiskeni yani state'in propert'sini guncellemek icin de setState() this.setState() fonksiyonunu kullaniriz. setState fonksiyonu arguman olarak object yapida degistirilmek istenen degisken ve yeni degerini alir.  
+- this.setState yapisi function component'larda kullanilmaz. Function component'lardaki hooks yapisi da class component'larda kullanilmaz. 
+- Bir component ya function ya da class yapidadir. 
+- React'te hangi yapi guncellenecek ise sadece o yapi render edilir. 
+- ❗️ state yapisi her guncellediginde o component da tekrar render edilir. Dolayisiyla Renderlama islemi state guncellemelerinde gerceklesir. Component iceirisinde tanimlanan state sadece o component'i baglar. Diger component'lari etkilemez.  
+- Bir component'in her render edildiginde gectigi asamalara life cycle denir. Componentin olusturuldugu an, component olusturulurken ve component olusturulduktan sonra olmak uzere temelde uc asama vardir.Bu asamlarin yaninda bu asamalari izlemeyi ve bazi islemler yapabilmeyi saglayan yapilar vardir. Bunlara life cycle metotlari denir. Bunlar function component'larda ayri class component'larda ayri isler.
+- Function component yapisinda ayni silemi tekrar tekrar yaptiginizda bir zaman sonra bunu render etmeyecektir. Hafizaya atacaktir. Bu da performans olarak yansiyacaktir. Ancak class component yapisinda bu durum olmadigi icin function component kullanmak performans acisindan daha avantajlidir.
+- Class component'larda `render()` metodu icerisinde olabildiginde az kod yazmak gerekir. Cunku state her yenilendiginde render() metodu calisir. Munkunse render() metodu disinda yazmak gerekir.
+- class component'larda sayfa render edildikten sonra calisacak olan yapi `componentDidMount(){}` yapisidir. Sayfa yuklendiginde bir API'ye istek atilacak ise bu componentDidMount icerisinde gerceklestirilir. Veri cagirma islemi contructor icerisinde olsa idi sayfanin yuklenmesi uzun zaman alacakti. Render icerisinde olsa idi bu sefer de her render edildiginde API tetiklenecekti. Bu nedenle API istekleri componentDidMount icerisinde yapilir.
+- Goruntuleme disindaki JS islemlerini return function component'larda return disinda, class component'larda ise render disinda yapabilirim. 
+- State'ler component'larin kendi hafizalaridir. 
+- `useState()` metodundan aldigimiz degerleri const bir degiskene atamak sorun olusturmaz. Cunku setter fonksiyonu calistiginda component tekrar render edilecegi icin degisken yeniden olusur. 
+- View component'indan Text component'ina miras yoluyla css gecmez. Ancak Text icerisinde Text olursa bu durumda css ozellikleri inherit eder. 
+- React-native'de `Button` component'i cok fazla ozellestirilebilecek ozellige sahip degildir. Bunu asmak icin kendi ozel buton componentlarinizi olusturmaniz gerekir. Bunun icin kullanilcak yapilar ise TouchableOpacity ya da TouchableWithoutFeedback component'laridir. Bir bask yontem ise Button component'ini View icerisinde kullanip View'i  stillendirmektir. Bir baska alternatif ise kominitinin gelistirdigi buton component'lari kullanmmaktir. 
+- Core Button component'i color, title, accessibilityLabel, onPress, disabled ozelliklerine sahiptir. 
+- TextInput component'inin `onChangeText` eventi bir callback function alir ve buna TextInput icerisindeki degeri deger her degistiginde gonderir.
+- Ekrana basilacak veri icerisinde key property'si varsa Flatlist key propertysini her bir elemanin key'i olarak otomatik olarak cekecektir. key yerine id property'si varsa keyExtractor property'si kullanilir. Ama her durumda toString() metodunu eklemeliyiz.
+- Destruction -> 
+  ```
+      const myObj = {
+        url : "www.google.com",
+        data : 500,
+        config : "Empty"
+      }
+
+      const {config, url} = myObj;
+
+      console.log(config);
+      console.log(url)
+ ```
 
 ///////////// 15.10.2020
 => Hooks yapisi gelene kadar component'i sadece gorsel amacli kullancak isek functional component kullanirken eger icerisinde degiken tutacak isek de class component kullaniyorduk.
