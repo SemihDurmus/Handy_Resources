@@ -221,12 +221,11 @@ Class component'larda ES6 ile gelen class yapisindadirlar. Functional component'
 
 ## Stack Navigation
 ///////////// 20.10.2020 
-- reactnativeelements native olmayan UI cozumleri bulabileceğimiz bir site
-- reactnativexpress react-native dokümanı gibi, belli noktalarda ondan daha gelişmiş bir kaynak
-- Sayfada basta import etmediğimiz bir component yazarken vscode'da auto import calisabilir. Bu noktada dikkat etmek gerek! Auto import'u gesture-handler'dan import etmediğinden emin olmak gerek.
+- https://reactnativeelements.com/ native olmayan UI cozumleri bulabileceğimiz bir site
+- https://www.reactnative.express/ react-native dokümanı gibi, belli noktalarda ondan daha gelişmiş bir kaynak
 - npm install  yapılan paket iceriklerini bulabileceğimiz dosya: package.json 
 - Stack sayfalar arası geçişi sağlayan navigation yapılarından bir tanesi.. (drawer gibi, tab gibi başka yapılar da var) . 
-- Stack in iki parametresi var.. Stack.Navigator ile sarmallama yapacağız, Stack.Screen ile arayüzde göstereceğimiz herbir sayfayı parametre olarak component adı ile tanımlayacağız.
+- Stack in iki parametresi var.. `Stack.Navigator` ile sarmallama yapacağız, `Stack.Screen` ile arayüzde göstereceğimiz herbir sayfayı parametre olarak component adı ile tanımlayacağız.
 ```
   <Stack.Navigator>
         <Stack.Screen name="FirstPage" component={First}/> 
@@ -237,7 +236,50 @@ Class component'larda ES6 ile gelen class yapisindadirlar. Functional component'
 - `onPress={() => props.navigation.navigate('name')`  ile button tıklandığında sayfa geçişi sağlanır. parametre olarak Router.js de (ana sayfada) Stack.Screen de name olarak tanımladığımız ismi yazıyoruz. Örneğin "SecondPage" olarak tanımladığımız sayfaya gitmek için ` onPress={() => props.navigation.navigate('SecondPage')` yazıyoruz.
 - `onPress={() => props.navigation.goBack()}`
 - props.navigation.navigate('name') ile sayfa geçişi yapıyorduk, name den sonra object tipinde ikinci bir parametre ile veri girersek bu verileri de diğer sayfaya gönderebiliriz. Yani, `props.navigation.navigate('SecondPage', { selectedValue: userName })` dersek ikinci sayfaya giderken selectedValue ismi ile `userName` olarak tanımladığım bir veriyi , diğer sayfaya gönderebiliriz.  Gidilen sayfada gönderdiğimiz bu veriyi `props.route.params.selectedValue` ile yakalayıp istediğimiz gibi kullanabiliriz. `props.route.params` ın devamına, gönderilen sayfada hangi isimle göndermişsek onu yazıyoruz. Bu örnekte selectedValue ile userName gönderdiğimiz için `props.route.params.selectedValue`  yazdık, selectedValue yakalamış olduk.
-
+<hr/>
+- React-native gelistiricileri react-native'in core kutuphanesini olabildigince az tutmayi amaclamaktadir. Bu nedenle kendi iceirisinde built-in bir navigation kutuphanesi yoktur. Buradaki acigi ise react-native toplulugu kutuphaneler olsutururarak kapatti. Navigation kutuphanesi de bunlardan bir tanesidir. 
+- React-native navigation icin bir cok kutuphane mevcuttur. Istedigimizi alip kullanabiliriz. En populer olani Navigation kutuphanesidir.
+- React Navigation, react-native-navigation ve react-native router flux en cok kullanilan kutuphanelerdir.
+- Mobil uygulamalarda sayfa gecisleri olabildigince 60 fps'de olmalidir. Gecislerde takilma olmamasi bu gereklidir.
+- En guncel en yeni paketleri React Native Community saglamaktadir. 
+- React Native'de herhangi bir sekilde bir paket yuklenecek ise iki tip paket olur. Birincisi yuklenecek olan paketin native taraf ile baglantili olmasidir. Bunlar native taraf ile linkleme islemi yapar. Ikincisi ise core component'larin harmanlanmasi veya stillendirilmesi ile olusturulan component paketleridir. Bunlar native taraf ile linkleme ihtiyaci duymazlar. React Native Elements bunlardan bir tanesidir. Bunlar arayuz tasarimi yaparlar. 
+- Kurulan her paket bundle size'i buyutur. Bu nedenle olabildigince az kutuphane kullanmak mantikli olanidir.
+- React Navigation,  react-native'e ozel olarak gelistirilmis, expo'yu gelistiren ekip tarafindan maintain edilen bir kutuphanedir.
+- React Navigation kurmak icin ilk adim, npm install @react-navigation/native komutunu terminalde calistirmaktir.
+- Daha sonra react-native dokumaninda "Installing dependencies into a bare react native project" basligi altinda bunulunan `npm install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view` komutunu terminalde calistiriyoruz. Bu komut react navigation'un ihtiyaci olan paketlerin kurulumunu saglar. Bu komutun calistirilmasi sirasinda arka tarafta baska bir sey calisiyor ise hata verebilir. Bu durumda paketler teker teker indirilebilir. Paketlerin teker teker ya da tekrar indirilmesinde sorun yoktur. 
+- Kurulumun dogru yapilip yapilmadigi package.json dosyasindan paket isimlerine bakilarak yapilabilir.
+- react-native link komutu, android ve iOS'ta native taraf ile baglantilari yapmak icin calistirilan bir komuttur. React Native 0.60 surumunden sonra kullanilmasina gerek kalmamistir. Eger 0.60 alti bir surum kullanmiyorsak bu komutu calistirmamiza gerek. Aksi durum soz konusu ise bu komutu da calistirmamiz gerekir.
+- iOS tarafinda gelistirme yapilacak ise ayrica `npx pod-install ios` komutunun da calistirilmasi gerekir.
+- Proje calisirken paket yuklemesi yapilmamalidir. Aksi takdirde hata verme ihtimali oldukca yuksektir.
+- ❗ Bir sonraki asama ise `import 'react-native-gesture-handler';` ifadesinin proje kok dizininde bulunan index.js dosyaina yazilmasidir.
+- Son asama olarak ise "npm install @react-navigation/stack" komutu calistirilmalidir. Burada sayfa gecislerini saglayan stack kutuphanesi kurulur. 
+- Belli basli uc tane navigation tipi vardir. Birincisi stack yapisidir. Ikincis drawer yapisi ucuncusu ise tab yapisidir.  
+- the fuck isimli paket yanlis komut girildiginde dogrusunu getirir ve enter yapar.
+- Bundan sonra src klasoru altinda calistirilacak ana dosya Router.js isimli dosya olacak. Bu dosya sayfalarin yonlendirilmesinden sorumlu dosya olacaktir.  Sayfalarimiz ise pages isimli klasorde bulunacak. 
+- Router dosyasi icerisinde @react-navigation/native paketinden NavigationContainer yapisi import edilir. Native paketi, sayfa gecisleri sirasinda sayfa bilgilerini tutan ve veri transferini saglayan yapidir. 
+- Bir navigation yapisi olusturulmak isteniyorsa Router.js dosyasinin return edecegi yapinin NavigationContainer ile sarmalanmis olmasi gerekir. 
+- Ikinci import edilmesi gereken yapi ise @react-navigation/stack kutuphanesinden createStackNavigator yapisidir. Bu yapi ise sayfalar arasi gecisi saglar.
+- `createStackNavigator`, navigation yapisindan gelen bir component olarak dusunulebilir. Arayuz component'i gibi calisir.
+- `createStackNavigator()` fonksiyonu Stack isimli bir degiskene atanir. 
+- `createStackNavigator()` fonksiyonundan Navigator ve Screen isimli iki yapi gelir. Bunlara Stack degiskeni uzerinden ulasilabilir. 
+- Screen, arayuzde gosterilecek her bir sayfadir. Parametre olarak component alir. Ne kadar sayfa varsa o kadar Stack.Screen uretilir.
+- Screen yapisi temelde iki parametre alir. Birincisi component ikincisi ise name'dir. Bu iki attribute zorunludur. Component atrribute'u cagrilacak olan component dosyasinin adidir. name ise bu sayfa cagrilmak istendiginde kullanilacak isimdir. Component ismi ile ayni olmak zorunda degildir. 
+- Kok dizindeki index.js dosyasinda baslangic olarak Router.js ayarlanir.
+- `cd android && gradlew clean && cd ..`
+- Proje her run edildiginde android klasoru altinda build isimli bir klasor olusur. Yukaridaki komut bu dosyayi kaldirir ve native baglantilarini siler. Proje yeniden run edildiginde baglantilari yeniden calistirir.
+- Sayfalar, NavigationContainer Component'i altinda olusturulan Stack.Navigator component'i altina sira ile yazilir. Eger initial route verilmedi ise en uste yazilan sayfa acildiginda calisacak olan sayfadir.
+- Navigation yapisinda prop icerisi dolu olarak gelir. Sayfa gecislerini tetikleyecek tum bilgiler bu props icerisinde tutulur. 
+- Bir butona basildiginda sayfa gecisi saglamak icin butonun onPress eventine verilen fonksiyon icerisinde props.navigation.navigate() fonksiyonu calistirilir. Bu fonksiyon arguman olarak gecis yapilacak olan sayfa adini alir. 
+- ilgili kutuphanenin dokummaninda API Reference basligi o kutuphanenin ana kaynak dosyalarinin toplandigi basliktir.
+- Stack.Screen component'i ucuncu bir attribute olarak options attribute'u alir. options, object tipinde veri ister. Bu object icerisinde title property'si ile sayfa basligi degistirilebilir.
+- `NavigationContainer` component'inin initialRouteName isimli property'si string tipinde veri ister ve proje baslatildiginda acilacak olan sayfanin adini alir ve proje baslatildiginda bu sayfa baslar.
+- `NavigationContainer` component'inin screenOptions isimli property'si object tipinde veri alir ve bu object verinin `headerShown` isimli property'si sayfanin ust kisminda default olarak gosterilen navigator'un gosterilip gosterilmeyecegini belirtir. true ya da false deger alir.
+- `screenOptions` nesnesinin `gestureEnabled` property'si ise gidilen sayfadan geri gelirken herhangi bir yere tiklamadan sayfayi kaydirarak geri gelebilmeyi saglar. true veya false deger alir.
+- `props.navigation.goBack()` fonksiyonu gidilen sayfadan bir sayfa geriye gelebilmeyi saglar.
+- `props.navigation.navigate()` fonskiyonu ilk arguman olarak gecilecek olan sayfa adini ikinci arguman olarak da bu sayfaya goturulecek olan veriyi object tipinde alir. Goturulecek veriler bu object icerisinde birer property olarak yerlestirilir ve gittigi sayfa icerisinde props.route.params nesnesi uzerinden, gonderildigi isim ile yakalanir.   
+- Navigation kutuphanesi props icerisinde iki nesneyi otomatik olarak olusturur. Bunlardan birincisi navigation nesnesi ikincisi ise route nesnesidir. Acilacak sayfaya goncerilecek veriler route nesnesinin params property'si ile gonderilir. params property'si gonderilecek verileri object veri tipinde alir. Acilan sayfada da veriler yine props.route.params uzerinden yakalanir.
+- ❗ TextInput kullanilirken yapinin hangi kutuphaneden geldigine dikkat edilmelidir. inttelisense iki farkli kutuphaneden TextInput getirir. Bunlardan ilki `react-native-gesture-handler` kutuphanesi digeri ise `react-native` kutuphanesidir. Eger TextInput'u `react-native-gesture-handler` kutuphanesinden olusturur iseniz hata verir. Bu nedenle hangisinden geldigine inttelisense'te acilan tooptip penceresinden bakilmali ona gore cagrilmalidir.
+- Sayfada basta import etmediğimiz bir component yazarken vscode'da auto import calisabilir. Bu noktada dikkat etmek gerek! Auto import'u gesture-handler'dan import etmediğinden emin olmak gerek.
 
 ## Tab Navigation
 ///////////// 22.10.2020
