@@ -71,38 +71,38 @@
 - JSX yapisi array tipindeki degiskenleri kendisi parcalar ve ekrana basar.<br/>
 - Debug mode'da Debug sekmesine basildiginda google chrome acilacaktir. Bu sayfanin debug console'u mobil gelistirme sirasinda kullanilabilir.<br/>
   veya -> node command'dan console log'lar görülebilir.<br/>
-  * veya -> tlf bağlı iken ada shell input key event 82<br/>
+  veya -> tlf bağlı iken ada shell input key event 82<br/>
   <br/>
 
 //////////////////////////////////////// <br/>
-=> Baslangic sayfasini degistirmek icin index.js dosyasinda oncelikle baslangic component'inin import edilmesi gerekir. import Login from `'./src2/Login`; seklinde import edilmedilir. Ikinci olarak baslangic component'inin `AppRegistry.registerComponent(appName, () => Login)`; metodu ile ayarlanmasi gerekir. Aksi halde `"Can't find variabl:App"` hatasi  vercektir. 
-=> React-native'de resimleri sergilemek icin image component'i kullanilir. image component'inin resimleri duzenlemek icin resizeMode isimleri bir property'si vardir. Bunun uzerinden resmin nasil goruntulenecegi ayarlanabilir. En ideal deger olarak ise contain kullanilir.
- => stackoverflow'da yesil tick dogru cevap anlamindadir. 
- => Dimensions API'si cihazin olculerini almak icin kullanilan API'dir. Dimensions.get('window') metodu cihazin olculerini getirir. Bunun uzerinden height ve width degelerine de ulasilabilir.
- => Image component'inin tintColor property'si ile png resimlerin rengi degistirilebilir.
- => Eger fazla sayida fazla component'i ana js dosyamiz icerisinde import edeceksek  bu durumda ana js dosyamiz import'larla sisecektir. Bu nedenle daha kullanilabilir olmasi icin componentlerin import edildigi ayri bir js dosyasi olusturup bu dosyayi ana js dosyamiz icerisinde import etmek gerekir. Boylece import edilen dosyalarin kontrolu kolaylasir hem de ana dosyamis sismemis olur. 
- => React'in kendisi de bir node.js projesidir..
- => react-native'de butona genislik verdiginde yuksekligi otomatik kendisi verir.
- =>  Ekranda buton ve textbox'lari olusturduktan sonra kullanici girmesi gerekenleri girdikten sonra butona basabilmesi icin ekranin kaymasi gerekir cunku klasyve acildiginda buton asagida kaldi. Bu nedenle bu durumun da duzeltilmesi gerekir. Scroll bu cozumlerden bir tanesidir. 
- =>  
+- Baslangic sayfasini degistirmek icin index.js dosyasinda oncelikle baslangic component'inin import edilmesi gerekir. import Login from `'./src2/Login`; seklinde import edilmedilir. Ikinci olarak baslangic component'inin `AppRegistry.registerComponent(appName, () => Login)`; metodu ile ayarlanmasi gerekir. Aksi halde `"Can't find variabl:App"` hatasi  vercektir. 
+- React-native'de resimleri sergilemek icin image component'i kullanilir. image component'inin resimleri duzenlemek icin resizeMode isimleri bir property'si vardir. Bunun uzerinden resmin nasil goruntulenecegi ayarlanabilir. En ideal deger olarak ise contain kullanilir.
+- Stackoverflow'da yesil tick dogru cevap anlamindadir. 
+- Dimensions API'si cihazin olculerini almak icin kullanilan API'dir. Dimensions.get('window') metodu cihazin olculerini getirir. Bunun uzerinden height ve width degelerine de ulasilabilir.
+- Image component'inin tintColor property'si ile png resimlerin rengi degistirilebilir.
+- Eger fazla sayida fazla component'i ana js dosyamiz icerisinde import edeceksek  bu durumda ana js dosyamiz import'larla sisecektir. Bu nedenle daha kullanilabilir olmasi icin componentlerin import edildigi ayri bir js dosyasi olusturup bu dosyayi ana js dosyamiz icerisinde import etmek gerekir. Boylece import edilen dosyalarin kontrolu kolaylasir hem de ana dosyamiz sismemis olur. 
+- React'in kendisi de bir node.js projesidir..
+- React-native'de butona genislik verdiginde yuksekligi otomatik kendisi verir.
+- Ekranda buton ve textbox'lari olusturduktan sonra kullanici girmesi gerekenleri girdikten sonra butona basabilmesi icin ekranin kaymasi gerekir cunku klasyve acildiginda buton asagida kaldi. Bu nedenle bu durumun da duzeltilmesi gerekir. Scroll bu cozumlerden bir tanesidir. 
 
-//////////////////////////////////////
-=> Elimizdeki liste halindeki bir veriyi ekrana yazdirmak istedigimizde map() fonksiyonunu kullanabiliriz. Ancak verinin fazla olmasi durumunda map() fonksiyonu kullanisli olmayacaktir. Cunku map() fonksiyonu kullanildiginda elindeki veri ile geriye yine bir liste donrdurmeye caliscak ve bu da zaman alacaktir. Dolayisiyla veri ekrana gec yansiyazaktir. Bu sorunu cozmek icin kullanilan yapi ise FlatList component'idir.
-=> FlatList yapisi veriyi once alir ve cache' atar. Daha sonra ekranda sirasi gelen veriyi ekrana gonderir. Boylece daha hizli bir sekilde ekrana yansimis olur. 
-=> Map(), kendisine gelen verinin tamamini ekrana basarken FlatList component'i ise gerektigi kadarini basar. 
-=> Veri dinamik olarak geliyor ise FlatList compoent'i kullanmak daha mantiklidir.
-=> FlatList, data attribute'u icin ekrana basilacak array'i ister. renderItem attribute'u ise verinin ekrana nasil basilacagini belirler ve bir callback fonksiyon alir. Bu callback fonksiyona ilk arguman olarak datayi gonderir. Gelen her bir veriyi ekrana yazdirmak icin ise data.item property'si kullanilir. 
-=> FlatList, ScrollView'dan kalitilmis bir component'tir. Ekranin scroll olmasini ve veri basma islemini kendisi arka planda yapmaktadir. 
-=> renderItem attribute'u aldigi callback fonksiyonu ekrana bastigi her nesne icin tekrar tekrar olusturur. Dolayisiyla bu da veri cogaldiginda performansin dusmesi demektir. Bunu asmak icin de bu callback fonksiyonu bir degiskene atayip bu degiskeni renderItem'a vermek gerekir. 
-=> Ekrana tablo veya liste yazdirildiginda react her bir eleman icin unique bir id ister. FlatList yapisi renderitem attribute'una gonderdigi data'da bu id'yi index property'si olarak kendisi olsuturur. Bizim kendi verimiz ise item property'si icerisinde tutulur. 
-=> prop uzerinden veri alirken component tarafinda parametre olarak props vermek zorunda degiliz. ES6 ile gelen Destructuring yapisi ile sadece almak istedigimiz property isimlerinin {} parantezleri icerisinde yazip bunlari kullanabiliriz. 
-=> react-native'de text indent property'si yoktur. Bunun yerine '\t' kacis karakteri kullanilir. 
-=> Cihaz olculerini almak icin Dimensions API'si kullanilir. Dimensions.get() metodu iki arguman alir. screen ve window olmak uzere. Saglikli olan window'un arguman olarak verilmedisidir.Buradana donen sonuc ile de height veya width degeri yakalanabilir. 
-=> react'te liste halinde gosterilen verilerde bu verileri gosteren yapilarin her birinin unique bir id'ye sahip olmasi gerekir. Bu id verilmezse de calisir ancak verilmesi halinde daha duzgun calisacaktir. Flatlist icerisinde bu unique veriyi tutacak olan yapi ise keyExtractor attribute'udur. 
-=> keyExtractor bir fonksiyon alir ve bu fonksiyona iki FlatList'e verilen array'in her bir elemani ve FlatList'in array'in her bir elemani icin kensi icinde olusturdugu index'i gonderir. Bu fonksiyon iceririnden geriye return edilen deger her bir FlatList elemanina id olarak yapisir. Biz kendi item iceirisinde unique olan bir veriyi ki bu da id olacaktir- burdan return ederiz. Ancak item ile gelen unique bir deger yoksa index de burada return edilebilir. 
-=> FlatList'in  ListHeaderComponent attribute'u FlatList oncesinde olacak olan component'i belirler. Banner component'i bir degiskene atanip bu attribute'a verildiginde banner sayfa ile birlikte kayacaktir. Verilmediginde taktide banner yukarida sabit sekilde kalacaktir. 
-=> ScrollView component'inin horizontal attribute'u icindeki yapilarin yatay eksende olmasini saglar.
-=> ScrollView component'inin showsHorizontalScrollIndicator attribute'u bool bir deger alir ve scroll cizgisinin gosterilip gosterilmeycegini belirler. false ise scroll cizgisi gosterilmez.
+
+////////////////////////////////////// <br/>
+- Elimizdeki liste halindeki bir veriyi ekrana yazdirmak istedigimizde `map()` fonksiyonunu kullanabiliriz. Ancak verinin fazla olmasi durumunda `map()` fonksiyonu kullanisli olmayacaktir. Cunku `map()` fonksiyonu kullanildiginda elindeki veri ile geriye yine bir liste donrdurmeye caliscak ve bu da zaman alacaktir. Dolayisiyla veri ekrana gec yansiyazaktir. Bu sorunu cozmek icin kullanilan yapi ise `FlatList` component'idir.
+- FlatList yapisi veriyi once alir ve cache' atar. Daha sonra ekranda sirasi gelen veriyi ekrana gonderir. Boylece daha hizli bir sekilde ekrana yansimis olur. 
+- Map(), kendisine gelen verinin tamamini ekrana basarken FlatList component'i ise gerektigi kadarini basar. 
+- Veri dinamik olarak geliyor ise FlatList compoent'i kullanmak daha mantiklidir.
+- FlatList, data attribute'u icin ekrana basilacak array'i ister. renderItem attribute'u ise verinin ekrana nasil basilacagini belirler ve bir callback fonksiyon alir. Bu callback fonksiyona ilk arguman olarak datayi gonderir. Gelen her bir veriyi ekrana yazdirmak icin ise data.item property'si kullanilir. 
+- FlatList, ScrollView'dan kalitilmis bir component'tir. Ekranin scroll olmasini ve veri basma islemini kendisi arka planda yapmaktadir. 
+- `renderItem` attribute'u aldigi callback fonksiyonu ekrana bastigi her nesne icin tekrar tekrar olusturur. Dolayisiyla bu da veri cogaldiginda performansin dusmesi demektir. Bunu asmak icin de bu callback fonksiyonu bir degiskene atayip bu degiskeni renderItem'a vermek gerekir. 
+- Ekrana tablo veya liste yazdirildiginda react her bir eleman icin unique bir id ister. FlatList yapisi renderitem attribute'una gonderdigi data'da bu id'yi index property'si olarak kendisi olsuturur. Bizim kendi verimiz ise item property'si icerisinde tutulur. 
+- prop uzerinden veri alirken component tarafinda parametre olarak props vermek zorunda degiliz. ES6 ile gelen Destructuring yapisi ile sadece almak istedigimiz property isimlerinin {} parantezleri icerisinde yazip bunlari kullanabiliriz. 
+- React-native'de text indent property'si yoktur. Bunun yerine `'\t'` kacis karakteri kullanilir. 
+- Cihaz olculerini almak icin Dimensions API'si kullanilir. Dimensions.get() metodu iki arguman alir. screen ve window olmak uzere. Saglikli olan window'un arguman olarak verilmedisidir.Buradana donen sonuc ile de height veya width degeri yakalanabilir. 
+- React'te liste halinde gosterilen verilerde bu verileri gosteren yapilarin her birinin unique bir id'ye sahip olmasi gerekir. Bu id verilmezse de calisir ancak verilmesi halinde daha duzgun calisacaktir. Flatlist icerisinde bu unique veriyi tutacak olan yapi ise keyExtractor attribute'udur. 
+- `keyExtractor` bir fonksiyon alir ve bu fonksiyona iki FlatList'e verilen array'in her bir elemani ve FlatList'in array'in her bir elemani icin kensi icinde olusturdugu index'i gonderir. Bu fonksiyon iceririnden geriye return edilen deger her bir FlatList elemanina id olarak yapisir. Biz kendi item iceirisinde unique olan bir veriyi ki bu da id olacaktir- burdan return ederiz. Ancak item ile gelen unique bir deger yoksa index de burada return edilebilir. 
+- FlatList'in  `ListHeaderComponent` attribute'u FlatListin oncesinde yer alacak olan component'i belirler. Banner component'i bir degiskene atanip bu attribute'a verildiginde banner sayfa ile birlikte kayacaktir. Verilmediginde taktide banner yukarida sabit sekilde kalacaktir. 
+- ScrollView component'inin horizontal attribute'u icindeki yapilarin yatay eksende olmasini saglar.
+- ScrollView component'inin `showsHorizontalScrollIndicator` attribute'u bool bir deger alir ve scroll cizgisinin gosterilip gosterilmeycegini belirler. false ise scroll cizgisi gosterilmez.
 
 /////////////////Mosh Lesson
 => props, properties kelimesinin kisaltilmis halidir. 
