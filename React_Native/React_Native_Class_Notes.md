@@ -12,7 +12,7 @@
 - [Tab Navigation](#Tab_Navigation)
 - [RESTful Web API](#RESTful_Web_API)
 - [REDUX (State Management)](#REDUX_State_Management)
-- [DEBUG/RELEASE-APK-TEST-PERFORMANS-APP_ICON-FIREBASE](#DEBUG/RELEASE-APK-TEST-PERFORMANS-APP_ICON-FIREBASE)
+- [DEBUG/RELEASE-APK-TEST-PERFORMANS-APP_ICON-FIREBASE](#DEBUG_RELEASE_APK_TEST_PERFORMANS_AppICON_FIREBASE)
 
 
 ## Giris
@@ -494,7 +494,7 @@ Class component'larda ES6 ile gelen class yapisindadirlar. Functional component'
   	}
    ```
 
-## DEBUG/RELEASE-APK-TEST-PERFORMANS-APP_ICON-FIREBASE
+## DEBUG_RELEASE_APK_TEST_PERFORMANS_AppICON_FIREBASE
 ///////////// 01.11.2020 
 
 - Debug Mode - Release mode--> `npx react-native run-android --variant release `
