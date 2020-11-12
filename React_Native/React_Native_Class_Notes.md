@@ -1,5 +1,19 @@
 <h1 align="center">React Native Class Notes</h1>  
 
+
+## Table of Contents
+
+- [Giris](#Giris)
+- [FlatList](#FlatList)
+- [State](#State)
+- [Hooks](#Hooks)
+- [TODO List App](#TODO List App)
+- [Stack Navigation](#Stack Navigation)
+- [Tab Navigation](#Tab Navigation)
+- [RESTful Web API](#RESTful Web API)
+- [REDUX (State Management)](#REDUX (State Management))
+- [DEBUG/RELEASE - APK - TEST - PERFORMANS - APP ICON - FIREBASE] (#DEBUG/RELEASE - APK - TEST - PERFORMANS - APP ICON - FIREBASE)
+
 ## Giris
 
 - Expo sektorde cok kullanilmiyor. <br/>
@@ -189,7 +203,7 @@ Class component'larda ES6 ile gelen class yapisindadirlar. Functional component'
 - TextInput tipini belirlemek icin kullanilan property `keyboardType` properti'sidir.
 - `adb uninstall <paket-adi>`
 
-## TODO List
+## TODO List App
 ///////////// 18.10.2020
 
 - Projelerimizin daha moduler ve dolayisiyla da daha okunabilir kodlar yazabilmek icin still degiskenleri styles isimli ayri bir dosya icerisinde tutulabilir. Bunun icin src klasoru icerisinde styles.js isimli bir dosya olusturulur. Bunun icerisinde react-native kutuphanesinden StyleSheet API'si import edilir. Her bir custom component icin `StyleSheet.create()` fonksiyonu ile style nesneleri olsuturulur ve bir degiskene atanir. Sayfa sonunda degisken isimleri export edilir. Ilgili component dosyasinda bu styles dosyasindan sadece bu dosyanin style degiskeni import edilerek kullanilir. styles.js dosyasi icerisinde react kutuphanesi import edilmez cunku oradan kullanacagimiz herhangi bir yapi yoktur.
