@@ -7,12 +7,13 @@
 - [FlatList](#FlatList)
 - [State](#State)
 - [Hooks](#Hooks)
-- [TODO List App](#TODO List App)
+- [TODO_List_App](#TODO_List_App)
 - [Stack Navigation](#Stack Navigation)
 - [Tab Navigation](#Tab Navigation)
 - [RESTful Web API](#RESTful Web API)
 - [REDUX (State Management)](#REDUX (State Management))
-- [DEBUG/RELEASE - APK - TEST - PERFORMANS - APP ICON - FIREBASE] (#DEBUG/RELEASE - APK - TEST - PERFORMANS - APP ICON - FIREBASE)
+- [DEBUG/RELEASE-APK-TEST-PERFORMANS-APP_ICON-FIREBASE](#DEBUG/RELEASE-APK-TEST-PERFORMANS-APP_ICON-FIREBASE)
+
 
 ## Giris
 
@@ -203,7 +204,7 @@ Class component'larda ES6 ile gelen class yapisindadirlar. Functional component'
 - TextInput tipini belirlemek icin kullanilan property `keyboardType` properti'sidir.
 - `adb uninstall <paket-adi>`
 
-## TODO List App
+## TODO_List_App
 ///////////// 18.10.2020
 
 - Projelerimizin daha moduler ve dolayisiyla da daha okunabilir kodlar yazabilmek icin still degiskenleri styles isimli ayri bir dosya icerisinde tutulabilir. Bunun icin src klasoru icerisinde styles.js isimli bir dosya olusturulur. Bunun icerisinde react-native kutuphanesinden StyleSheet API'si import edilir. Her bir custom component icin `StyleSheet.create()` fonksiyonu ile style nesneleri olsuturulur ve bir degiskene atanir. Sayfa sonunda degisken isimleri export edilir. Ilgili component dosyasinda bu styles dosyasindan sadece bu dosyanin style degiskeni import edilerek kullanilir. styles.js dosyasi icerisinde react kutuphanesi import edilmez cunku oradan kullanacagimiz herhangi bir yapi yoktur.
@@ -418,7 +419,7 @@ Class component'larda ES6 ile gelen class yapisindadirlar. Functional component'
 - reducer() fonksiyonuna dispatch fonskiyonundan parametre gondermek icin ise fonksiyonun arguman olarak aldigi object verinin icerisinde type property'sinden farkli olarak ikinci bir "payload" property'si olusturulur ve "payload" property'si, object tipinde bir veri alir ve goncerilecek argumanlar bu object verinin birer property'si olarak gonderilir.
 - "payload" isimlendirmesi bir kural degil standarttir.   
 
-## DEBUG/RELEASE - APK - TEST - PERFORMANS - APP ICON - FIREBASE
+## DEBUG/RELEASE-APK-TEST-PERFORMANS-APP_ICON-FIREBASE
 ///////////// 01.11.2020 
 
 - Debug Mode - Release mode--> `npx react-native run-android --variant release `
