@@ -340,6 +340,70 @@ Class component'larda ES6 ile gelen class yapisindadirlar. Functional component'
 - POST requests do not remain in the browser history
 - POST requests have no restrictions on data length
 
+## REDUX (State Management)
+- React-native'de link islemleri Linking Api'si uzerinden gerceklestirilir. `Linking.openURL()` metodu yonlendirilecek olan adresi alir.
+- State yapisinda degiskenleri istedigimiz yerde istedigimiz gibi degistirememizin nedeni UI frameworklerinin `"data-bind"` mimarisi uzerine kurulu olmasidir. Bu mimariye gore compoent icinde kullanilan bi degisken ile html elementi birbirne baglanarak aralarinda bir baglanti kurulur. Boylece bu iki yapi surekli olarak birbiri ile etkilesim halinde bulunur, herhangi bir degisime karsi birbirlerini dinlerler.
+- Data-binding iki yonlu(two-way) ya da tek yonlu olabilir. Kullanilan teknolojiye gore farklilik gosterebilir. Iki yonlu binding mimarisi, bind edilen degisken mevcut degerinden farkli bir deger ile degistirilir ise bu degisim direkt olarak UI'ya yansiyacaktir. Ayni sekilde UI tarafinda bir input ya da vb form element ile bind edilmis ise bu elemente girilecek olan her deger direkt olarak degiskeni etkileyecektir.
+- Iki yonlu data-bind yontemi ile state yapisini kullandik ve bir degisken degerini degistirdigimizde buna bagli olan component bu degiskeni dinledigi icin otomatik olarak degisikligi UI'a yansitir.
+- Ancak ayni degiskenin birden fazla component icierisinde kullanilmasi halinde ne olacak? Degiskenin degerinin degismesi halinde bu degiskene bagli tum component'lar render edilecek ve dolayisiyla da bu performans sorununa neden olacaktir.
+- Bu sorunu cozmek icin kullanilan yontem ise state management patern'inin kullanilmasidir.
+- `FLUX`, facebook tarafindan gelistirilen ve tek yonlu veri akiisi mantigina dayanan bir patern'dir.
+- props uzerinden veri alis verisi icin ic ice component'lar olmasi ve verinin parent ile child arasinda gerceklesmesi gerekir. Ancak sibling component'lar arasinda dogrudan bir veri alisverisi saglanamaz. Bunun icin once parent'a gitmek sonrasinda sibling component'a gelmek gerekir. Bir baska sorun ise Parent component'tan ikinci, ucuncu ve sonrasindaki derecedeki child component'lara dogrudan veri alisverisi olmayisidir. Bunun icin de verinin hiyerarsideki her bir component'tan gecmek zorunda olmasidir. Bu da ciddi bir performans sorununa neden olmaktadir. 
+- Redux, uygulamanin genel kapsaminda kullanilacak global bir state olusturur. 
+- Redux, state management'in ozel bir moduludur. 
+- Oturum bilgilerini saklamak, coklu dil destegi gibi durumlarda state management dolayisyla da redux kullanilir.
+- Global state kullanimi, normal state kullanimina hic bir sekilde engel teskil etmez.
+- Bir state'i sadece ve sadece o component icin kullanacaksak bunun icin redux kullanilmasina gerek yoktur. 
+- Redux sadece global olarak kullanacagin state'lerin var olmasi durumunda kullanilir.
+- Duruma gore state, props ve redux kullanilabilir. Bunlar birbirlerinin alternatifi degil, ihtiyaca gore gerektigi gibi kullanilmasi gerken yapilardir. 
+- Context Api, yine bir state management kutuphanesidir. React'in kendi kutuphanesidir. Redux, Context Api'nin daha genellestirilmis halidir. 
+- Redux tum projelerde kullanilmaz. Global state'e ihtiyac duyulan projelerde kullanilmalidir.
+- Her proje icin Redux modulunun ayri ayri kurulmasi gerekir.
+- Kullanilacak her state'in redux ile olusturulmasi redux'in takip edecegi state sayisini arttirir ve dolayisisla genel yonetim zorlasir. Bir state'i gereksiz yere global'e cekmek yanlis bir kullanim olacaktir. Yanlis bir tasarim olacaktir.
+- Redux'ta tanimlanan bir state, yeni bir deger aldiginda sadece bu state'in kullanildigi component'lar tekrar render edilir.
+- Context ve Context Api, react icindeki iki moduldur.
+- Redux, bir design pattern yapisidir.
+- Store, kullanilacak olan state'lerin object formatinda saklanacagi yerdir.
+- Reducer ise store icesinde depolanan state'lerin guncellenecegi fonksiyonlarin olustrdugu yerdir. reducer bir fonksiyondur. Icerisinde state'lerin farkli islemlere tabi tutuldugu fonksiyonlardan olusur. Bu fonksiyonlar ise bir if ya da switch case icerisinde tutulur.
+- reducer fonksiyonu da global bir yapidadir. Cunku guncelledigi veriler yani store icindeki state'ler global yapidadir.
+- reducer ve store olusturulduktan sonra proje icerisindeki tum component yapisi react-redux modulunden cagrilan provider component'i ile sarmallanir. 
+- Provider component'i sayesinde ayni state'i kullananan componentlar birbirleri ile haberlesir. Herhangi bir yerde state guncellemesi oldugunda provider component'i sayesinde bu state'e bagli olan diger componentlar da render edilir.
+- Action kullanmadan da redux kullanilabilir. Action farkli bir yaklasimdir. Kod okunabilirligini saglamak icin kullanilan bir yapidir.
+- Global state'e ihtiyaci olmayan sayfalarin da provider component'i altinda olmasinda zarar yoktur. 
+- Redux yapisini kullanabilmek icin `npm install redux` ve `npm install react-redux` komutlari calistirilir.
+- Src klasoru altinda context klasoru olusturulur. Bu klasor icerisinde redux yapilarimiz barindirilir.
+- context klasoru icerisinde store.js dosyasi olusturulur ve burada kullanacak oldugumuz state'ler bir object icerisinde key value seklinde tanimlanir. Bu dosyadan statelerimizi tutan object veri export edilir.
+- context klasoru icerisinde ikici bir dosya olarak reducer.js dosyasi olsuturulur. Bu dosya icerisinde reducer isimli bir fonksiyon olusturulur. Bu fonksiyon ilk parametre olarak state, ikinci parametre olarak action nesnesini alir.
+- reducer fonskiyonu icerisinde action nesnesinin type property'sine gore islem yapan bir switch case yapisi kurulur. Her bir case'deki saat `action.type` isimleri upper snake case ile yazilir. Bu bir sorunluluk degil bir standarttir.
+- Her bir case icerisinde ilgili state'in guncellemesini saglayan bir yapi olusturulur. Aslinda switch case icerisindeki her bir case ilgili state'in guncellenmesinden sorumlu bir fonksiyon gibidir diyebiliriz.
+- Case icerisinde ilgili state'e ulasmak icin state nesnesi kullanilir. Her bir store icerisinde key-value seklinde olusturulan her bir state, reducer fonksiyonuna state nesnesi icerisinde property olarak gelir. Dolayisiyla state nesnesi uzerinde ulasilabilir.
+- ❗ `state.counter += 1` seklinde bir kullanim, state.counter read-only oldugu icin kullanilamaz.
+- case icerisindeki son islem ise return `{...state}` seklinde tum statelerin return edilmesidir.
+- return islemi her bir case icerisinde mutlaka yapilmalidir.
+- switch icerisinde son olarak `default: return state` mutlaka denilmelidir. Aksi halde hata verecektir.
+- reducer dosyasi icerisinde yapilacak son islem ise reducer fonskiyonunun export edilmesidir.
+- Her ne kadar store ve reducer yapilari olusturulsa da bunlarin birbirleri ile herhangi bir baglantilari yoktur. Yani store icerisinde state'lerimi, reducer icerisinde state'lerimizi guncelleyecek fonksiyonlari olusturduk ancak bunlarin birbirleri ile baglantilari yok. Iste bu baglatiyi saglayacak olan yapi redux kutuphanesinden createStore isimli fonksiyondur.
+- Projenin ana dosyasinda oncelikle redux kutuphanesinden `createStore` fonksiyonu import edilir. Daha sonra reducer.js dosyasindan reducer fonksiyonu, store.js dosyasindan state'lerimi tuttugumuz object tipindeki initialState isimli degiskenimiz import edilir.
+- `createStore()` fonksiyonu ilk arguman olarak reducer.js dosyasindan import edilen reducer fonksiyonunu, ikinci arguman olarak ise store.js dosyasindan import edilen `initialState` degiskenini alir. Boylece state ve bu state'leri guncelleyecek fonskiyonlar arka tarafta reduc kutuphanesi sayesinde baglanmis olur.
+- State ve reducer arasindaki baglanti yapildiktan sonra redux yapisinin react-native icerisinde kullanilmasini saglayan yapinin projeye entegre edilmesi gerekir. Bunun icin  projenin ana dosyasinda "react-redux" kutuphanesinden "Provider" component'i import edilir. 
+- Proje icerisindeki tum component ve sayfalar `Provider` component'i ile sarmallanir. Yani return fonksiyonu geriye Provider component'i icerisindeki bir yapiyi return eder.
+- ❗ Provider component'inin "store" isimli attribute'una createStore() fonksiyonu birinci argumani reducer fonskiyonu ikinci argumani initialState olacak sekilde verilir. Ya da okunabilirlik ve performan acisindan createStore() fonksiyonu return disinda bir degiskene atanir ve store attribute'una bu degisken verilir.
+- Bu islemlerden sonra redux yapisi geneli itibari ile kurulmus olur. Bundan sonra state'lerin kullanimi ve guncellenmesi islemleri ilgili component uzerinde kolaylikla yapilabilir.
+- Ilgili component icerisinde store icerisindeki bir state'e ulasabilmek icin "react-redux" modulunden `"useSelector"` hooks yapisi import edilir ve bu hooks yapisi kullanilir.
+- Ilgili component icerisinde reducer icerisindeki bir state guncelleme fonksiyonuna ulasabilmek icin ise yine "react-redux" modulunden "useDispatch" hooks yapisi import edilir ve bu yapi kulllanilir.
+- Ilgili component icerisinde sadece state kullanilacak ise `"useSelector"` sadece guncelleme yapilacaksa `"useDispatch"` her ikisi de yapilacaksa her ikisi de import edilir.
+- useSelector() fonskiyonu arguman olarak callback fonksiyon alir ve bu callback fonksiyona arguman olarak state'leri icerisinde tutan object tipindeki veriyi gonderir. callback fonskiyonun body kisminda nokta notasyon ile ilgili state'e property olarak erisilebilir. Ilgili state burada return edilerek bir degiskene atanabilir.
+- Sonrasinda bu degisken component icerisinde istenilen yerde kullanilabilir.
+- `useDispatch()` fonksiyonu ise geriye bir fonksiyon yapisi dondurur. useDispatch() fonksiyonu kod okunabilirligi ve performans acisindan return disinda bir degiskene atanir ve component icerisinde bu degisken uzerinden kullanilir.
+- Bu degisken adi genel olarak dispatch olur. Herhangi bir isim verilebilir ancak dispatch bir standarttir. Bu degisken bir fonksiyonu temsil eder ve arguman olarak object tipinde bir veri alir. Bu object tipindeki veri icerisinde type property'si olarak hangi ilgili state ile hangi islem yapilmak isteniyor ise o fonksiyon ismi string olarak verilir. Bu object tipindeki veri, reducer fonksiyonunda verilen action parametresine denk gelir.
+- reducer icerisinde case olarak tanimlanan fonksiyon isimleri upper snake case ile yazilir demistik. Kompleks projelerde tum bu fonksiyon isimleri actionTypes isimli ayri bir dosyada saklanip, const olarak kullanilir ki intellisense tamamlasin ve boylece yazim hatasi olmasin.
+- `state.counter = state.counter - 1; return { ...state };` seklinde kullanim yerine `return {...state, counter: state.counter - 1}` seklinde de yazilabilir.
+- Atilan her commit tek bir is parcasini gelistirmelidir. Isterse bir satir degismis isterse de on dosya degismis olsun, fark etmez. 
+- Atilan her commit geri donulebilir bir noktada olmalidir. Yani commit atildiginda proje calisabiliyor durumda olmalidir. Hata durumunda iken commit atilmamalidir.
+- Bir state'i guncellemek icin herhangi bir parametre kullanilcak ise bu reducer fonsiyonu icerisinde action parametresi uzerinden yakalanir. action nesnesinin payload property'si uzerinden kullanilacak argumanlara ulasilabilir. reducer fonskiyonu icerisinde kullanilacak olan tum parametreleri payload nesnesi tutar. `"payload"` object tipinde bir veridir ve reducer fonksiyonu icerisinde kullanilcak tum parametre ve degerlerini tutar.
+- reducer() fonksiyonuna dispatch fonskiyonundan parametre gondermek icin ise fonksiyonun arguman olarak aldigi object verinin icerisinde type property'sinden farkli olarak ikinci bir "payload" property'si olusturulur ve "payload" property'si, object tipinde bir veri alir ve goncerilecek argumanlar bu object verinin birer property'si olarak gonderilir.
+- "payload" isimlendirmesi bir kural degil standarttir.   
+
 ## DEBUG/RELEASE - APK - TEST - PERFORMANS - APP ICON - FIREBASE
 ///////////// 01.11.2020 
 
