@@ -530,49 +530,8 @@ Class component'larda ES6 ile gelen class yapisindadirlar. Functional component'
    React Native Firebase dokumani cok iyi: https://rnfirebase.io/
 -  ❓Android Studio -> Create virtual device -> Google Play olan bir cihazi indir
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<br/>
+///////////// 03.11.2020 
+- Async storage paketi -> Telefonun yerel bellegine veri kaydetmek icin kullanilir.
+- Async storage string seklinde veri kabul eder.
+- JSON Parse string nesneyi oriinal haline cevirir.
