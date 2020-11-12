@@ -478,20 +478,22 @@ Class component'larda ES6 ile gelen class yapisindadirlar. Functional component'
 - Sayfalarda/ componentlerde ise; "react-redux" tan {useDispatch, useSelector} HOOKS yapılarını çağırıyoruz
   * useSelector yapısı statelere ulaşmak için kullanılan yapı
   * useDispatch yapısı stateleri güncellemek için kullanılacak functionlara ulaşmak ve stateleri güncellemk için kullanılan yapı
-    ```
-  	import {useDispatch, useSelector} from "react-redux";
+  
+```
+  import {useDispatch, useSelector} from "react-redux";
 
-    	const Component_A = () => {
-  		const myCounter = useSelector(item => item.counter)  // işlem takibi/ bellek tasarrufu için function ı değişkene atadık
-  		const dispatch = useDispatch();  // stateleri güncelleme function
+  const Component_A = () => {
+  	const myCounter = useSelector(item => item.counter)  // işlem takibi/ bellek tasarrufu için function ı değişkene atadık
+  	const dispatch = useDispatch();  // stateleri güncelleme function
 
-  		return (
-  			<View>
+  	return (
+  		<View>
   			<Text>Counter: {myCounter}</Text>  // bu component yada sayfa da oluşturmadığımız halde counter dan veri alıp gösterbildik
-  			<Button title="Arttır" onPress={() => dispatch({type: "INCREASE_COUNTER"})} />  // dispatch function i içine reducer da tanımladığımız 														//swictch-case yapısındaki parametreyi (type) gönderiyoruz
-  			</View>
-  			)
-  	}
+  			<Button title="Arttır" onPress={() => dispatch({type: "INCREASE_COUNTER"})} />  
+				// dispatch function i içine reducer da tanımladığımız 														//swictch-case yapısındaki parametreyi (type) gönderiyoruz
+  		</View>
+  	)
+  }
    ```
 
 ## DEBUG_RELEASE_APK_TEST_PERFORMANS_AppICON_FIREBASE
