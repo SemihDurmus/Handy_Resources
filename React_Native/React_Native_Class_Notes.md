@@ -7,10 +7,10 @@
 - [FlatList](#FlatList)
 - [State](#State)
 - [Hooks](#Hooks)
-- [TODO_List_App](#TODO_List_App)
-- [Stack Navigation](#Stack Navigation)
-- [Tab Navigation](#Tab Navigation)
-- [RESTful Web API](#RESTful Web API)
+- [TODO List App](#TODO_List_App)
+- [Stack Navigation](#Stack_Navigation)
+- [Tab Navigation](#Tab_Navigation)
+- [RESTful Web API](#RESTful_Web_API)
 - [REDUX (State Management)](#REDUX (State Management))
 - [DEBUG/RELEASE-APK-TEST-PERFORMANS-APP_ICON-FIREBASE](#DEBUG/RELEASE-APK-TEST-PERFORMANS-APP_ICON-FIREBASE)
 
@@ -235,7 +235,7 @@ Class component'larda ES6 ile gelen class yapisindadirlar. Functional component'
 - props'a string deger -> `"..."` veya `{"..."}`
 - Mac vs code -> bir kelimeyi seçip command + d yaptigimizda ayni sayfadaki ayni kelimeyi secer. Her bastigimizda ayni olan bir kelime daha secer. Bu sekilde bir değişken, fonksiyon,component vb ismi degistiriken sayfadaki tum elemanları gözden kaçırmadan değiştirebiliriz. 
 
-## Stack Navigation
+## Stack_Navigation
 ///////////// 20.10.2020 
 - https://reactnativeelements.com/ native olmayan UI cozumleri bulabileceğimiz bir site
 - https://www.reactnative.express/ react-native dokümanı gibi, belli noktalarda ondan daha gelişmiş bir kaynak
@@ -297,7 +297,7 @@ Class component'larda ES6 ile gelen class yapisindadirlar. Functional component'
 - ❗ TextInput kullanilirken yapinin hangi kutuphaneden geldigine dikkat edilmelidir. inttelisense iki farkli kutuphaneden TextInput getirir. Bunlardan ilki `react-native-gesture-handler` kutuphanesi digeri ise `react-native` kutuphanesidir. Eger TextInput'u `react-native-gesture-handler` kutuphanesinden olusturur iseniz hata verir. Bu nedenle hangisinden geldigine inttelisense'te acilan tooptip penceresinden bakilmali ona gore cagrilmalidir.
 - Sayfada basta import etmediğimiz bir component yazarken vscode'da auto import calisabilir. Bu noktada dikkat etmek gerek! Auto import'u gesture-handler'dan import etmediğinden emin olmak gerek.
 
-## Tab Navigation
+## Tab_Navigation
 ///////////// 22.10.2020
 - `initialRouteName` ile yazılma sırasına bağlı kalmaksızın acilista ekranda ilk görülecek component seciyoruz
 - Version Lens isimli extension surum kontrolu yapar. Package.json dosyasinda bu extension araciligiyla versiyonlari yukseltmeniz halinde `npm install` diyerek paketlerin guncel hallerinin yuklenmesi gerekir. package.json dosyasinda sadece metinsel olarak yukseltme yapar. Paketleri otomatik olarak indirmez. package.json dosyasinda iken sag ust kosede bulunan V ikonuna tikladiginizda surum kontrolunu yapar ve modul adlarinin uzerinde varsa guncel hali bu halini latest seklinde belitir. Siz dilerseniz bunlara tiklayarak guncel hali ile degistirlmesini isteyebilirsiniz.
@@ -317,7 +317,7 @@ Class component'larda ES6 ile gelen class yapisindadirlar. Functional component'
 - Text component'inin `numberOfLines={2}` attribute' gosterilecek olan satir sayisini belirtmek icin kullanilir. 
 - TouchableOpacity component'inda bulunan tiklama efektini istemiyor isek bunun yerine `TouchableWithoutFeedback` yapisi kullanilir. `TouchableWithoutFeedback` yapisi `TouchableOpacity` yapisindan farkli olarak icerisinde sadece tek bir component ister. Bu komponent fragment `<></>` haricinde birsey olmali.
 
-## RESTful Web API
+## RESTful_Web_API
 ///////////// 24.10.2020
 
 - Web Api, json veya xml formatinda veri cekme islemidir. XML genelde konfigürasyon icindir.
