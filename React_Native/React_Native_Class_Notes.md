@@ -11,7 +11,7 @@
 - [Stack Navigation](#Stack_Navigation)
 - [Tab Navigation](#Tab_Navigation)
 - [RESTful Web API](#RESTful_Web_API)
-- [REDUX (State Management)](#REDUX (State Management))
+- [REDUX (State Management)](#REDUX_(State_Management))
 - [DEBUG/RELEASE-APK-TEST-PERFORMANS-APP_ICON-FIREBASE](#DEBUG/RELEASE-APK-TEST-PERFORMANS-APP_ICON-FIREBASE)
 
 
@@ -355,7 +355,7 @@ Class component'larda ES6 ile gelen class yapisindadirlar. Functional component'
 - POST requests do not remain in the browser history
 - POST requests have no restrictions on data length
 
-## REDUX (State Management)
+## REDUX_(State_Management)
 - React-native'de link islemleri Linking Api'si uzerinden gerceklestirilir. `Linking.openURL()` metodu yonlendirilecek olan adresi alir.
 - State yapisinda degiskenleri istedigimiz yerde istedigimiz gibi degistirememizin nedeni UI frameworklerinin `"data-bind"` mimarisi uzerine kurulu olmasidir. Bu mimariye gore compoent icinde kullanilan bi degisken ile html elementi birbirne baglanarak aralarinda bir baglanti kurulur. Boylece bu iki yapi surekli olarak birbiri ile etkilesim halinde bulunur, herhangi bir degisime karsi birbirlerini dinlerler.
 - Data-binding iki yonlu(two-way) ya da tek yonlu olabilir. Kullanilan teknolojiye gore farklilik gosterebilir. Iki yonlu binding mimarisi, bind edilen degisken mevcut degerinden farkli bir deger ile degistirilir ise bu degisim direkt olarak UI'ya yansiyacaktir. Ayni sekilde UI tarafinda bir input ya da vb form element ile bind edilmis ise bu elemente girilecek olan her deger direkt olarak degiskeni etkileyecektir.
