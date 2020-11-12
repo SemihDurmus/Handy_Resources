@@ -418,6 +418,81 @@ Class component'larda ES6 ile gelen class yapisindadirlar. Functional component'
 - Bir state'i guncellemek icin herhangi bir parametre kullanilcak ise bu reducer fonsiyonu icerisinde action parametresi uzerinden yakalanir. action nesnesinin payload property'si uzerinden kullanilacak argumanlara ulasilabilir. reducer fonskiyonu icerisinde kullanilacak olan tum parametreleri payload nesnesi tutar. `"payload"` object tipinde bir veridir ve reducer fonksiyonu icerisinde kullanilcak tum parametre ve degerlerini tutar.
 - reducer() fonksiyonuna dispatch fonskiyonundan parametre gondermek icin ise fonksiyonun arguman olarak aldigi object verinin icerisinde type property'sinden farkli olarak ikinci bir "payload" property'si olusturulur ve "payload" property'si, object tipinde bir veri alir ve goncerilecek argumanlar bu object verinin birer property'si olarak gonderilir.
 - "payload" isimlendirmesi bir kural degil standarttir.   
+- 📕 (ikinci parca notlar)
+- React.js documentation da bulunuyor
+- REDUX, Context API (React'ın kendi paketi)  benzeri 3.parti bir paket
+- REDUX, sadece React ta değil tüm JS framework lerinde kullanılabilir
+- REDUX yapısı ÇOK ÖNEMLİ !!!
+- Gereksiz Global state tutulmaması gerekli
+- Genel kapsamlı olarak yani Global olarak kullanılacak değişkenler için (state'lerde) Redux kullanılır
+- Aynı sayfada kullanılacak değişkenler için (state) useState kullanılır
+- Global state'ler sayfa içi yada iki sayfa arasında kullanılacak state'ler birlikte kullanılabilir. Redux Global olarak kullanılacak state'lerin tanımlanmasında kullanılır
+- Kullanılacak kütüphaneler her proje için ayrı ayrı kurulur
+- Context API/ REDUX genel componentler arasında veri aktarımı için kullanılmak için kullanılır (state, theme vb.)
+- Tüm stateleri Context API/ REDUX da tutarsak kod takibi/ proje okuması çok zorlaşır
+- Props yapısı sadece tek taraflı veri aktarımı için kullanılır
+- `Props Drilling`: gereksiz yere çok fazla props geçirme
+- Props Passing:
+- Redux'ta Design Patterndir
+- Birbiri ile iletişimi (button, props vs.) olmayan sayfalar arasında veri aktarımı
+- Herhangi bir component/ sayfadan Global değerleri görüntüleme veya güncelleme işlemleri yapılabilir
+- Kurulum yapılacak paketler: {redux} ve {react-redux}
+- 1- Provider: Tüm uygulamayı/ sayfaları/ componentleri sarmalayacak (wrap) olan yapı (stateler arası geçişi sağlamak için oluşturulan ortam) (<Provider> ALL CONTENTS </Provider>)
+
+- 2- Store: Stateleri tutar (initialState-object)
+     State: store da oluşturulan initialState-object, action: gönderilen parametreler,
+     ```
+	{
+  	const initialState = {
+    		counter: 0
+    		};
+
+    	export default initialState;
+	}
+     ```
+
+- 3- Reducer: Stateleri güncellemek için functionları tutar- state güncellemek için kullanıcak function ların hepsi bir (case) yapısı oluyor. Aynı function ile birden fazla state güncellemesi yapılabilir.
+   	Switch-case yapısı (if de kullanılabilir fakat best practice switch-case)
+	
+- Proje klasöründe "src" klasörü altına "context" adında bir klasör oluşturulur ve "store" ve "reducer" burada oluşturulur
+- Ana sayfamıza import etmek için;
+  * İlk önce "redux" içerisinde "createStore" adında bir function çağırıyoruz. Bu function bizim initial value/ reducer larımızı alacak ve üzerlerinde işlem yapabilmemiz için gerekli yapıyı kuracak
+  * React ta bu yapıyı sarmalamak için kullanılacak yapı olan {Provider} ı ise "react-redux"dan çağırıyoruz
+    ```
+  	import { createStore } from "redux";
+  	import { Provider } from "react-redux";
+  	import reducer from "./context/reducer";
+  	import initialState from "./context/store";
+
+  	const store = createStore(reducer, initialState);  // createStore function'ı kolaylık olması ve bellek yönetimi açısından bir değişkene atıyoruz
+
+  	const Main = () => {
+  		return (
+  		    <Provider>
+  		    	tüm uygulama
+  		    </Provider>
+  	  	)
+  	  }
+   
+    ```
+- Sayfalarda/ componentlerde ise; "react-redux" tan {useDispatch, useSelector} HOOKS yapılarını çağırıyoruz
+  * useSelector yapısı statelere ulaşmak için kullanılan yapı
+  * useDispatch yapısı stateleri güncellemek için kullanılacak functionlara ulaşmak ve stateleri güncellemk için kullanılan yapı
+    ```
+  	import {useDispatch, useSelector} from "react-redux";
+
+    	const Component_A = () => {
+  		const myCounter = useSelector(item => item.counter)  // işlem takibi/ bellek tasarrufu için function ı değişkene atadık
+  		const dispatch = useDispatch();  // stateleri güncelleme function
+
+  		return (
+  			<View>
+  			<Text>Counter: {myCounter}</Text>  // bu component yada sayfa da oluşturmadığımız halde counter dan veri alıp gösterbildik
+  			<Button title="Arttır" onPress={() => dispatch({type: "INCREASE_COUNTER"})} />  // dispatch function i içine reducer da tanımladığımız 														//swictch-case yapısındaki parametreyi (type) gönderiyoruz
+  			</View>
+  			)
+  	}
+   ```
 
 ## DEBUG/RELEASE-APK-TEST-PERFORMANS-APP_ICON-FIREBASE
 ///////////// 01.11.2020 
