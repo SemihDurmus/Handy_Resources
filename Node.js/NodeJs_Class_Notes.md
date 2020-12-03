@@ -17,3 +17,10 @@
   * It's very fast. It runs on the V8 engine and uses non-blocking code.
   * There is a huge ecosystem of open source packages (npm)
   * it's great for real-time services like chat-rooms.
+
+- MacOS ile node.js'in herhangi bir versiyonunu kullanabiliriz. `nvm use node`
+- Terminal'e node yazinca alt satirda dogrudan node kodu yazabiliriz. Bu islemin ismi --> READ EVALUATE PRINT LOOP (REPL). Buradan cikmak icin 2 defa `ctrl + C` 
+- node.js JS ile calisir ama browser'da calisan alert, windows gibi ogeleri dogal olarak calistirmaz.
+- Asenkron calisir. Aslinda senkron calisir ama asenkronu destekler.
+- Diger ozellikler icin [link](https://www.tutorialspoint.com/nodejs/nodejs_quick_guide.htm)
+- Node.js "Event driven"dir. (Bir event baslatiyoruz, o event sonrasinda bize donus yapiyor)
