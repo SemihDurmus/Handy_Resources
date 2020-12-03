@@ -29,8 +29,12 @@
 - No Buffering − Node.js applications never buffer any data. These applications simply output the data in chunks.
 - License − Node.js is released under the MIT license. (= free of charge)
 - Diger ozellikler icin [link](https://www.tutorialspoint.com/nodejs/nodejs_quick_guide.htm)
-- Module import etmek icin `import` yerine `require` kullaniyoruz. Cunku node import'u babel sayesinde kullanabiliyorduk.  
-- package.json icerigi
+- Module import etmek icin `import` yerine `require` kullaniyoruz. Cunku import'u babel sayesinde kullanabiliyorduk. Node'da babel kullanamiyoruz.
+- Herhangi bir paket yukledigimizde klasorumuzde `node_modules` klasoru ve `package-lock.json` dosyasi olusur, ancak `package.json` olusmaz.
+- Yukaridakilere ilave olarak `package.json` da olusturmak istedigimizde bash terminalde `npm init` komutunu kullaniyoruz. Bu komuttan sonra asama asama `package.json` dosyasindaki bilgileri duzenlememiz veya default olarak biraktigimiza dair onay vermemiz gerekiyor. 
+- Bu islemi gerceklestirdikten sonra kurdugumuz paketlerin bilgileri dependencies altinda yer aliyor. Eskiden yuklenen paketin dependencies'te yer almasi icin `--save` kullanilirdi. Ornek `npm i morgan --save`. Artik buna gerek yok `npm i morgan` yeterli. Ancak yukledigimiz paket sadece development kisminda yer alsin, production'da yer almasin istiyorsak kullanacagimiz komut `npm i cowsay --save-dev`. ❗️ Ozellikle buyuk projelerde paketlerin yuklendigi yerler onemli. 
+- `npm init -y` ile en hizli bicimde tum degerler default olacak sekilde `package.json` olusturabiliriz.
+- Ornek bir `package.json` icerigi:
 
 ```
       {
