@@ -29,4 +29,34 @@
 - No Buffering − Node.js applications never buffer any data. These applications simply output the data in chunks.
 - License − Node.js is released under the MIT license. (= free of charge)
 - Diger ozellikler icin [link](https://www.tutorialspoint.com/nodejs/nodejs_quick_guide.htm)
+- Module import etmek icin `import` yerine `require` kullaniyoruz. Cunku node import'u babel sayesinde kullanabiliyorduk.  
+- package.json icerigi
+
+```
+      {
+        "name": "test-logger",
+        "version": "1.0.0",
+        "description": "This is a short description",
+        "main": "index.js",
+        "scripts": {
+          "test": "echo \"Error: no test specified\" && exit 1"
+        },
+        "repository": {
+          "type": "git",
+          "url": "https://github.abc.git"
+        },
+        "keywords": [
+          "test",
+          "local"
+        ],
+        "author": "John Clarus",
+        "license": "MIT",
+        "dependencies": {
+          "morgan": "^1.10.0"
+        },
+        "devDependencies": {
+          "cowsay": "^1.4.0"
+        }
+      }
+```
 
