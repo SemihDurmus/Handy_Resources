@@ -16,4 +16,4 @@
   * It uses JavaScript.
   * It's very fast. It runs on the V8 engine and uses non-blocking code.
   * There is a huge ecosystem of open source packages (npm)
-  * it's great for real-time services (like charts)
+  * it's great for real-time services like chat-rooms.
