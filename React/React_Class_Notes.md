@@ -1,7 +1,7 @@
 
 <h1 align="center">React Class Notes</h1>  
 
-<img src="whyreact.jpg" >
+<img src="whyreact.jpg" ><br/>
 ## Table of Contents
 
 - [Giris](#Giris)
