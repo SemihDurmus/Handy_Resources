@@ -7,7 +7,7 @@
 - [Giris](#Giris)
 
 ## Giris
-//////////01.12.2020
+////////// 01.12.2020
 - What is Node.js?
   * Node.js is a platform which allows us to run JavaScript on a computer or a server.
   * So basically it allwos us to read, delete and update files.
@@ -63,4 +63,13 @@
         }
       }
 ```
+- Neden Express bu kadar yaygin? 
+  * Hizli
+  * Belli bir forma/sarta bagli degil
+  * Boyutu oldukca kucuk
+- Kodda yaptigimiz degisikliklerin islev gormesi icin her degisiklik sonrasinda server'i restart etmemiz gerekiyor. Bizi bu zahmetli isten kurtaran paket nodemon.
+`npm i nodeman --save-dev`. 
+- Bunu kurduktan sonra ne yapiyoruz? package.json dosyasi icindeki script altina `"start" : "nodemon"` yazip `npm start` ile calistirdigimizda her save ettigimizde yaptigimiz degisiklikler etki ediyor. 
+- start'in default degeri `"node index"` idi. Bunlari silip sadece nodemon yazdiktan sonra bile index dosyasi calisti. Neden? Cunku index.js main'in karsisinda yer aliyor (`"main": "index.js"`)ve program her zaman main'in belirttigi dosyayi calistirir.
+
 
