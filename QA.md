@@ -43,6 +43,11 @@ When you compare undefined with Null using strict equality (===), you get false,
   * Form control elements<br/>
 JS has numerous DOM methods which allow the program to access and manipulate every single element in an HTML document.
   <hr/>
+- WHAT IS MVC (MODAL VIEW CONTROLLER?)
+- Today the websites can be very advances and can implement a lot of computational process.
+
+The important thing to about this design is that the model and the view do not interact with each other. Any reaction between the model and the view is carried out through the controller. It means that the presentation of the data and the logic of the data are completely seperated which makes complex applications pretty easier. Imagine a user sends a request to the controller to see the list of city names, the controller sends the request to the model to get the city names and the model returns the list to the controller. If the controller gets the list successfully, then it turns to the view. The view renders the data into html so that it can be used by the browser. Now the controller takes the presentation and return it back to the user. If the controller gets an error from the view, then it asks the view to render a presentation of the error. This case an error is returned to the user instead of the city names list. In sum; the model handles all the data,  the view handles all the presentation and the controller tells the these two what to do. This is the basic architecture of MVC.
+ <hr/>
  
 ## React_React-Native
 - REACT vs REACT-NATIVE?
