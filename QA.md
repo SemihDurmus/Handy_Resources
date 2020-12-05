@@ -43,11 +43,6 @@ When you compare undefined with Null using strict equality (===), you get false,
   * Form control elements<br/>
 JS has numerous DOM methods which allow the program to access and manipulate every single element in an HTML document.
   <hr/>
-- WHAT IS MVC (MODAL VIEW CONTROLLER?)
-- Today the websites can be very advances and can implement a lot of computational process.
-
-The important thing to about this design is that the model and the view do not interact with each other. Any reaction between the model and the view is carried out through the controller. It means that the presentation of the data and the logic of the data are completely seperated which makes complex applications pretty easier. Imagine a user sends a request to the controller to see the list of city names, the controller sends the request to the model to get the city names and the model returns the list to the controller. If the controller gets the list successfully, then it turns to the view. The view renders the data into html so that it can be used by the browser. Now the controller takes the presentation and return it back to the user. If the controller gets an error from the view, then it asks the view to render a presentation of the error. This case an error is returned to the user instead of the city names list. In sum; the model handles all the data,  the view handles all the presentation and the controller tells the these two what to do. This is the basic architecture of MVC.
- <hr/>
  
 ## React_React-Native
 - REACT vs REACT-NATIVE?
@@ -108,4 +103,8 @@ The important thing to about this design is that the model and the view do not i
   * Real DOM: DOM stands for “Document Object Model”. The DOM in simple words represents the UI of your application. Every time there is a change in the state of your application UI, the DOM gets updated to represent that change. Now the catch is frequently manipulating the DOM affects performance, making it slow.
   * Virtual DOM: That’s where the concept of virtual DOM comes in and performs significantly better than the real DOM. The virtual DOM is only a virtual representation of the DOM. Every time the state of our application changes, the virtual DOM gets updated instead of the real DOM.
   <hr/>
-
+- WHAT IS MVC (MODAL VIEW CONTROLLER)
+- Today the websites can be very advanced and can implement a lot of computational process. To make working with such web applications easier, developers use different patterns to lay out their projects. In this respect the most popular pattern is MVC. The goal of this pattern is to split a large application into specific sections each its own purpose. As regards to its abbreviation, the model consists of three different sections: the controller, the model and the view. In this pattern controller acts as a bridge between two other components and is responsible for the flow of the requests. It tells the rest of the sections what to do. Model section is responsible for the logic of the model and interacts with the database. The view is only concerned with the presentation of the data coming from the controller. It contains a template file that dynamically renders html based on this data. <br/><br/>
+The important thing to about this design is that the model and the view do not interact with each other. Any reaction between the model and the view is carried out through the controller. It means that the presentation and the logic of the data are completely seperated which makes complex applications pretty easier. <br/><br/>
+Imagine a user sends a request to the controller to see the list of city names, the controller sends the request to the model to get the city names and the model returns the list to the controller. If the controller gets the list successfully, then it turns to the view. The view renders the data into html so that it can be used by the browser. Now the controller takes the presentation and return it back to the user. If the controller gets an error from the view, then it asks the view to render a presentation of the error. This case an error is returned to the user instead of the city names list. In sum; the model handles all the data,  the view handles all the presentation and the controller tells the these two what to do. This is the basic architecture of MVC.
+ <hr/>
