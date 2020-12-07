@@ -8,6 +8,8 @@
 
 ## Giris
 ////////// 01.12.2020
+- Founded by Ryan Dahl in 2009.
+- 14.15.1 LTS (14-> major, 15-> minor, 1-> patch)
 - What is Node.js?
   * Node.js is a platform which allows us to run JavaScript on a computer or a server.
   * So basically it allwos us to read, delete and update files.
