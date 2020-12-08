@@ -131,24 +131,99 @@
     res.render("main");
    });
 ```
+- Burada views klasorunu set ettik, bu klasor icine giren tum ejs dosyalarini kullanabiliriz. Dosyalari tek tek set etmeye gerek yok. 
+- render, bir templeyti derleyip sonucunu gondermek icin kullaniliyor.
 - `get` ve `use` farki. `get`te icindeki sarti saglar ise fonksiyonu dondurur. use'da => gelen butun talepler use'a ugrar, `""` icerisindeki sarti saglarsa fonksiyonu calistirir.  
 - Node'da react'ta oldugu gibi routes kullanabiliriz. Bunun icin proje klasoru latina routes isimli bir klasor ve altina MainRouter.js dosyasi olusturuyoruz.
 - Sorasinda index.js'deki get'in callback fonksiyonunu MainRouter'a tasiyoruz. 
-  * Mainrouter.js icinde
+- 1️⃣ Mainrouter.js icinde
 ```
    exports.getMain = (res,req)=> {
      res.render("main");
    }
    //exports objesine getmain'i yerlestirdik.
 ```
-  * index.js icinde
+- index.js icinde
 ```
    const MainRouter = require("./routes/Mainrouter");
    
    app.get("/", MainRouter.getMain)
 ```
-
+- 2️⃣ express kullanimi ile MainRouter.js
+```
+  const express = require("express");
+  const router = express.Router();
+  
+  router.get("/", (req,res)=> {
+   res.render("main");
+  });
+  
+  module.exports = router
+```
+- express kullanimi ile index.js
+```
+   const MainRouter = require("./routes/Mainrouter");
+   
+   app.use("/", MainRouter)
+   
+   //Dikkat artik get degil use kullaniyoruz
+```
+- ❗️ index.js'te app.use icinde "/user" ifadesi belirledik diyelim. Bu ifadeyle baslayan tum istekleri UserRouter.js'e gondermis olalim (bu az onceki MainRouter.js gibi islev goren bir dosya). Bu dosya icinde yazacagimiz get icindeki  `"/"` ifadesi `"/user"`a denk geliyor. Ornegin `router.get("/add", .. ` dersek de bu `/user/add` anlamina gelir.
+- AMACIMIZ MVC YAPISI KURARAK ISTEKLERE CEVAP VERMEK.
+- Simdi template'e bir degisken gonderelim. Yukarida belirttigimiz router icindeki render'a bir parametre daha ekliyoruz. `res.render("main", {name : "John"})`. 
+- ejs templeyti icindeki karsiligi 
+```
+<body>
+   HELLO <%=name%>
+</body>
+```
+- Browser'da gorunen => HELLO John
+- name'i query olarak alalim. Adres cubugundaki url'e => `localhost:5000/?name=jane` yazalim. 
+- url'de ? var ise bunun oncesi domain, sonrasi query'dir.
+- MainRouter.js icindeki render => `res.render("main", {name : req.query.name})`.
+- Browser'da gorunen => HELLO John
+- Name gelmezse "HELLO Stranger donsun"
+```
+<body>
+    
+   <% if(name) { %>
+      <h1> HELLO <%=name%> </h1>
+   <% } else { %>
+        <h1> HELLO Stranger </h1>
+   <% } %>
+   
+</body>
+```
+- Simdi de object formatinda bir veriyi templeyt ile map edelim.
+- Once models isimi bir klasor olusturup icine data.js dosyasini ekliyorum. Icerigi:
+```
+ exports.userList =  [
+  { id : 0, name : "Nick"},
+  { id : 1, name : "Rick"},
+  { id : 2, name : "Mary"},
+  { id : 3, name : "Gordon"},
+ ];
+```
+- UserRouter.js icerigine:
+```
+ const data = require("../models/data");
+ 
+ 
+ router.get("/", (res,req)=>{
+   res.render("main", {users : data.userList});
+ });
+```
+- users.ejs
+```
+ User List: 
+ <% users.forEach(user => { %>
+ 
+    <p> <%=user.name %></p>
+    
+ <% } %>
+```
 ## ✅Ucuncu_gun
+```
 
 - app.get("/user", ) deyince /user path inden  get methodu ile  bir istek gelirse şunu uygula, şu cevabı gönder gibi bir anlama geliyor.
 app.use de buna karşılık ne diyebiliriz? -> gelen isteğin methodu ne olursa(get, post, put vb) olsun şu cevabı gönder.
