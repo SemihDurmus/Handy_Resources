@@ -119,6 +119,7 @@
   * `app.get("/", (req,res)={response.sendFile(path.join(__dirname,"about.html"))})` Ancak bu dsya gondermek icin tercih edilen bir yontem degildir.
 - Template denince MVC modelinin view tarafinda kullanilan icerisinde belirlenen bosluklari doldurup kullanacagimiz bir sablon gelsin. Ornek `<%=title%>`
 - Express'i destekleyen pek cok template var. Biz bunlardan EJS(Embedded JS template engine)'i kullanacagiz, ayrica Pug da gorecegiz. (expressjs.com/resources/template-engines.html)
+- Templateler bizim dinamik web sayfasi olusturmamizi saglar.
 
 ## ✅Ucuncu_gun
 
