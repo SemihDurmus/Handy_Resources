@@ -4,11 +4,11 @@
 
 ## Table of Contents
 
-- [01.12.2020](#Birinci_gun)
-- [03.12.2020](#Ikinci_gun)
-- [05.12.2020](#Ucuncu_gun)
+- [01.12.2020](#✅Birinci_gun)
+- [03.12.2020](#✅Ikinci_gun)
+- [05.12.2020](#✅Ucuncu_gun)
 
-## Birinci_gun
+## ✅Birinci_gun
 <br/>
 <img src="./img/ryan.jpg" height="250px" align="center"><br/>
 
@@ -110,17 +110,17 @@
   * `path.normalize(wrogPathname)` ile eksik/yanlis yazilmis path'ler duzeltilir. Ornek ters-duz slash (/\).
   * `path.extname(filename)` dosya uzantisini verir.<br/>
   
-## Ikinci_gun
+## ✅Ikinci_gun
 
 - Projemizi heroku gibi platformlara yukledigimizde local port konusunda sorun yasayabiliriz. Bunun cozumu icin:
   * `const port = process.env.port || 5000;`
 - Express ile text gonderebildigimiz gibi file da gonderebiliriz.
   * `app.get("/", (req,res)={response.send("Hello from server")})`
   * `app.get("/", (req,res)={response.sendFile(path.join(__dirname,"about.html"))})` Ancak bu dsya gondermek icin tercih edilen bir yontem degildir.
-- Template denince MVC modelinin view tarafinda kullanilan icerisinde belirlenen bosluklari doldurup kullanacagimiz bir sablon. Ornek `<%=title%>`
-- Express'i destekleyen pek cok template var. Biz bunlardan EJS(Embedded JS template engine)'i kullanacagiz. (expressjs.com/resources/template-engines.html)
+- Template denince MVC modelinin view tarafinda kullanilan icerisinde belirlenen bosluklari doldurup kullanacagimiz bir sablon gelsin. Ornek `<%=title%>`
+- Express'i destekleyen pek cok template var. Biz bunlardan EJS(Embedded JS template engine)'i kullanacagiz, ayrica Pug da gorecegiz. (expressjs.com/resources/template-engines.html)
 
-## Ucuncu_gun
+## ✅Ucuncu_gun
 
 - app.get("/user", ) deyince /user path inden  get methodu ile  bir istek gelirse şunu uygula, şu cevabı gönder gibi bir anlama geliyor.
 app.use de buna karşılık ne diyebiliriz? -> gelen isteğin methodu ne olursa(get, post, put vb) olsun şu cevabı gönder.
