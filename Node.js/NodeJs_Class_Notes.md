@@ -119,7 +119,34 @@
   * `app.get("/", (req,res)={response.sendFile(path.join(__dirname,"about.html"))})` Ancak bu dsya gondermek icin tercih edilen bir yontem degildir.
 - Template denince MVC modelinin view tarafinda kullanilan icerisinde belirlenen bosluklari doldurup kullanacagimiz bir sablon gelsin. Ornek `<%=title%>`
 - Express'i destekleyen pek cok template var. Biz bunlardan EJS(Embedded JS template engine)'i kullanacagiz, ayrica Pug da gorecegiz. (expressjs.com/resources/template-engines.html)
-- Templateler bizim dinamik web sayfasi olusturmamizi saglar.
+- Templateler bizim dinamik web sayfasi olusturmamizi saglar. 
+- ejs paketini kur -> `npm i ejs`
+- Proje klasoru icinde view isimli bir klasor olusturalim. Icinde main.ejs isimli bir template file olsun. Bu dosyaya erisim icin render metodu ve set ayarlari yapmamiz gerek.
+- 
+```
+   app.set("view engine", "ejs");
+   app.set("views", path.join(__dirname, "views"));
+   
+   app.get("/", (req, res)=> {
+    res.render("main");
+   });
+```
+- `get` ve `use` farki. `get`te icindeki sarti saglar ise fonksiyonu dondurur. use'da => gelen butun talepler use'a ugrar, `""` icerisindeki sarti saglarsa fonksiyonu calistirir.  
+- Node'da react'ta oldugu gibi routes kullanabiliriz. Bunun icin proje klasoru latina routes isimli bir klasor ve altina MainRouter.js dosyasi olusturuyoruz.
+- Sorasinda index.js'deki get'in callback fonksiyonunu MainRouter'a tasiyoruz. 
+  * Mainrouter.js icinde
+```
+   exports.getMain = (res,req)=> {
+     res.render("main");
+   }
+   //exports objesine getmain'i yerlestirdik.
+```
+  * index.js icinde
+```
+   const MainRouter = require("./routes/Mainrouter");
+   
+   app.get("/", MainRouter.getMain)
+```
 
 ## ✅Ucuncu_gun
 
