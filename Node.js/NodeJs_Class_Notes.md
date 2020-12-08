@@ -8,7 +8,7 @@
 
 ## Giris
 ////////// 01.12.2020<br/>
-<img src="./img/ryan.jpg" height="250px"><br/>
+<img src="./img/ryan.jpg" height="250px" align="center"><br/>
 
 - Founded by Ryan Dahl in 2009.
 - 14.15.1 LTS (14-> major, 15-> minor, 1-> patch)
@@ -37,11 +37,13 @@
 - License : Node.js is released under the MIT license. (= free of charge)
 - Diger ozellikler icin [link](https://www.tutorialspoint.com/nodejs/nodejs_quick_guide.htm)
 - Module import etmek icin `import` yerine `require` kullaniyoruz. Cunku import'u babel sayesinde kullanabiliyorduk. Node'da babel kullanamiyoruz.
-- 
-- Herhangi bir paket yukledigimizde klasorumuzde `node_modules` klasoru ve `package-lock.json` dosyasi olusur, ancak `package.json` olusmaz.
+- <img src="./img/url.png" width="800px"><br/>
+- Iki onemli global degisken `__dirname` ve `__filename`. Directory ve dosya pathlerini absolute olarak verirler.
+- Herhangi bir paket yukledigimizde klasorumuzde alt bilesenleriyle birlikte `node_modules` klasoru ve `package-lock.json` dosyasi olusur, ancak `package.json` olusmaz.
 - Yukaridakilere ilave olarak `package.json` da olusturmak istedigimizde bash terminalde `npm init` komutunu kullaniyoruz. Bu komuttan sonra asama asama `package.json` dosyasindaki bilgileri duzenlememiz veya default olarak biraktigimiza dair onay vermemiz gerekiyor. 
-- Bu islemi gerceklestirdikten sonra kurdugumuz paketlerin bilgileri dependencies altinda yer aliyor. Eskiden yuklenen paketin dependencies'te yer almasi icin `--save` kullanilirdi. Ornek `npm i morgan --save`. Artik buna gerek yok `npm i morgan` yeterli. Ancak yukledigimiz paket sadece development kisminda yer alsin, production'da yer almasin istiyorsak kullanacagimiz komut `npm i cowsay --save-dev`. ❗️ Ozellikle buyuk projelerde paketlerin yuklendigi yerler onemli. 
+- ❗️ Bu islemi gerceklestirdikten sonra herhangi bir paket kurdugumda paketin bilgileri dependencies altinda otomatik olarak olusur. Eskiden yuklenen paketin dependencies'te yer almasi icin `--save` kullanilirdi. Ornek `npm i packagename --save`. Artik buna gerek yok `npm i packagename` yeterli. Ancak yukledigimiz paket sadece development kisminda yer alsin, production'da yer almasin istiyorsak kullanacagimiz komut `npm i packagename --save-dev`. Ozellikle buyuk projelerde paketlerin yuklendigi yerler onemli. 
 - `npm init -y` ile en hizli bicimde tum degerler default olacak sekilde `package.json` olusturabiliriz.
+- Bir tavsiye : node.js kulanirken npm, react kullanirken yarn kullanin.
 - Ornek bir `package.json` icerigi:
 
 ```
@@ -71,17 +73,42 @@
         }
       }
 ```
+- Express nedir?
+  node.js icin web framework'u. (Express kullaninca manuel olarak yaptigimiz bir cok seyi yapmamiza gerek kalmiyor.)
 - Neden Express bu kadar yaygin? 
-  * Hizli
-  * Belli bir forma/sarta bagli degil
-  * Boyutu oldukca kucuk
+  * Hizli / fast
+  * Belli bir forma/sarta bagli degil /unopinionated
+  * Boyutu oldukca kucuk / minimalist
+- 
+```
+   npm install express
+   const express = require("express")
+   express().listen()
+```
+- Yaygin kullanim `const app = express()`
+- `app.listen(5000, ()=>{console.log("I am listening on port 5000")})` .listen callback function alir.
 - Kodda yaptigimiz degisikliklerin islev gormesi icin her degisiklik sonrasinda server'i restart etmemiz gerekiyor. Bizi bu zahmetli isten kurtaran paket nodemon.
 `npm i nodeman --save-dev`. 
 - Bunu kurduktan sonra ne yapiyoruz? package.json dosyasi icindeki script altina `"start" : "nodemon"` yazip `npm start` ile calistirdigimizda her save ettigimizde yaptigimiz degisiklikler etki ediyor. 
-- start'in default degeri `"node index"` idi. Bunlari silip sadece nodemon yazdiktan sonra bile index dosyasi calisti. Neden? Cunku index.js main'in karsisinda yer aliyor (`"main": "index.js"`)ve program her zaman main'in belirttigi dosyayi calistirir.
-
-////////// 03.12.2020
-////////// 05.12.2020
+- start'in default degeri `"node index"` idi. Bunlari silip sadece nodemon yazdiktan sonra bile index dosyasi calisir. Neden? Cunku index.js main'in karsisinda yer aliyor (`"main": "index.js"`)ve program her zaman main'in belirttigi dosyayi calistirir.
+- <img src="./img/longurl.png" width="800px"><br/>
+- query bir object'tir. console.log(req.query)  //localhost:5000/user?no=12  //{no:12}
+-
+```
+ //localhost:5000/user?no=12
+  url => /user?no=12
+  baseUrl =>
+  original Url => /user?no=12
+  path => /user
+  query => {no:12}
+```
+- Express icin onemli moduller.
+  * os => built-in bir module'dur server isletim sistemi bilgilerini doner. `os.type` , `os.platform()`, `os.freemem()`, `os.totalmem()`
+  * path => Dosya pathlerine dogru olarak ulasmaya yardimci olur.`const custompath = path.join(__dirname. "/testFolder")`. 
+  * `path.normalize(wrogPathname)` ile eksik/yanlis yazilmis path'ler duzeltilir. Ornek ters-duz slash (/\).
+  * `path.extname(filename)` dosya uzantisini verir.<br/>
+////////// 03.12.2020<br/>
+////////// 05.12.2020<br/>
 - app.get("/user", ) deyince /user path inden  get methodu ile  bir istek gelirse şunu uygula, şu cevabı gönder gibi bir anlama geliyor.
 app.use de buna karşılık ne diyebiliriz? -> gelen isteğin methodu ne olursa(get, post, put vb) olsun şu cevabı gönder.
 
