@@ -108,8 +108,9 @@
   * path => Dosya pathlerine dogru olarak ulasmaya yardimci olur.`const custompath = path.join(__dirname, "/testFolder")`. 
   * `path.normalize(wrogPathname)` ile eksik/yanlis yazilmis path'ler duzeltilir. Ornek ters-duz slash (/\).
   * `path.extname(filename)` dosya uzantisini verir.<br/>
+  
 ## 03.12.2020
-<br/>
+
 - Projemizi heroku gibi platformlara yukledigimizde local port konusunda sorun yasayabiliriz. Bunun cozumu icin:
   * `const port = process.env.port || 5000;`
 - Express ile text gonderebildigimiz gibi file da gonderebiliriz.
