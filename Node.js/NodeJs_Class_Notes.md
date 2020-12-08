@@ -7,13 +7,16 @@
 - [Giris](#Giris)
 
 ## Giris
-////////// 01.12.2020
+////////// 01.12.2020<br/>
+<img src="./img/ryan.jpg" height="250px"><br/>
+
 - Founded by Ryan Dahl in 2009.
 - 14.15.1 LTS (14-> major, 15-> minor, 1-> patch)
 - What is Node.js?
   * Node.js is a platform which allows us to run JavaScript on a computer or a server.
   * So basically it allwos us to read, delete and update files.
   * Easy communicate with a database.
+  
 - Why do we use Node.js?
   * It uses JavaScript.
   * It's very fast. It runs on the V8 engine and uses non-blocking code.
@@ -21,17 +24,20 @@
   * it's great for real-time services like chat-rooms.
 
 - MacOS ile node.js'in herhangi bir versiyonunu kullanabiliriz. `nvm use node`
-- Terminal'e node yazinca alt satirda dogrudan node kodu yazabiliriz. Bu islemin ismi --> READ EVALUATE PRINT LOOP (REPL). Buradan cikmak icin 2 defa `ctrl + C` 
-- node.js JS ile calisir ama browser'da calisan alert, windows gibi ogeleri dogal olarak calistirmaz.
-- Asenkron calisir. Aslinda senkron calisir ama asenkronu destekler.
-- Asynchronous and Event Driven − All APIs of Node.js library are asynchronous, that is, non-blocking. It essentially means a Node.js based server never waits for an API to return data. The server moves to the next API after calling it and a notification mechanism of Events of Node.js helps the server to get a response from the previous API call.<br/>
-  <img src="./event.png" height="250px">
-- Very Fast − Being built on Google Chrome's V8 JavaScript Engine, Node.js library is very fast in code execution.
-- Single Threaded but Highly Scalable − Node.js uses a single threaded model with event looping. Event mechanism helps the server to respond in a non-blocking way and makes the server highly scalable as opposed to traditional servers which create limited threads to handle requests. Node.js uses a single threaded program and the same program can provide service to a much larger number of requests than traditional servers like Apache HTTP Server.
-- No Buffering − Node.js applications never buffer any data. These applications simply output the data in chunks.
-- License − Node.js is released under the MIT license. (= free of charge)
+- Terminal'e node yazinca alt satirda dogrudan node kodu yazabiliriz(python'daki gibi). Bu islemin ismi --> READ EVALUATE PRINT LOOP (REPL). Buradan cikmak icin 2 defa `ctrl + C` 
+- Terminalde node.js dosyasini calistirmak icin  $node filename
+- node.js JS ile calisir ama browser'da calisan `alert`, `window` gibi ogeleri dogal olarak calistirmaz.
+- Asenkron calisir. (Yani senkron calisir ama asenkronu da destekler.)
+- (JS) Event Driven bir dildir. 
+− All APIs of Node.js library are asynchronous, that is, non-blocking. It essentially means a Node.js based server never waits for an API to return data. The server moves to the next API after calling it and a notification mechanism of Events of Node.js helps the server to get a response from the previous API call.<br/>
+  <img src="./img/event.png" width="550px">
+- Very Fast : Being built on Google Chrome's V8 JavaScript Engine, Node.js library is very fast in code execution.
+- Single Threaded but Highly Scalable : Node.js uses a single threaded model with event looping. Event mechanism helps the server to respond in a non-blocking way and makes the server highly scalable as opposed to traditional servers which create limited threads to handle requests. Node.js uses a single threaded program and the same program can provide service to a much larger number of requests than traditional servers like Apache HTTP Server. (Her bir islem bir thread olarak nitelendirilir. Bu islemleri browser engine'leri tek tek yerine getiriyor)
+- No Buffering : Node.js applications never buffer any data. These applications simply output the data in chunks.
+- License : Node.js is released under the MIT license. (= free of charge)
 - Diger ozellikler icin [link](https://www.tutorialspoint.com/nodejs/nodejs_quick_guide.htm)
 - Module import etmek icin `import` yerine `require` kullaniyoruz. Cunku import'u babel sayesinde kullanabiliyorduk. Node'da babel kullanamiyoruz.
+- 
 - Herhangi bir paket yukledigimizde klasorumuzde `node_modules` klasoru ve `package-lock.json` dosyasi olusur, ancak `package.json` olusmaz.
 - Yukaridakilere ilave olarak `package.json` da olusturmak istedigimizde bash terminalde `npm init` komutunu kullaniyoruz. Bu komuttan sonra asama asama `package.json` dosyasindaki bilgileri duzenlememiz veya default olarak biraktigimiza dair onay vermemiz gerekiyor. 
 - Bu islemi gerceklestirdikten sonra kurdugumuz paketlerin bilgileri dependencies altinda yer aliyor. Eskiden yuklenen paketin dependencies'te yer almasi icin `--save` kullanilirdi. Ornek `npm i morgan --save`. Artik buna gerek yok `npm i morgan` yeterli. Ancak yukledigimiz paket sadece development kisminda yer alsin, production'da yer almasin istiyorsak kullanacagimiz komut `npm i cowsay --save-dev`. ❗️ Ozellikle buyuk projelerde paketlerin yuklendigi yerler onemli. 
