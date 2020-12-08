@@ -210,15 +210,30 @@
  
  
  router.get("/", (res,req)=>{
-   res.render("main", {users : data.userList});
+   res.render("user", {users : data.userList});
  });
 ```
-- users.ejs
+- users.ejs'te body icinde:
 ```
  User List: 
  <% users.forEach(user => { %>
  
     <p> <%=user.name %></p>
+    
+ <% } %>
+```
+- params ile yapalim
+- UserRouter icinde
+``` 
+ router.get("/:id", (res,req)=>{
+   res.render("user", {users : data.userList, id: req.params.id});
+ });
+```
+- users.ejs'te body icinde:
+```
+ <% if(id) { %>
+    
+    Hello <% user[id].name %></p>
     
  <% } %>
 ```
