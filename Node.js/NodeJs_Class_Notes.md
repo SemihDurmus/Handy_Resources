@@ -89,7 +89,7 @@
 - `app.listen(5000, ()=>{console.log("I am listening on port 5000")})` .listen callback function alir.
 - Kodda yaptigimiz degisikliklerin islev gormesi icin her degisiklik sonrasinda server'i restart etmemiz gerekiyor. Bizi bu zahmetli isten kurtaran paket nodemon.
 `npm i nodeman --save-dev`. 
-- Bunu kurduktan sonra ne yapiyoruz? package.json dosyasi icindeki script altina `"start" : "nodemon"` yazip `npm start` ile calistirdigimizda her save ettigimizde yaptigimiz degisiklikler etki ediyor. 
+- Bunu kurduktan sonra ne yapiyoruz? package.json dosyasi icindeki script altina `"start" : "nodemon"` yazip `npm start` vaya `npm run start` ile calistirdigimizda her save ettigimizde yaptigimiz degisiklikler etki ediyor. Bunun yerine terminale sadece `nodemon` yazarak da nodemonu aktif hale getirebiliriz.
 - start'in default degeri `"node index"` idi. Bunlari silip sadece nodemon yazdiktan sonra bile index dosyasi calisir. Neden? Cunku index.js main'in karsisinda yer aliyor (`"main": "index.js"`)ve program her zaman main'in belirttigi dosyayi calistirir.
 - <img src="./img/longurl.png" width="800px"><br/>
 - query bir object'tir. console.log(req.query)  //localhost:5000/user?no=12  //{no:12}
@@ -104,10 +104,17 @@
 ```
 - Express icin onemli moduller.
   * os => built-in bir module'dur server isletim sistemi bilgilerini doner. `os.type` , `os.platform()`, `os.freemem()`, `os.totalmem()`
-  * path => Dosya pathlerine dogru olarak ulasmaya yardimci olur.`const custompath = path.join(__dirname. "/testFolder")`. 
+  * path => Dosya pathlerine dogru olarak ulasmaya yardimci olur.`const custompath = path.join(__dirname, "/testFolder")`. 
   * `path.normalize(wrogPathname)` ile eksik/yanlis yazilmis path'ler duzeltilir. Ornek ters-duz slash (/\).
   * `path.extname(filename)` dosya uzantisini verir.<br/>
 ////////// 03.12.2020<br/>
+- Projemizi heroku gibi platformlara yukledigimizde local port konusunda sorun yasayabiliriz. Bunun cozumu icin:
+  * `const port = process.env.port || 5000;`
+- Express ile text gonderebildigimiz gibi file da gonderebiliriz.
+  * `app.get("/", (req,res)={response.send("Hello from server")})`
+  * `app.get("/", (req,res)={response.sendFile(path.join(__dirname,"about.html"))})` Ancak bu dsya gondermek icin tercih edilen bir yontem degildir.
+- Template denince MVC modelinin view tarafinda kullanilan icerisinde belirlenen bosluklari doldurup kullanacagimiz bir sablon. Ornek `<%=title%>`
+- Express'i destekleyen pek cok template var. Biz bunlardan EJS(Embedded JS template engine)'i kullanacagiz. (expressjs.com/resources/template-engines.html)
 ////////// 05.12.2020<br/>
 - app.get("/user", ) deyince /user path inden  get methodu ile  bir istek gelirse şunu uygula, şu cevabı gönder gibi bir anlama geliyor.
 app.use de buna karşılık ne diyebiliriz? -> gelen isteğin methodu ne olursa(get, post, put vb) olsun şu cevabı gönder.
