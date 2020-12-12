@@ -6,6 +6,7 @@
 - [HTML & CSS & SASS](#HTML_CSS_SASS)
 - [JavaScript](#JavaScript)
 - [React & React-Native](#React_React-Native)
+- [Node.js](#Node.js)
 
 
 ## General
@@ -108,3 +109,13 @@ JS has numerous DOM methods which allow the program to access and manipulate eve
 The important thing to about this design is that the model and the view do not interact with each other. Any reaction between the model and the view is carried out through the controller. It means that the presentation and the logic of the data are completely seperated which makes complex applications pretty easier. <br/><br/>
 Imagine a user sends a request to the controller to see the list of city names, the controller sends the request to the model to get the city names and the model returns the list to the controller. If the controller gets the list successfully, then it turns to the view. The view renders the data into html so that it can be used by the browser. Now the controller takes the presentation and return it back to the user. If the controller gets an error from the view, then it asks the view to render a presentation of the error. This case an error is returned to the user instead of the city names list. In sum; the model handles all the data,  the view handles all the presentation and the controller tells the these two what to do. This is the basic architecture of MVC.
  <hr/>
+ 
+## Node.js
+- WHAT IS THE DIFFERENCE BETWEEN ASYNCHRONOUS AND NON-BLOCKING? 
+- The two terms are quite similar to each other. Both of the models aim that the main program flows while a time consuming process is being done in the meantime. But there is a small difference between these two. 
+
+Asynchonous calls usually involve a callback or an event, to notify that the response is available. For example the API we are calling will return immediately after we call it. In the background the program starts a process to fulfill the task, and once the API is pulled, the task is done. By the time the main flow of the code does not stop or wait.
+
+While in the case of non-blocking, again you make a system call, it will return immediately with either the result or an error without putting the thread to slow down. In these cases the caller might have to try again to get the rest of the data. The term non-blocking is mostly used with IO opeartions.
+
+  <hr/>
