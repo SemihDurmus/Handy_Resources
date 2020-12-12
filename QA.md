@@ -113,7 +113,7 @@ The important thing to about this design is that the model and the view do not i
 Imagine a user sends a request to the controller to see the list of city names, the controller sends the request to the model to get the city names and the model returns the list to the controller. If the controller gets the list successfully, then it turns to the view. The view renders the data into html so that it can be used by the browser. Now the controller takes the presentation and return it back to the user. If the controller gets an error from the view, then it asks the view to render a presentation of the error. This case an error is returned to the user instead of the city names list. In sum; the model handles all the data,  the view handles all the presentation and the controller tells the these two what to do. This is the basic architecture of MVC.
  <hr/>
 - WHAT IS NODE.JS? HOW DOES IT WORK?
-- <img src="./img/eventLoop.png"><br/>
+<br/><img src="./Node.js/img/eventLoop.png"><br/>
 - Node.js is a virtual machine that uses JavaScript, and runs on a v8 environment. When we talk about Node.js, we are implying that we are using it as a way to create server and interact with our database on the backend.
 
 JS is asynchronous and single threaded. The single thread is the event loop which is responsible for running all functions and requests. The asynchronous behavior is extremely important when using node, because it guarantees that the event loop is never blocked by a synchronous function.
@@ -122,7 +122,7 @@ Even though there is only one event loop, when a request is made the loop passes
 
 The main benefit of a Node.js server is that it can handle much more traffic than a conventional server, and it offers a huge ecosystem of open source packages.
   <hr/>
-- WHAT IS THE DIFFERENCE BETWEEN ASYNCHRONOUS AND NON-BLOCKING? 
+- WHAT IS THE DIFFERENCE BETWEEN ASYNCHRONOUS AND NON-BLOCKING? <br/>
 - The two terms are quite similar to each other. Both of the models aim that the main program keeps flowing while a time consuming process is being done in the meantime. But there is a small difference between these two. 
 
 Asynchonous calls usually involve a callback or an event, to give a notification that the response is available. For example the API we are calling will return after we call it. In the background the program starts a process to fulfill the task, and once the API is pulled, the task is done. By the time the main flow of the code does not stop or wait.
