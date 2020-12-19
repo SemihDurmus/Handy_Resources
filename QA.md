@@ -140,3 +140,7 @@ While in the case of non-blocking, again you make a system call, it will return 
   * Node is perfect for micro services which are a popular solution among enterprise applications.
 
   <hr/>
+- WHAT IS SHARDING IN MONGO DB? <br/>
+- Sharding is the process of distributing data across multiple servers, which goes well along with horizontal scaling. MongoDB uses sharding to support deployments with very large data sets and operations that require intensive calculations. Sharding adds more servers to a database and automatically balances data and load across various servers. Each database or namely shard in the server serves as an independent database, but together shards act like a singe logical unit. It provides additional write capacity by distributing the write load over a number of mongoDB instances, and that reduces the number of operations each shard handles.
+
+  <hr/>
