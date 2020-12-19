@@ -6,8 +6,8 @@
 - [HTML & CSS & SASS](#HTML_CSS_SASS)
 - [JavaScript](#JavaScript)
 - [React & React-Native](#React_React-Native)
-- [Node.js MongoDB](#Node_js)
-
+- [Node.js](#Node_js)
+- [MongoDB](#MongoDB)
 
 ## General
 - WHAT IS CLEAN CODE? 
@@ -140,6 +140,11 @@ While in the case of non-blocking, again you make a system call, it will return 
   * THE code executes faster than in any other languages,
   * Node is perfect for micro services which are a popular solution among enterprise applications.
 
+  <hr/>
+  
+## MongoDB
+- WHAT IS MONGO DB?
+- MongoDB is a document-oriented NoSQL database used for high volume data storage. Instead of using tables and rows as in the traditional relational databases, MongoDB makes use of collections and documents. Documents consist of key-value pairs which are the basic unit of data in MongoDB. Collections contain sets of documents and functions which is the equivalent of relational database tables. MongoDB is a database that came into light around the mid-2000s.
   <hr/>
 - WHAT IS SHARDING IN MONGO DB? <br/>
 - Sharding is the process of distributing data across multiple servers, which goes well along with horizontal scaling. MongoDB uses sharding to support deployments with very large data sets and operations that require intensive calculations. Sharding adds more servers to a database and automatically balances data and load across various servers. Each database or namely shard in the server serves as an independent database, but together shards act like a singe logical unit. It provides additional write capacity by distributing the write load over a number of mongoDB instances, and that reduces the number of operations each shard handles.
