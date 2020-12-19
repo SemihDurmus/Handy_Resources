@@ -6,7 +6,7 @@
 - [HTML & CSS & SASS](#HTML_CSS_SASS)
 - [JavaScript](#JavaScript)
 - [React & React-Native](#React_React-Native)
-- [Node.js](#Node.js)
+- [Node.js](#Node_js)
 
 
 ## General
@@ -106,7 +106,7 @@ JS has numerous DOM methods which allow the program to access and manipulate eve
   <hr/>
 
  
-## Node.js
+## Node_js
 - WHAT IS MVC (MODAL VIEW CONTROLLER)
 - Today the websites can be very advanced and can implement a lot of computational process. To make working with such web applications easier, developers use different patterns to lay out their projects. In this respect the most popular pattern is MVC. The goal of this pattern is to split a large application into specific sections each its own purpose. As regards to its abbreviation, the model consists of three different sections: the controller, the model and the view. In this pattern controller acts as a bridge between two other components and is responsible for the flow of the requests. It tells the rest of the sections what to do. Model section is responsible for the logic of the model and interacts with the database. The view is only concerned with the presentation of the data coming from the controller. It contains a template file that dynamically renders html based on this data. <br/><br/>
 The important thing to about this design is that the model and the view do not interact with each other. Any reaction between the model and the view is carried out through the controller. It means that the presentation and the logic of the data are completely seperated which makes complex applications pretty easier. <br/><br/>
