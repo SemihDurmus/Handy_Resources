@@ -3,8 +3,8 @@
 
 ## Table of Contents
 
-- [✅Basics](#✅Basics)
-- [✅Settings](#✅Settings)
+- [✅Basics](#Basics)
+- [✅Settings](#Settings)
 - [✅Creating Model](#Creating-Model)
 
 ## ✅Basics
