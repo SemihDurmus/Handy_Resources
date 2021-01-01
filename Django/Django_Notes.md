@@ -5,7 +5,7 @@
 
 - [✅Basics](#Basics)
 - [✅Settings](#Settings)
-- [✅Creating Model](#Creating-Model)
+- [✅Creating Model](#Creating-model)
 
 ## ✅Basics
 
