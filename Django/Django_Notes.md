@@ -41,4 +41,23 @@ def about(request):
 ```
 - Add the following to src/project_name/settings.py under INSTALLED_APPS 
   * `'app_name.apps.App_nameConfig()',` or simply `'app_name',` 
-- 
+- Create a file named urls.py under src/app_name and add the following code to that file
+```
+from django.urls import path
+from .views import home_view, about
+
+urlpatterns = [
+    path("home/", home_view),
+    path("about/", about)
+]
+```
+- Do following changes for src/project_name/urls.py
+```
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('home', include("app_name.urls"))
+]
+```
