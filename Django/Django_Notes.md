@@ -5,7 +5,7 @@
 
 - [Basics](#✅Basics)
 - [Settings](#✅Settings)
-
+- [Creating_Model](#✅Creating_Model)
 
 ## ✅Basics
 
@@ -61,3 +61,40 @@ urlpatterns = [
     path('home', include("app_name.urls"))
 ]
 ```
+## ✅Creating_Model
+- Write the following example model to app_name/models.py
+```
+from django.db import models
+
+class Student(models.Model):
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    number = models.IntegerField()
+```
+- We need to introduce our model.
+- `python3 manage.py makemigrations` + `python3 manage.py migrate`
+- With these commands we created 0001_initial.py file under src/app_name/migrations with information regarding our model
+- Now we created a database, but we need to create a superuser to manage the db --> `python3 manage.py createsuperuser`
+- Write the following code lines to admin.py file under src/app_name
+```
+from django.contrib import admin
+from .models import Student
+
+admin.site.register(Student)
+```
+- We can manipulate data on http://localhost:8000/admin/app_name/student/
+- The items in the db appear as objects. But we want them to appear as names, numbers etc. We turn back to models.py file and add the following function under Student class. So that we see the first names of the items on the admin panel.
+```
+def __str__(self):
+    return self.first_name
+```
+- Another way to manipulate data in db is by shell `python3 manage.py shell` 
+- Using the shell command line we can use the following example code lines to manipulate data
+```
+from app_name.models import Student
+s1 = Student(first_name = "Mick", last_name = "M", number = 3)
+s1
+s1.save() 
+```
+- `.save()` saves the item to database.
+- Another option to save an item to db is `s1 = Student.objects.create(first_name = "Mick", last_name = "M", number = 3)`
