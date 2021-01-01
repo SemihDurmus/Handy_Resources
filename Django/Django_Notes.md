@@ -73,7 +73,8 @@ class Student(models.Model):
 ```
 - We need to introduce our model.
 - `python3 manage.py makemigrations` + `python3 manage.py migrate`
-- With these commands we created 0001_initial.py file under src/app_name/migrations with information regarding our model
+- With these commands we created 0001_initial.py file under src/app_name/migrations with information regarding our model. 
+- id paraeter is automatically created.
 - Now we created a database, but we need to create a superuser to manage the db --> `python3 manage.py createsuperuser`
 - Write the following code lines to admin.py file under src/app_name
 ```
@@ -82,7 +83,7 @@ from .models import Student
 
 admin.site.register(Student)
 ```
-- We can manipulate data on http://localhost:8000/admin/app_name/student/
+- We can manipulate data on `http://localhost:8000/admin/app_name/student/`
 - The items in the db appear as objects. But we want them to appear as names, numbers etc. We turn back to models.py file and add the following function under Student class. So that we see the first names of the items on the admin panel.
 ```
 def __str__(self):
@@ -95,6 +96,18 @@ from app_name.models import Student
 s1 = Student(first_name = "Mick", last_name = "M", number = 3)
 s1
 s1.save() 
+exit()
 ```
 - `.save()` saves the item to database.
 - Another option to save an item to db is `s1 = Student.objects.create(first_name = "Mick", last_name = "M", number = 3)`
+- For fetching data from the database we use get, filter, exclude. get is for unique data. If we call more than one item with get, we receive an error.
+```
+s2 = Student.objects.get(id = 002)
+s3 = Student.objects.filter(first_name = "Ricky")
+```
+- filter returns a query set. we can call any item from the returned data i.e. `s3[0].first_name`
+- exclude calls the items which have not equal values. `s4 = Student.objects.filter(first_name = "Mick")`
+- `s5 = Student.objects.all()` fetches all the objects
+- `s6 = Student.objects.filter(last_name__startswith="M")`
+- `s7 = Student.objects.filter(last_name__contains="Ma")`
+- For more of these kind of operations see `field lookup` in django.
