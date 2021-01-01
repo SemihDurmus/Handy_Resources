@@ -3,9 +3,9 @@
 
 ## Table of Contents
 
-- [Basics](#✅Basics)
-- [Settings](#✅Settings)
-- [Creating_Model](#✅Creating_Model)
+- [✅Basics](#✅Basics)
+- [✅Settings](#✅Settings)
+- [✅Creating Model](#Creating-Model)
 
 ## ✅Basics
 
