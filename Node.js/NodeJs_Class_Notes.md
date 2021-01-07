@@ -48,7 +48,7 @@
 - Bir tavsiye : node.js kulanirken npm, react kullanirken yarn kullanin.
 - Ornek bir `package.json` icerigi:
 
-```
+```json
       {
         "name": "test-logger",
         "version": "1.0.0",
@@ -123,7 +123,7 @@
 - ejs paketini kur -> `npm i ejs`
 - Proje klasoru icinde view isimli bir klasor olusturalim. Icinde main.ejs isimli bir template file olsun. Bu dosyaya erisim icin render metodu ve set ayarlari yapmamiz gerek.
 - 
-```
+```javascript
    app.set("view engine", "ejs");
    app.set("views", path.join(__dirname, "views"));
    
@@ -137,20 +137,20 @@
 - Node'da react'ta oldugu gibi routes kullanabiliriz. Bunun icin proje klasoru latina routes isimli bir klasor ve altina MainRouter.js dosyasi olusturuyoruz.
 - Sorasinda index.js'deki get'in callback fonksiyonunu MainRouter'a tasiyoruz. 
 - 1️⃣ Mainrouter.js icinde
-```
+```javascript
    exports.getMain = (res,req)=> {
      res.render("main");
    }
    //exports objesine getmain'i yerlestirdik.
 ```
 - index.js icinde
-```
+```javascript
    const MainRouter = require("./routes/Mainrouter");
    
    app.get("/", MainRouter.getMain)
 ```
 - 2️⃣ express kullanimi ile MainRouter.js
-```
+```javascript
   const express = require("express");
   const router = express.Router();
   
@@ -161,7 +161,7 @@
   module.exports = router
 ```
 - express kullanimi ile index.js
-```
+```javascript
    const MainRouter = require("./routes/Mainrouter");
    
    app.use("/", MainRouter)
@@ -172,7 +172,7 @@
 - AMACIMIZ MVC YAPISI KURARAK ISTEKLERE CEVAP VERMEK.
 - Simdi template'e bir degisken gonderelim. Yukarida belirttigimiz router icindeki render'a bir parametre daha ekliyoruz. `res.render("main", {name : "John"})`. 
 - ejs templeyti icindeki karsiligi 
-```
+```html
 <body>
    HELLO <%=name%>
 </body>
@@ -183,7 +183,7 @@
 - MainRouter.js icindeki render => `res.render("main", {name : req.query.name})`.
 - Browser'da gorunen => HELLO John
 - Name gelmezse "HELLO Stranger donsun"
-```
+```html
 <body>
     
    <% if(name) { %>
@@ -196,7 +196,7 @@
 ```
 - Simdi de object formatinda bir veriyi templeyt ile map edelim.
 - Once models isimi bir klasor olusturup icine data.js dosyasini ekliyorum. Icerigi:
-```
+```javascript
  exports.userList =  [
   { id : 0, name : "Nick"},
   { id : 1, name : "Rick"},
@@ -205,7 +205,7 @@
  ];
 ```
 - UserRouter.js icerigine:
-```
+```javascript
  const data = require("../models/data");
  
  
@@ -214,7 +214,7 @@
  });
 ```
 - users.ejs'te body icinde:
-```
+```html
  User List: 
  <% users.forEach(user => { %>
  
@@ -224,13 +224,13 @@
 ```
 - params ile yapalim
 - UserRouter icinde
-``` 
+``` javascript
  router.get("/:id", (res,req)=>{
    res.render("user", {users : data.userList, id: req.params.id});
  });
 ```
 - users.ejs'te body icinde:
-```
+```html
  <% if(id) { %>
     
     Hello <% user[id].name %></p>
