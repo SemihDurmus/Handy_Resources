@@ -42,7 +42,7 @@ git checkout -b branch-name
 ```
 7. Merging
 ```
-git git merge branch-name
+git merge branch-name
 ```
 
 
