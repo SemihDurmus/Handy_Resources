@@ -14,7 +14,11 @@ git push origin --delete master
 2. Create and commit to a new branch
 ```
 git branch branch-name
+git checkout branch-name
+or
 git checkout -b branch-name
+
+
 git push origin branch-name
 ```
 
