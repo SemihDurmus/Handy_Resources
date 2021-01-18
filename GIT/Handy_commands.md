@@ -18,32 +18,35 @@ git checkout branch-name
 or
 git checkout -b branch-name
 
-
+git add .
+git commit -m"commit message"
 git push origin branch-name
 ```
 
-3. After changing repository name on GitHub
+3. For changing HEAD to main
+```
+git checkout -b main
+```
+4. Merging main with another branch
+```
+git merge branch-name
+```
+
+5. After changing repository name on GitHub
 ```
 git remote set-url origin new_url
 ```
-4. For displaying git log in one line
+6. For displaying git log in one line
 ```
 git log --oneline
 ```
-5. Connecting to a new GitHub account
+7. Connecting to a new GitHub account
 ```
 git config --list
 git config --global user.name"Xxxx"
 git config --global user.email xxx@example.com
 ```
-6. For changing HEAD
-```
-git checkout -b branch-name
-```
-7. Merging
-```
-git merge branch-name
-```
+
 
 
 
