@@ -25,7 +25,7 @@ git push origin branch-name
 
 3. For changing HEAD to main
 ```
-git checkout -b main
+git checkout main
 ```
 4. Merging main with another branch
 ```
