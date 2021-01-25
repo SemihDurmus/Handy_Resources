@@ -46,6 +46,15 @@ git config --list
 git config --global user.name"Xxxx"
 git config --global user.email xxx@example.com
 ```
+8. Is my git has a remote?
+```
+git remote show origin
+
+if not
+git remote add origin repo_url
+git push --set-upstream origin master
+```
+
 
 
 
