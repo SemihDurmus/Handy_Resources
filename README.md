@@ -1,3 +1,3 @@
 <h1 align="center">Handy Resources</h1>
 
-  This repository inholds handy resources such as websites, youtube videos, cheatsheets, and QAs.
+  This repository comprises handy resources such as class notes, frequently used comands, websites, youtube videos, cheatsheets, QAs etc.
