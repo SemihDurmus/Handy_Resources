@@ -22,3 +22,33 @@ function add(num1:number, num2:number) { return num1 + num2 }
 console.log(add(+input1.value + +input2.value))
 
 ```
+4. Project initiation:
+```
+npm init  //gives a package.json file
+npm install --save-dev lite-server 
+//After installing go to package.json and enter `"start": "lite-server"` under `"test"` under `"scripts"`
+//This is a tool always serves the html file close to ts file on localhost:3000
+npm start
+```
+5. What does TS do?<br/>
+TypeScript's type system only helps you during development.(Before the code gets compiled)
+6. Number, Boolean, String
+```typescript
+function add(num1:number, num2:number)
+```
+```typescript
+function add(num1:number, num2:number, showResult:boolean, phrase:string) {
+//  if (typeof num1 !== 'number' || typeof num2 !== 'number') {
+//    throw new Error ('Incorrect input')
+//   }
+  if (showResult) {console.log (phrase + num1 + num2) }
+  else {return num1 + num2}    
+}
+
+const nr1 = 5;
+const nr2 = 2.8;
+const printResult = true;
+const resultPhrase = "Result is "
+
+add(nr1, nr2, printResult, resultPhrase)
+```
