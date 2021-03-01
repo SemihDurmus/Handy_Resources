@@ -102,3 +102,31 @@ const person : {
 person.role.push('admin') //Error
 person.role[1] = 3  //Error
 ```
+10. Enum (Does not exist in JS)
+```typescript
+//const ADMIN = 0;
+//const READ_ONLY = 1;
+//const AUTHOR = 2;
+enum Role {}ADMIN, READ_ONLY, AUTHOR}
+
+const person : {
+  name : Max,
+  hobbies : ["run", "music", "jump"],
+  role : Role.ADMIN
+}
+
+if (person.role === AUTHOR) {
+  console.log("is author")
+
+```
+in compiled JS enum would look like 
+```javascript
+var Role;
+(function (Role) {
+  Role[Role["ADMIN"]=0] = "ADMIN";
+  Role[Role["READ_ONLY"]=1] = "READ_ONLY";
+  Role[Role["AUTHOR"]=2] = "AUTHOR";
+}) (Role || (Role= {}))
+
+
+```
