@@ -32,7 +32,7 @@ npm start
 ```
 5. What does TS do?<br/>
 TypeScript's type system only helps you during development.(Before the code gets compiled)
-6. Number, Boolean, String
+6. Number, Boolean, String Types
 ```typescript
 function add(num1:number, num2:number)
 ```
@@ -41,8 +41,9 @@ function add(num1:number, num2:number, showResult:boolean, phrase:string) {
 //  if (typeof num1 !== 'number' || typeof num2 !== 'number') {
 //    throw new Error ('Incorrect input')
 //   }
-  if (showResult) {console.log (phrase + num1 + num2) }
-  else {return num1 + num2}    
+  const res = num1 + num2
+  if (showResult) {console.log (phrase + res) }
+  else {return res}    
 }
 
 const nr1 = 5;
@@ -51,4 +52,53 @@ const printResult = true;
 const resultPhrase = "Result is "
 
 add(nr1, nr2, printResult, resultPhrase)
+```
+7. Object Type
+```typescript
+const student : object = {
+  name : "Max",
+  age : 20
+}
+
+const person : {
+  name : string
+  age : number
+} = {
+  name : "Rex",
+  age : 30
+}
+
+console.log(person.name)
+
+```
+8. Array Type
+```typescript
+let favActivities : string[];
+favActivites = ["music", "movie"]
+
+let favs : any[];
+favs = [3, "movie"]
+
+const person : {
+  name : "Rex",
+  age : 30,
+  hobbies : ['run','dive' ]
+}
+
+for (const hobby in person.hobbies) {
+  console.log(hobby.toUpperCase())
+  //console.log(hobby.map()) //Error ! Because an srray does not get map
+}
+```
+9. Tuple Type (fixed-length array)
+```typescript
+const person : {
+  name : string,
+  role : [number, string] //this describes a tuple
+  name : "Rex",
+  role : [1, 'author'] //Should contain only 2 elements, one number and one string
+}
+
+person.role.push('admin') //Error
+person.role[1] = 3  //Error
 ```
