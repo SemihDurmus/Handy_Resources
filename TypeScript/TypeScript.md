@@ -107,7 +107,9 @@ person.role[1] = 3  //Error
 //const ADMIN = 0;
 //const READ_ONLY = 1;
 //const AUTHOR = 2;
-enum Role {}ADMIN, READ_ONLY, AUTHOR}
+enum Role {ADMIN, READ_ONLY, AUTHOR}
+//You do not have to start w 0 => enum Role {ADMIN=5, READ_ONLY, AUTHOR} =>the others are 6 and 7 now
+//Can also use differnet types => enum Role {ADMIN="ADMIN", READ_ONLY=100, AUTHOR=200}
 
 const person : {
   name : Max,
@@ -128,5 +130,86 @@ var Role;
   Role[Role["AUTHOR"]=2] = "AUTHOR";
 }) (Role || (Role= {}))
 
+
+```
+11. Any, combined, literal types
+```typescript
+let i1 : number | string;
+let i2 : any;
+let iArray : any[];
+
+type Combineable = number | string;
+type ConversionDescriptor = "as-number" | "as-text" 
+
+function combine (
+  input1 : Combineable,
+  input2 : number | string,
+  resultConversion : "as-number" | "as-text"    //literal type
+  //resultConversion :ConversionDescriptor
+) {
+  let result;
+  if (typeof input1 === 'number' && typeof input2 === 'number' || resultConversion === "as-number") {
+      result = +input1 + +input2;
+  } else {
+       result = input1.toString() + input2.toString()
+  }
+  return result
+}  
+  
+combine(30,26,"as-number"); //56
+combine("30","26","as-number"); //56
+combine("Max","Anna","as-text"); //MaxAnna
+
+```
+12. Void, undefined, function, unknown Types
+```typescript
+function printResult1(num:number): undefined {
+  console.log('Result '+ num)
+  return
+}
+
+//void is the general use for functions that does not return anything => console will give undefined
+function printResult2(num:number): void {
+  console.log('Result '+ num)
+}
+
+function add(n1:number, n1:number) { return n1 + n2 }
+
+let combineValues1 : Function;
+
+combineValues1 = add;
+//combineValues = 5; //Error
+
+//if we combineValues = printResult; TS will not complain. But we dont want that.
+//So we should re-define it
+
+let combineValues2 : (a:number, b:number)=> number
+
+//--------------------
+
+function addAndHandle (n1:number, n2:number, cb:(num:number)=> void){
+  const result = n1 + n2
+  cb(result)
+}
+
+addHandle(10, 20, (result)=>{console.log(result)}); //30
+
+//---------------------
+let userInput : unknown;
+let userName : string;
+
+userInput = 4;
+userName = "John";
+//userName = userInput //Error
+
+//---------------------
+function generateError(message:string, code:number):never {
+  throw {message:message, errorCode:code}
+}
+
+const errResult = generateError("An error has occured", 400);
+console.log(errResult) 
+//Gives nothing. No null, no undefined but nothing. Therefore we add the type never to func.
+//void is another opt we could use, but never describes it better
 
 ```
