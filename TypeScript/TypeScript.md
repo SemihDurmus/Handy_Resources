@@ -192,7 +192,7 @@ function addAndHandle (n1:number, n2:number, cb:(num:number)=> void){
   cb(result)
 }
 
-addHandle(10, 20, (result)=>{console.log(result)}); //30
+addAndHandle(10, 20, (result)=>{console.log(result)}); //30
 
 //---------------------
 let userInput : unknown;
