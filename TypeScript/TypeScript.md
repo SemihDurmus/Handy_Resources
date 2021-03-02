@@ -117,7 +117,7 @@ const person = {
   role : Role.ADMIN
 }
 
-if (person.role === AUTHOR) {
+if (person.role === 2) {
   console.log("is author")
 
 ```
