@@ -85,7 +85,7 @@ const person : {
   hobbies : ['run','dive' ]
 }
 
-for (const hobby in person.hobbies) {
+for (const hobby of person.hobbies) {
   console.log(hobby.toUpperCase())
   //console.log(hobby.map()) //Error ! Because an srray does not get map
 }
