@@ -173,7 +173,7 @@ function printResult2(num:number): void {
   console.log('Result '+ num)
 }
 
-function add(n1:number, n1:number) { return n1 + n2 }
+function add(n1:number, n2:number) { return n1 + n2 }
 
 let combineValues1 : Function;
 
