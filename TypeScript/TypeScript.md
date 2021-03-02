@@ -22,6 +22,8 @@ function add(num1:number, num2:number) { return num1 + num2 }
 console.log(add(+input1.value + +input2.value))
 
 ```
+The "!" above is to convince that there is an element with that id and it's not null. 
+
 4. Project initiation:
 ```
 npm init  //gives a package.json file
