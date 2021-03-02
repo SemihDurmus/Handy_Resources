@@ -111,8 +111,8 @@ enum Role {ADMIN, READ_ONLY, AUTHOR}
 //You do not have to start w 0 => enum Role {ADMIN=5, READ_ONLY, AUTHOR} =>the others are 6 and 7 now
 //Can also use differnet types => enum Role {ADMIN="ADMIN", READ_ONLY=100, AUTHOR=200}
 
-const person : {
-  name : Max,
+const person = {
+  name : "Max",
   hobbies : ["run", "music", "jump"],
   role : Role.ADMIN
 }
