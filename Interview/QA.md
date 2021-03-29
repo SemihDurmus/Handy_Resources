@@ -80,6 +80,10 @@ JS has numerous DOM methods which allow the program to access and manipulate eve
 - React hooks were introduced in 2018, which is simply after 7 years of the first debut of react. Hooks are functions that let you use state and other react lifecycle features without having to write a class. This helps us manipulate the state in a much easier way. Basic built-in react hooks are useState, useEffect and useContext.  useState returns a stateful value and a function to update it. useEffect lets you perform side effects in function components such as componentDidMount, componentDidUpdate and componentWillUnmount. Two basic rules of hooks are that they are not called inside loops, conditions, or nested functions. (Only called at the top level.), and they are also not called from regular JavaScript functions, instead from React function components.
   <hr/>
   
+- HIGHER ORDER COMPONENTS?
+- They are higher order functions that take a component as an argument and return a new/modified component that's wrapped with additional functionality, methods or properties.
+  <hr/>
+  
 - WHAT ARE HYBRID APPS?
 -	Hybrid apps are deployed in a native container that uses a mobile WebView object. When the app is used, this object displays web content thanks to the use of web technologies (CSS, JavaScript, HTML).
  <hr/>
