@@ -34,7 +34,7 @@
 - When we `git log` we see that commits have their SHA1s and also point to trees, blobs and parent commits if they have. Trees point the same blob as before if the content is still the same. Similar thing goes with the trees; they point the same trees if that part of the files/folders has not changed. So basically Git does not store things more than once. 
 - `git count-objects` command gives the ouput like: 8 objects, 32 kilobytes
 - What if I have a huge file and change only a single line. Would Git copy the whole content as a blob? No it stores the differences between files.
-- TAG📍 A tag is a simple label attached to an object 
+- TAGS📍 A tag is a simple label attached to an object forever.
   ```
   git tag -a mytag -m "I love cheesecake"
   git tag
@@ -47,8 +47,9 @@
   
   I love cheesecake
   ```
+  There is another type of tag without a specific name. Some call it un-annotated tag og lightweight tag. It's created with this command `git tag tagname`. It provides only commit hash.This tag is basically like a branch that does not move.
 - BRANCH📍 A branch is just a reference/pointer to a commit. Inside of the branch file there is only a single line and it is the SHA1 of the current commit.
-- Assume there is only one branch and it's master. When we run the folowing commands, both of the branch folders will contain the same SHA1.
+- Assume there is only one branch and it's master. When we run the folowing commands, both of the branch folders will contain the same SHA1. 
   ```
   git branch newbranch
   git branch
@@ -69,9 +70,8 @@
 - Now we make another commit(007f). lisa will point new commit and HEAD will point lisa.
 - MERGE📍 Let's turn back to master.`git checkout master` and see the previously committed files & folders. I want to merge now.`git merge lisa`. We have a conflict now (ex: both modified: recipes/apple_pie.txt). We can fix it manually with vim editor `vim recipes/apple_pie.txt`. We can see whats conflicting and edit the file content, then save and close `wq`. Now we should edit it explicitly because it's not staged `git add recipes/apple_pie.txt` and `git commit` without the need for a commit message, because it already offers `Merge branch 'lisa'`. When we look inside the new commit(ecbe) `git cat-file -p ecbe ` we see that it's just like a normal commit, like merge is just a commit. The exception is that it has two parents.<p align="center"><img width="300px" src="img/merge1.png"/><img width="300px" src="img/merge2.png"/></p>
 - DETACHED HEAD📍 This happens when we checkout to a commit instead of a branch. Ex:`git checkout ecbe` `git branch` -> `*(HEAD detached at ecba) lisa master`. If we make one or more commits at this point, the HEAD keeps pointing the new commits. Then if we checkout to master again, those commits become unreachable by a commit or branch, and they are to be deleted after some time(garbage collected). However, if I want them to be stored for good, I should checkout to the latest commit, create a new branch there and checkout to master again. Detached HEAD is useful when we want to make some experiments with our code.
-- REBASING📍 Assume we have two branches with a common base and each has several commits without a conflict. If we merge them we have a commit with two parent commits as explained before. If we rebase `git rebase master` Git detaches the branch from its common base with the other branch and adds all the commits on that branch to the end of the other, so that they seem like a single branch.
-<p align="center"><img width="700px" src="img/merge_rebase.png"/></p>
-- 
+- REBASING📍 Assume we have two branches with a common base and each has several commits without a conflict. If we merge them we have a commit with two parent commits as explained before. If we rebase `git rebase master`, Git detaches the branch from its common base with the other branch and adds all the commits on the top of the target branch, so that they seem like a single branch. But this is not the whole case because objects are immutable. Base can not be changed. What really happens is: the commits on the right are totally copied to the left side except their parents. So they are new objects with new SHA1s. Remaining commits on the right are deleted after some time.<p align="center"><img width="700px" src="img/merge_rebase.png"/></p>
+- Merge preserves history as it has developed. A project with rebases looks cleaner but rebase refactors history.(ex: prior commits may look forward in history)
 
 ## Basic Workflow
 
