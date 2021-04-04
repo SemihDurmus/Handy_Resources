@@ -1,10 +1,10 @@
 <h1 align="center"> Mastering Git Course</h1>
-<h2 align="center"> Plural Sight, Paolo Perrotta </h2>
-<h2 align="center"> Focus on the Git "way of thinking" </h2>
+<h4 align="center"> Plural Sight, Paolo Perrotta </h4>
+<h4 align="center"> Focus on the Git "way of thinking" </h4>
 
 ## Table of Contents
 
-- [Basics](#basics)
+- [How Git Works](#how-git-works)
 - [Basic Workflow](#basic-workflow)
 - [Git reset](#git-reset)
 - [Advanced Tools](#advanced-tools)
@@ -12,7 +12,7 @@
 - [Fixing Mistakes](#fixing-mistakes)
 - [Finding Your Flow](#finding-your-flow)
 
-## Basics 
+## How Git Works 
 
 - Any sequence of bytes -> SHA1 hash. SHA1s are 20bytes in hexadecimal format. 
 - There is only one SHA1 for a piece of string. `git hash-object "Apple Pie"` command would not work. `echo "Apple Pie" | git hash-object --stdin` will return 23991897e13e47ed0adb91a0082c31c82fe0cbe5, because git considers "Apple Pie" as a file name. 
@@ -72,6 +72,11 @@
 - DETACHED HEAD📍 This happens when we checkout to a commit instead of a branch. Ex:`git checkout ecbe` `git branch` -> `*(HEAD detached at ecba) lisa master`. If we make one or more commits at this point, the HEAD keeps pointing the new commits. Then if we checkout to master again, those commits become unreachable by a commit or branch, and they are to be deleted after some time(garbage collected). However, if I want them to be stored for good, I should checkout to the latest commit, create a new branch there and checkout to master again. Detached HEAD is useful when we want to make some experiments with our code.
 - REBASING📍 Assume we have two branches with a common base and each has several commits without a conflict. If we merge them we have a commit with two parent commits as explained before. If we rebase `git rebase master`, Git detaches the branch from its common base with the other branch and adds all the commits on the top of the target branch, so that they seem like a single branch. But this is not the whole case because objects are immutable. Base can not be changed. What really happens is: the commits on the right are totally copied to the left side except their parents. So they are new objects with new SHA1s. Remaining commits on the right are deleted after some time.<p align="center"><img width="700px" src="img/merge_rebase.png"/></p>
 - Merge preserves history as it has developed. A project with rebases looks cleaner but rebase refactors history.(ex: prior commits may look forward in history)
+- DISTRIBUTED VCS📍 When we clone a git repo from remote `vim .git/config` command gives us information about it. If we `git branch` we only see *master on local. To see all branches on the remote use `git branch --all`. `git show-ref master` displays all the bramches with tha name master bth remote and local. 
+- Like a local branch, a remote branch is just a reference to a commit.
+- Case: I cloned a remote repo lo local and made a commit. Now I want to push it to remote, but I figure out that there is another commit made by sbd else in remote. 2 ways to go 1st way: `git push -f` I push my commit to remote and master branch on remote will point my commit. The other commit on remote will garbage collected. 2nd way: fetch the remote to local, merge & fix conflicts, then push. This way the remote will continue to have the same objects as local.(fetch-merge-push). Actually fetch + merge = pull.
+- Never rebase shared commits❗️
+- Fork is a remote clone. We can clone the forked repo to local, but it does not track the changes of the forked repo. There we should add the forked repo as the second remote to local. This remote is named upstream. What we can do is pull from upstream and push to origin. We can also push any code to origin we want.
 
 ## Basic Workflow
 
