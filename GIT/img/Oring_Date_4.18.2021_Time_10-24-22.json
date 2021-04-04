@@ -1,0 +1,1 @@
+{"inputs":[{"name":"Output directory","type":"text","value":"."},{"name":"Torus Radius","type":"scalar","units":"mm","values":10},{"name":"Radius","type":"scalar","units":"mm","values":40}]}
