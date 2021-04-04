@@ -17,7 +17,7 @@
 - Any sequence of bytes -> SHA1 hash. SHA1s are 20bytes in hexadecimal format. 
 - There is only one SHA1 for a piece of string. `git hash-object "Apple Pie"` command would not work. `echo "Apple Pie" | git hash-object --stdin` will return 23991897e13e47ed0adb91a0082c31c82fe0cbe5, because git considers "Apple Pie" as a file name. 
 - Every object in Git has its own SHA1 and SHA1s are unique.
-- Git objects: Blobs, Trees, Commits, Annotated Tags
+- Git objects: Blobs, Trees, Commits, Annotated Tags<p align="center"><img width="700px" src="img/objects.png"/></p>
 - ```git
    git init
    ls -a
@@ -64,12 +64,13 @@
 - Assume we have 2 branches: master and lisa. Now both branches are pointing the same commit(example: 5720), and HEAD is pointing to master branch. This moment we make one more commit. Now lisa is still pointing 5720. Master branch is pointing the new commit(ex:e268), and HEAD is till pointing master. Because it did not change. 
 - CHECKOUT📍 Lets make lisa current branch: `git checkout lisa`. Two things happen: 
   * HEAD now points lisa. (Inside HEAD file -> ref: refs/heads/lisa)
-  * Git replaces the files & folders in our working area or working directory with the files & folders in this commit (5720)
+  * Git replaces the files & folders in our working area or working directory with the files & folders in this commit (5720)<p align="center"><img width="300px" src="img/Screenshot 2021-04-04 at 19.31.46.png"/></p>
 - So checkout means move HEAD and update working area.
 - Now we make another commit(007f). lisa will point new commit and HEAD will point lisa.
-- MERGE📍 Let's turn back to master.`git checkout master` and see the previously committed files & folders. I want to merge now.`git merge lisa`. We have a conflict now (ex: both modified: recipes/apple_pie.txt). We can fix it manually with vim editor `vim recipes/apple_pie.txt`. We can see whats conflicting and edit the file content, then save and close `wq`. Now we should edit it explicitly because it's not staged `git add recipes/apple_pie.txt` and `git commit` without the need for a commit message, because it already offers `Merge branch 'lisa'`. When we look inside the new commit(ecbe) `git cat-file -p ecbe ` we see that it's just like a normal commit, like merge is just a commit. The exception is that it has two parents.
+- MERGE📍 Let's turn back to master.`git checkout master` and see the previously committed files & folders. I want to merge now.`git merge lisa`. We have a conflict now (ex: both modified: recipes/apple_pie.txt). We can fix it manually with vim editor `vim recipes/apple_pie.txt`. We can see whats conflicting and edit the file content, then save and close `wq`. Now we should edit it explicitly because it's not staged `git add recipes/apple_pie.txt` and `git commit` without the need for a commit message, because it already offers `Merge branch 'lisa'`. When we look inside the new commit(ecbe) `git cat-file -p ecbe ` we see that it's just like a normal commit, like merge is just a commit. The exception is that it has two parents.<p align="center"><img width="300px" src="img/merge1.png"/><img width="300px" src="img/merge2.png"/></p>
 - DETACHED HEAD📍 This happens when we checkout to a commit instead of a branch. Ex:`git checkout ecbe` `git branch` -> `*(HEAD detached at ecba) lisa master`. If we make one or more commits at this point, the HEAD keeps pointing the new commits. Then if we checkout to master again, those commits become unreachable by a commit or branch, and they are to be deleted after some time(garbage collected). However, if I want them to be stored for good, I should checkout to the latest commit, create a new branch there and checkout to master again. Detached HEAD is useful when we want to make some experiments with our code.
 - REBASING📍 Assume we have two branches with a common base and each has several commits without a conflict. If we merge them we have a commit with two parent commits as explained before. If we rebase `git rebase master` Git detaches the branch from its common base with the other branch and adds all the commits on that branch to the end of the other, so that they seem like a single branch.
+<p align="center"><img width="700px" src="img/merge_rebase.png"/></p>
 - 
 
 ## Basic Workflow
