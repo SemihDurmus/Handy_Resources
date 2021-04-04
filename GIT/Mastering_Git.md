@@ -4,6 +4,7 @@
 
 ## Table of Contents
 
+- [Basics](#basics)
 - [Basic Workflow](#basic-workflow)
 - [Git reset](#git-reset)
 - [Advanced Tools](#advanced-tools)
@@ -11,8 +12,65 @@
 - [Fixing Mistakes](#fixing-mistakes)
 - [Finding Your Flow](#finding-your-flow)
 
+## Basics 
+
+- Any sequence of bytes -> SHA1 hash. SHA1s are 20bytes in hexadecimal format. 
+- There is only one SHA1 for a piece of string. `git hash-object "Apple Pie"` command would not work. `echo "Apple Pie" | git hash-object --stdin` will return 23991897e13e47ed0adb91a0082c31c82fe0cbe5, because git considers "Apple Pie" as a file name. 
+- Every object in Git has its own SHA1 and SHA1s are unique.
+- Git objects: Blobs, Trees, Commits, Annotated Tags
+- ```git
+   git init
+   ls -a
+   echo "Apple Pie" | git hash-object --stdin //23991897e13e47ed0adb91a0082c31c82fe0cbe5
+   open .git  
+   //open obects folder and see the folder "23". 23 is the forst 2 digits of the SHA1. 
+   //Inside there's a file with the remaining digits of the SHA1 as its name. This is called a blob of data
+   git cat-file 23991897e13e47ed0adb91a0082c31c82fe0cbe5 -t 
+   // -t is for type. Output is : blob
+   git cat-file 23991897e13e47ed0adb91a0082c31c82fe0cbe5 -p
+   // -p is for print. Output is : Apple pie
+   ```
+- In the object database blob is not really a file, but the content of a file. The file name and the file permissions are not stored in blob, they are stored in the tree that points the blob. 
+- When we `git log` we see that commits have their SHA1s and also point to trees, blobs and parent commits if they have. Trees point the same blob as before if the content is still the same. Similar thing goes with the trees; they point the same trees if that part of the files/folders has not changed. So basically Git does not store things more than once. 
+- `git count-objects` command gives the ouput like: 8 objects, 32 kilobytes
+- What if I have a huge file and change only a single line. Would Git copy the whole content as a blob? No it stores the differences between files.
+- TAG📍 A tag is a simple label attached to an object 
+  ```
+  git tag -a mytag -m "I love cheesecake"
+  git tag
+  mytag
+  git cat-file -p mytag //I could write SHA1 also
+  object 25080f99.............91
+  type commit
+  tag mytag
+  tagger Paolo "Nusco" Perrotta <assaas@sasasa.com> 143601375 +2000
+  
+  I love cheesecake
+  ```
+- BRANCH📍 A branch is just a reference/pointer to a commit. Inside of the branch file there is only a single line and it is the SHA1 of the current commit.
+- Assume there is only one branch and it's master. When we run the folowing commands, both of the branch folders will contain the same SHA1.
+  ```
+  git branch newbranch
+  git branch
+  lisa
+  *master   //* is for showing current branch
+  open .git/
+  cat .git/refs/heads/master
+  57026.................51f
+  cat .git/refs/heads/lisa
+  57026.................51f
+  ```
+- HEAD📍 HEAD file contains reference to current branch. Example: `ref: refs/heads/master`. So it's just a reference to a branch.
+- Assume we have 2 branches: master and lisa. Now both branches are pointing the same commit(example: 5720), and HEAD is pointing to master branch. This moment we make one more commit. Now lisa is still pointing 5720. Master branch is pointing the new commit(ex:e268), and HEAD is till pointing master. Because it did not change. 
+- CHECKOUT📍 Lets make lisa current branch: `git checkout lisa`. Two things happen: 
+  * HEAD now points lisa. (Inside HEAD file -> ref: refs/heads/lisa)
+  * Git replaces the files & folders in our working area or working directory with the files & folders in this commit (5720)
+- So checkout means move HEAD and update working area.
+- Now we make another commit(007f). lisa will point new commit and HEAD will point lisa.
+- MERGE📍 Let's turn back to master.`git checkout master` and see the previously committed files & folders. I want to merge now.`git merge lisa`. We have a conflict now (ex: both modified: recipes/apple_pie.txt). We can fix it manually with vim editor `vim recipes/apple_pie.txt`. We can see whats conflicting and edit the file content, then save and close `wq`. Now we should edit it explicitly because it's not staged `git add recipes/apple_pie.txt` and `git commit` without the need for a commit message, because it already offers `Merge branch 'lisa'`. When we look inside the new commit(ecbe) `git cat-file -p ecbe ` we see that it's just like a normal commit, like merge is just a commit. The exception is that it has two parents.
 
 ## Basic Workflow
+
 
 - Four important areas:
   * (Stash) - Working Area - Index - ❗️Repository 
