@@ -143,10 +143,10 @@
 
 ## Fixing Mistakes
 
-- ❗️ Never rebase shared commits!
-- ❗️ Never change shared history!
-- CHANGING THE LATEST COMMIT: I made a change in a file and commited it (5d24). Then I realize I forgot to make a little more change that should be in the same commit (to have a cleaner history). I can `git commit --amend`, but this can not change the commit 5d24 because comits are immutable. What really happens is Git creates a new commit (5127) including both changes and moves the branch and HEAD to 5127. 5d24 is then garbage collected. It's like a rebase and works ony for the latest commit.
-- CHANGING AN OLDER (BUT NOT SHARED) COMMIT: 
+- Never rebase shared commits❗️ 
+- Never change shared history❗️ 
+- 📍 CHANGING THE LATEST COMMIT: I made a change in a file and commited it (5d24). Then I realize I forgot to make a little more change that should be in the same commit (to have a cleaner history). I can `git commit --amend`, but this can not change the commit 5d24 because comits are immutable. What really happens is Git creates a new commit (5127) including both changes and moves the branch and HEAD to 5127. 5d24 is then garbage collected. It's like a rebase and works ony for the latest commit.
+- 📍 CHANGING AN OLDER (BUT NOT SHARED) COMMIT: 
   * I realize I forgot to make more change that should be in an older commit in project history. 
   * First I make a brand new commit including the change I forgot to make(4ea2). 
   * Then `git log --graph --oneline` and find the old commit(2a48) I would like the changes to be together with. If the commit is before a push to remote, I leave it like that. If not we can squash the two commits.
@@ -157,4 +157,7 @@
   * In the first step -when squashing 2a48 and 4ea2- Git asks me to edit the commit message, because there are two from before. Then Git squashes two commits and create a new one.
   * CASE: If one pick is followed by a squash and one of the commits is a merge commit with a solved conflict from before, we may have to re-solve the conflict. Then add the file to index and `git rebase --continue`
   * After the process is done Git moves the branch and HEAD to the latest commit and unreacheable commits become garbage collected.
-- This is a powerfull tool. We can use it like committing several times and clean the commits afterwards to make them look more understandable before we push them to remote.
+- This is a powerful tool. We can use it like committing several times and clean the commits afterwards to make them look more understandable before we push them to remote.
+- 📍 SAVE AN UNREACHABLE COMMIT: `git reflog HEAD` shows the log of HEAD changes. So even though a commit becomes unreachable, we can still reach it by hash or ex: HEAD@{14} attributes before it gets garbage collected. If we want to save it from that just adding a branch on it would be enough.
+- 📍 RE-WRITING LARGE CHUNKS OF HISTORY: `git filter-branch` and a newer command `git filter-repo` is useful for that. Assume I want to delete the file menu.js and all its traces in history.`git filter-repo --path menu.js --invert-paths` means menu.js is de-selected and everything else is selected. When I run the command all menu.js files and traces are gone. This creates a big conflict. Most probably every team member should have to re-clone the repository.
+- 📍 FIXING HISTORY WITHOUT CHANGING ANY COMMIT: see `git revert`. Remember revert does not mean undo.
