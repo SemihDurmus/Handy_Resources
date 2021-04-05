@@ -143,4 +143,18 @@
 
 ## Fixing Mistakes
 
-- 
+- ❗️ Never rebase shared commits!
+- ❗️ Never change shared history!
+- CHANGING THE LATEST COMMIT: I made a change in a file and commited it (5d24). Then I realize I forgot to make a little more change that should be in the same commit (to have a cleaner history). I can `git commit --amend`, but this can not change the commit 5d24 because comits are immutable. What really happens is Git creates a new commit (5127) including both changes and moves the branch and HEAD to 5127. 5d24 is then garbage collected. It's like a rebase and works ony for the latest commit.
+- CHANGING AN OLDER (BUT NOT SHARED) COMMIT: 
+  * I realize I forgot to make more change that should be in an older commit in project history. 
+  * First I make a brand new commit including the change I forgot to make(4ea2). 
+  * Then `git log --graph --oneline` and find the old commit(2a48) I would like the changes to be together with. If the commit is before a push to remote, I leave it like that. If not we can squash the two commits.
+  * `git rebase --interactive origin/master` or `-i`. origin/master branch is the latest commit that was shared. The command means let me edit history from this commit excluded onwards.
+  * We see a text editor with a list of commits from the oldest to the latest. 
+  * In this editor we can change the order of the commits and change the command on the left as explained in the same page. F.ex: 2a48 is on top and 4ea2 is at the bottom. I cut-paste 4ea2 and paste it under 2a48. Then change the command on left from pick to squash. So that it unites with the 2a48.
+  * After finishing save & close and wait the program run.
+  * In the first step -when squashing 2a48 and 4ea2- Git asks me to edit the commit message, because there are two from before. Then Git squashes two commits and create a new one.
+  * CASE: If one pick is followed by a squash and one of the commits is a merge commit with a solved conflict from before, we may have to re-solve the conflict. Then add the file to index and `git rebase --continue`
+  * After the process is done Git moves the branch and HEAD to the latest commit and unreacheable commits become garbage collected.
+- This is a powerfull tool. We can use it like committing several times and clean the commits afterwards to make them look more understandable before we push them to remote.
