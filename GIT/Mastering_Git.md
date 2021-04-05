@@ -5,6 +5,7 @@
 ## Table of Contents
 
 - [How Git Works](#how-git-works)
+- [Introduction](#introduction)
 - [Basic Workflow](#basic-workflow)
 - [Git reset](#git-reset)
 - [Advanced Tools](#advanced-tools)
@@ -78,13 +79,46 @@
 - Never rebase shared commits❗️
 - Fork is a remote clone. We can clone the forked repo to local, but it does not track the changes of the forked repo. There we should add the forked repo as the second remote to local. This remote is named upstream. What we can do is pull from upstream and push to origin. We can also push any code to origin we want.
 
-## Basic Workflow
 
+## Introduction
 
 - Four important areas:
-  * (Stash) - Working Area - Index - ❗️Repository 
+  * (Stash) - Working Area - Index(Staging Area) - ❗️Repository 
 - 2 important questions:
   * How does this command move information accross the Four Area?
   * How does this command change the repository?
-- Git objects : commit, blob, tree
-- 
+- Index is a binary file in the .git folder. 
+- `git diff` gives the difference between the working area and the index.
+- `git diff --cached` gives the difference between the index and the repository. 
+
+## Basic Workflow
+
+- MOVING DATA TO THE LEFT📍 (moving from repository to index and working area). As we know `git checkout branchname` changes the HEAD from current branch to the selected one. Then the files in the index and working area changes automatically accordingly.
+- REMOVING FILES📍 Assume I created a file in working area and added it to index. But I want to remove it from index now. `git rm filename` would delete the file forever. Since that file is not commited yet, Git warns me and offers two options `git rm -f filename` and `git rm --cached filename`. The second one deletes the file from the index or basically unstages it. In terms of Git `rm` is not the opposite of `add`.
+- RENAMING FILES📍 Assume I changed the extension of a file in working area from menu.txt to menu.md. `git status` says that I deleted menu.txt and created menu.md. If I `git add menu.md`, the index would contain both menu.txt and menu.md. But I do not want menu.txt in the index anymore. What I should do is `git add menu.txt` which does not really exist in the working area. It sounds strange but this command will overwrite menu.txt in the index area with nothing, basically it deletes that file. This point if we `git status`, Git tells us `renamed:  menu.txt -> menu.md`, so now Git understands what I did. Therefore if I commit, repository will also understand that I only changed the extension. This will happen the same way even if I change also the content to a certain extent. In order to change the file name in both working area and the index, I could shortly have run the command `git mv menu.txt menu.md`.
+
+## Git reset
+
+- reset does different things in different cases.
+- Which commands move branches? commit, merge, rebase, pull. None of them works only for moving branches. They move branches implicitly, like a side effect.
+- `reset` is specifically for moving the current branch and optionally copies data from the repository to the other areas:
+  * `--hard` copies data from the new current commit to both index and working area.
+  * `--mixed` copies data from the new current commit to index. This is also the default option.  
+  * `--soft` does not copy any data.
+- One example reset case: In repository the head points master, and master points the commit fbe5. I make two editions in two different files in working area and commit these changes seperately in 2 different commits(0be2 and 86d3). Then I change my mind. I want to go back to the point before the two editions(fbe5) in my working area. What I should do now is hard reset. With this command `git reset --hard fbe5` master points fbe5, and the data attached to fbe5 is copied to both index and working directory. Therfore 0be2 and 86d3 become unreachable and be garbage collected.
+- Another example reset case: I make changes in a file and add it to the index. Then I changed my mind and want to delete the staged data.I need to use `git reset HEAD` which means moving the branch to the commit pointed by HEAD. But the current branch is already pointing at that commit by definition. In this case the reset does not move the branch at all. This is skipping the first step of reset where it moves the branch. Second step is to copy data to index (and working area). Since we did not specify the type of reset it applies --mixin which copies data to only index. So we deleted/overwrote the unwanted staged data at index.(I could simply do the same with git `rm --cached filename`).
+
+## Advanced Tools
+
+
+
+
+
+
+
+
+
+
+
+
+
