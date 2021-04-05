@@ -9,7 +9,7 @@
 - [Basic Workflow](#basic-workflow)
 - [Git reset](#git-reset)
 - [Advanced Tools](#advanced-tools)
-- [Exploring the Past](#exploring-the-past)
+- [Exploring History](#exploring-history)
 - [Fixing Mistakes](#fixing-mistakes)
 - [Finding Your Flow](#finding-your-flow)
 
@@ -120,8 +120,27 @@
 - checkout file📍 Assume I made changes in two different files and added them to index. Now I want get rid of all the changes in one file in both working area and the index. I can use checkout `git checkout HEAD filenametoremove`. Normally checkout moves the HEAD reference in the repository, usually to a branch, then it copies all the files from the repo to the working area and index. In this case it's different. It will just copy data from the current commit repository to working area and index for one file we specify. We lose all the changes for that file, but did not even get a warning. A command to be careful with. 
 - Hunk (Commiting parts of a file)📍 `git add --path filename`. Then follow the instructions to choose in the CLI to select the parts of the file to commit. After doing this `git status` will still say that the file is modified(shown in red). But we can use `git diff` to see the differerences between the working area and the index.
 - `--patch` works with add, checkout, stash and reset so that we can work on hunks rather than files when we want.  
+- switch📍 `git switch` for moving to a different branch
+- restore📍 `git restore` for recovering an earlier commit. 
+- `git restore --staged filename` copy the files from the repository to the index only.
+- Actually both of above are done with `checkout`, but the latest versions of the Git offers these two distinctive commands.
 
+## Exploring History
 
+- To search history a good command is `git log --graph --decorate --oneline`
+- `git show` can be used with SHA, branch name or HEAD. Gives quite a lot of information about a commit.
+- How to refer to a parent commit without knowing its hash -> `git show HEAD^`. `git show HEAD^^` show parent of the parent.
+- `git show HEAD~2` show 2 commit back from HEAD.
+- What if the commit has two parents? `git show HEAD~2^2` Start from HEAD. Go back 2 commits. Pick the second parent.
+- Where was head one month ago? `git show HEAD@{"1 month ago"}`
+- How commits are connected in history? `git blame filename`, `git diff HEAD HEAD~2`, `git diff branchname master`
+- Some more features to use with `git log`
+  * `git log --patch` shows which changes were introduced with the commit
+  * `git log --grep apple --oneline` shows commit with the string "apple" in their messages. (There is a lot with grep `git help grep` )
+  * `git log -Gapple --patch` shows commit with the string "apple" added or removed from any file; and which lines were affected. 
+  * `git log -3 --oneline` shows the latest 3 commits.
+  * `git log HEAD~5..HEAD^ --oneline` shows the commits from 5 commits before HEAD to parent of the HEAD.(You specify the oldest commit first in the code, but see the oldest commit at the bottom in the results) diff compares the files in 2 branches, here we compare histories.
 
+## Fixing Mistakes
 
-
+- 
