@@ -11,7 +11,7 @@
 - [Advanced Tools](#advanced-tools)
 - [Exploring History](#exploring-history)
 - [Fixing Mistakes](#fixing-mistakes)
-- [Finding Your Flow](#finding-your-flow)
+- [Workflow Patterns](#workflow-patterns)
 
 ## How Git Works 
 
@@ -161,3 +161,26 @@
 - 📍 SAVE AN UNREACHABLE COMMIT: `git reflog HEAD` shows the log of HEAD changes. So even though a commit becomes unreachable, we can still reach it by hash or ex: HEAD@{14} attributes before it gets garbage collected. If we want to save it from that just adding a branch on it would be enough.
 - 📍 RE-WRITING LARGE CHUNKS OF HISTORY: `git filter-branch` and a newer command `git filter-repo` is useful for that. Assume I want to delete the file menu.js and all its traces in history.`git filter-repo --path menu.js --invert-paths` means menu.js is de-selected and everything else is selected. When I run the command all menu.js files and traces are gone. This creates a big conflict. Most probably every team member should have to re-clone the repository.
 - 📍 FIXING HISTORY WITHOUT CHANGING ANY COMMIT: see `git revert`. Remember revert does not mean undo.
+
+## Workflow Patterns
+
+- When deciding to work with the team the following should be considered:
+  * Distribution Model: How many repos do we have? Who can access? ...
+  * Branching Model: Which branches do we have? How to use them? ...
+  * Constraints: Do we merge or rebase? Can we push unstable code? ..
+- 📍 MODELS:
+  * PEER-TO-PEER MODEL: All team members have the same permission. It's difficult to decide which repo is more up-to-date. 
+  * CENTRALIZED MODEL: One extra repo is designated as "bless". A bless repo is often a bare-repo, it has no working area or index, just used to share data. Everybody has the right to push.
+  * PULL REQUEST MODEL: Only a certain number of team members(maintainers) can push to the blessed repo, the others(contributors) can only pull. If one of the contributors have changes to push, he can send a pull request to a maintainer. The maintainer solves the conflict if there is, merges and pushes to the blessed repo.
+  * DICTATOR AND LIEUTANENTS MODEL: There is a main project and multiple sub-projects each of which works as a pull request model.
+- 📍 BRANCHES: Stable branch means that every commit is a working version of the project, in ustable branches the end commits do not necessarily work.
+- Some prefer to use release projects from another branch than main/master. One reason is that they keep the code more stable in a release branch. The branch can be merged with the main branch as soon as it's proven as stable.
+- When two or more developers work on different features, each can create a new branch and continue with that branch until they're finished. Then they can merge with the main branch. After merging the featureb (or topic) branches can either be deleted or kept for future reference.
+- 📍 CHERRY-PICK: Assume there are two branches (main and release) with several commits on each. One branch would like to have the other branch's only one commit but not any other. The special command for that is `git cherry-pick`. It works like a `rebase` and some teams do not like rebases. There is another solution for that: You create a third branch (ex: hotfix) with that special commit and merge it with both main and release.
+- 📍 CONSTRAINTS (RULES): Few examples:
+  * rebase, do not merge or merge, do not rebase.
+  * who can do what in which branches?
+  * do not push red build (failed in tests)
+  * squash a feature to a single commit before you merge it to master.
+ - A good article on an example git workflow : [A successful Git branching model](https://nvie.com/posts/a-successful-git-branching-model/)<p align="center"><img src="img/simple.png" width="700px"/></p>
+ - Do not design a workflow, grow a workflow!
