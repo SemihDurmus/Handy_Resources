@@ -24,7 +24,7 @@
    ls -a
    echo "Apple Pie" | git hash-object --stdin //23991897e13e47ed0adb91a0082c31c82fe0cbe5
    open .git  
-   //open obects folder and see the folder "23". 23 is the forst 2 digits of the SHA1. 
+   //open obects folder and see the folder "23". 23 is the first 2 digits of the SHA1. 
    //Inside there's a file with the remaining digits of the SHA1 as its name. This is called a blob of data
    git cat-file 23991897e13e47ed0adb91a0082c31c82fe0cbe5 -t 
    // -t is for type. Output is : blob
@@ -39,20 +39,20 @@
   ```
   git tag -a mytag -m "I love cheesecake"
   git tag
-  mytag
+  //mytag
   git cat-file -p mytag //I could write SHA1 also
-  object 25080f99.............91
-  type commit
-  tag mytag
-  tagger Paolo "Nusco" Perrotta <assaas@sasasa.com> 143601375 +2000
+  //object 25080f99.............91
+  //type commit
+  //tag mytag
+  //tagger Paolo "Nusco" Perrotta <assaas@sasasa.com> 143601375 +2000
   
-  I love cheesecake
+  //I love cheesecake
   ```
   There is another type of tag without a specific name. Some call it un-annotated tag og lightweight tag. It's created with this command `git tag tagname`. It provides only commit hash.This tag is basically like a branch that does not move.
 - BRANCH📍 A branch is just a reference/pointer to a commit. Inside of the branch file there is only a single line and it is the SHA1 of the current commit.
 - Assume there is only one branch and it's master. When we run the folowing commands, both of the branch folders will contain the same SHA1. 
   ```
-  git branch newbranch
+  git branch lisa
   git branch
   lisa
   *master   //* is for showing current branch
